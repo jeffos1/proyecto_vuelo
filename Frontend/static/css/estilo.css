@@ -1,0 +1,29 @@
+.radius_10 {
+    border-radius: 10px;
+}
+
+.bg_purple {
+    background-color: #673ab7;
+}
+
+.radius_15 {
+    border-radius: 15px;
+}
+
+.radius_20 {
+    border-radius: 20px;
+}
+
+.radius_25 {
+    border-radius: 25px;
+}
+
+.input_text {
+    font-size: 0.8rem;
+}
+
+.shadow {
+    -webkit-box-shadow: 0 6px 4px -4px black;
+    -moz-box-shadow: 0 6px 4px -4px black;
+    box-shadow: 0 6px 4px -4px black;
+}

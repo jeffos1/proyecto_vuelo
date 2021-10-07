@@ -1,29 +1,119 @@
 {% extends 'index.html' %}
 
 {% block head %}
+
 <title>Home</title>
 {% endblock %}
 
 {% block body %}
-    <div class="container">
-        <div class="row">
-            <div class="col text-center">
-                <h1>
-                    Llega a tus destinos
-                    más rápido que nunca
-                </h1>
-                <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, quasi. Ipsum non eum delectus consequuntur. Tenetur ullam, obcaecati et sunt dolorum repudiandae nulla expedita amet quaerat ipsa maiores eaque necessitatibus.</p>
-                <button type="button" class="btn btn-outline-secondary">Leer más</button>
+<div class="container">
+    <div class="row justify-content-sm-center my-3">
+        <div class="col-md-6 text-center">
+            <h1>
+                Llega a tus destinos <br>
+                más rápido que nunca
+            </h1>
+            <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, quasi. Ipsum non eum delectus
+                consequuntur. Tenetur ullam, obcaecati et sunt dolorum repudiandae nulla expedita amet quaerat ipsa
+                maiores eaque necessitatibus.</p>
+            <button type="button" class="btn btn-outline-secondary">Leer más</button>
+
+
+        </div>
+        <div class="col-md-5 card text-white bg_purple radius_25" style="max-width: 25rem;">
+            <div class="row justify-content-center">
+                <h4 class="col-md-12 text-center">Buscar vuelo</h4>
+
+
+                <div class="col-md-6 mb-2 ">
+                    <label for="ciudad_origen">Origen</label>
+                    <select class="custom-select w-100 radius_25 input_text shadow" id="ciudad_origen" required>
+                        <option value="">Ciudad...</option>
+                        <option>Bogota</option>
+                        <option>Medellin</option>
+                        <option>Pasto</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Please select a valid country.
+                    </div>
+                </div>
+                <div class="col-md-6  mb-2">
+                    <label for="ciudad_destino">Destino</label>
+                    <select class="custom-select w-100 radius_25 input_text shadow" id="ciudad_destino" required>
+                        <option value="">Ciudad...</option>
+                        <option>Bogota</option>
+                        <option>Medellin</option>
+                        <option>Pasto</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Por favor selecione una opcion
+                    </div>
+                </div>
+
+
+                <div class="md-form col-md-6 md-outline datepicker shadow mb-2">
+                    <label for="example">Fecha de ida</label>
+                    <input placeholder="Select date" type="date" id="example" class="form-control input_text radius_25">
+
+                </div>
+
+                <div class="md-form col-md-6 datepicker shadow mb-2">
+                    <label for="example">Fecha de vuelta</label>
+                    <input placeholder="Select date" type="date" id="example" class="form-control input_text radius_25">
+                </div>
+
+
+
+
+                <div class="col-md-6  mb-2">
+                    <label for="clase">Clase</label>
+                    <select class="custom-select w-100 radius_25 input_text shadow" id="clase" required>
+                        <option value="">Elegir...</option>
+                        <option>Economica</option>
+                        <option>Ejecutiva</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Por favor selecione una opcion
+                    </div>
+                </div>
+
+                <div class="col-md-3 mb-2 ">
+                    <label for="adultos">Origen</label>
+                    <select class="custom-select w-100 radius_25 input_text shadow" id="adultos" required>
+                        <option value="">?...</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Por favor selecione una opcion
+                    </div>
+                </div>
+                <div class="col-md-3  mb-2">
+                    <label for="ninos">Destino</label>
+                    <select class="custom-select w-100 radius_25 input_text shadow" id="ninos" required>
+                        <option value="">?...</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                    <div class="invalid-feedback">
+                        Por favor selecione una opcion
+                    </div>
+                </div>
+                <button class="btn btn-success radius_15 shadow mb-2" type="submit">Buscar</button>
+
             </div>
-            <div class="col">
-                <div class="card w-75">
+        </div>
+        <!-- <div class="col">
+            <div class="card w-75">
                     <div class="card-body">
                       <h5 class="card-title">Card title</h5>
                       <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
                       <a href="#" class="btn btn-primary">Button</a>
                     </div>
                   </div>
-            </div>
-        </div>
+        </div> -->
     </div>
+</div>
 {% endblock %}
