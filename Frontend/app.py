@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, render_template
 
 app = Flask(__name__)
 
@@ -6,8 +6,8 @@ app = Flask(__name__)
 @app.route('/index/')
 @app.route('/home/')
 
-def inicio():
-    return '<ul><li><a href="/login">Login</a></li><li><a href="/recuperar">Recuperar datos</a></li></ul>'
+def index():
+    return render_template("home.html")
 
 if __name__=='__main__':
     app.run(debug=True)
