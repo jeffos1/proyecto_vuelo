@@ -16,7 +16,8 @@
     color: #673ab7;
 }
 
-.nav-masthead .nav-link {
+.nav-masthead .nav-link,
+.nav-link {
     padding: .25rem 0;
     font-weight: 700;
     color: #673ab7;
@@ -50,6 +51,10 @@
     background-color: #673ab7;
 }
 
+.bg_green_yellow {
+    background-color: #BAFF29;
+}
+
 .text_purple {
     color: #673ab7;
 }
@@ -74,6 +79,11 @@
     width: 120px;
     height: 60px;
 
+}
+
+.box_border {
+    border: .15rem solid #673ab7;
+    padding: .3rem;
 }
 
 .bootstrap_icon {
