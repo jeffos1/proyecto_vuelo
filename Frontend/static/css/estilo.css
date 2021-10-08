@@ -1,9 +1,13 @@
-.radius_10 {
-    border-radius: 10px;
-}
-
 .bg_purple {
     background-color: #673ab7;
+}
+
+.text_purple {
+    color: #673ab7;
+}
+
+.radius_10 {
+    border-radius: 10px;
 }
 
 .radius_15 {
@@ -16,6 +20,17 @@
 
 .radius_25 {
     border-radius: 25px;
+}
+
+.box {
+    width: 120px;
+    height: 60px;
+
+}
+
+.bootstrap_icon {
+    font-size: 32px;
+    color: white
 }
 
 .input_text {
