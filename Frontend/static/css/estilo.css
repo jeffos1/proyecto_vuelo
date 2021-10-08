@@ -1,3 +1,51 @@
+/*nav*/
+.cover-container {
+    max-width: 42em;
+}
+
+
+/*
+   * Header
+   */
+.masthead {
+    margin-bottom: 1rem;
+}
+
+.masthead-brand {
+    margin-bottom: 0;
+    color: #673ab7;
+}
+
+.nav-masthead .nav-link {
+    padding: .25rem 0;
+    font-weight: 700;
+    color: #673ab7;
+    background-color: transparent;
+    border-bottom: .25rem solid transparent;
+}
+
+
+.nav-masthead .nav-link+.nav-link {
+    margin-left: 1rem;
+}
+
+.nav-masthead .active {
+    color: #673ab7;
+    border-bottom-color: #673ab7;
+}
+
+@media (min-width: 48em) {
+    .masthead-brand {
+        float: left;
+    }
+
+    .nav-masthead {
+        float: right;
+    }
+}
+
+/*nav end -----------------------------------*/
+
 .bg_purple {
     background-color: #673ab7;
 }
