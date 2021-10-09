@@ -2,7 +2,7 @@
 
 {% block head %}
 
-<title>Home</title>
+<title>Inicio</title>
 {% endblock %}
 
 {% block body %}
@@ -104,9 +104,12 @@
                     Por favor selecione una opcion
                 </div>
             </div>
-            <button class="btn bg_green_yellow radius_15 shadow mb-2 d-flex align-items-center mt-1" type="submit">
-                <i class="bi bi-search mr-1 pb-1"></i>
-                Buscar</button>
+            <form action="./search_results" method="get">
+                <button class="btn bg_green_yellow radius_15 shadow mb-2 d-flex align-items-center mt-1" type="submit">
+                    <i class="bi bi-search mr-1 pb-1"></i>
+                    Buscar</button>
+            </form>
+
 
         </div>
     </div>
@@ -152,42 +155,6 @@
             <small>Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorem, placeat provident? In atque hic
                 cumque id</small>
         </div>
-    </div>
-</div>
-
-
-
-
-<div class="row mt-5">
-
-    <div class="col-lg-4 text-center">
-        <h5>Features</h5>
-        <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="#">Cool stuff</a></li>
-
-            <li><a class="text-muted" href="#">Team feature</a></li>
-
-            <li><a class="text-muted" href="#">Another one</a></li>
-            <li><a class="text-muted" href="#">Last time</a></li>
-        </ul>
-    </div>
-    <div class="col-lg-4 text-center">
-        <h5>Resources</h5>
-        <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="#">Resource</a></li>
-            <li><a class="text-muted" href="#">Resource name</a></li>
-            <li><a class="text-muted" href="#">Another resource</a></li>
-            <li><a class="text-muted" href="#">Final resource</a></li>
-        </ul>
-    </div>
-    <div class="col-lg-4 text-center">
-        <h5>About</h5>
-        <ul class="list-unstyled text-small">
-            <li><a class="text-muted" href="#">Team</a></li>
-            <li><a class="text-muted" href="#">Locations</a></li>
-            <li><a class="text-muted" href="#">Privacy</a></li>
-            <li><a class="text-muted" href="#">Terms</a></li>
-        </ul>
     </div>
 </div>
 
