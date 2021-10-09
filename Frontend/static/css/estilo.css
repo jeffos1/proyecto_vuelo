@@ -78,6 +78,7 @@
 /*Icons*/
 .larger_icon {
     transform: scale(9, 1.4);
+    font-smooth: always;
 }
 
 /*----------*/
