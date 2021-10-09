@@ -1,0 +1,10 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.container, .row{
+    width: 100%;
+    display: flex;
+}
+

@@ -9,5 +9,10 @@ app = Flask(__name__)
 def index():
     return render_template("home.html")
 
+@app.route('/dashboard/vuelo/')
+
+def vuelos():
+    return render_template("vuelos.html")
+
 if __name__=='__main__':
     app.run(debug=True)

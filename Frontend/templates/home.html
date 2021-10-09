@@ -2,11 +2,12 @@
 
 {% block head %}
 <title>Home</title>
+<link rel="stylesheet" type="text/css" href="static/css/home.css" media="screen" />
 {% endblock %}
 
 {% block body %}
     <div class="container">
-        <div class="row">
+        <div class="row pt-2">
             <div class="col text-center">
                 <h1>
                     Llega a tus destinos
@@ -15,11 +16,46 @@
                 <p> Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint, quasi. Ipsum non eum delectus consequuntur. Tenetur ullam, obcaecati et sunt dolorum repudiandae nulla expedita amet quaerat ipsa maiores eaque necessitatibus.</p>
                 <button type="button" class="btn btn-outline-secondary">Leer más</button>
             </div>
-            <div class="col">
+            <div class="col text-center">
                 <div class="card w-75">
                     <div class="card-body">
-                      <h5 class="card-title">Card title</h5>
-                      <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+                      <h5 class="card-title">Buscar vuelo a Reservar</h5>
+                      <form action="">
+                          <label for="origen">Origen</label>
+                          <select name="origen" id="origen">
+                              <option value="">Ciudad 1</option>
+                              <option value="">Ciudad 2</option>
+                              <option value="">Ciudad 3</option>
+                              <option value="">Ciudad 4</option>
+                            </select>
+                            <label for="destino">Destino</label>
+                          <select name="destino" id="destino">
+                              <option value="">Ciudad 1</option>
+                              <option value="">Ciudad 2</option>
+                              <option value="">Ciudad 3</option>
+                              <option value="">Ciudad 4</option>
+                            </select>
+
+                            <label for="fechaIda">Fecha de Ida</label>
+                            <input type="datetime-local" id="fechaIda">
+
+                            <label for="fechaRegreso">Fecha de Regreso</label>
+                            <input type="datetime-local" id="fechaRegreso">
+
+                            <label for="clase">Clase</label>
+                          <select name="clase" id="clase">
+                              <option value="">clase 1</option>
+                              <option value="">clase 2</option>
+                              <option value="">clase 3</option>
+                              <option value="">clase 4</option>
+                            </select>
+
+                            <label for="nAdultos">Adultos</label>
+                            <input type="number" id="nAdultos">
+
+                            <label for="nNinos">Niños</label>
+                            <input type="number" id="nNinos">
+                      </form>
                       <a href="#" class="btn btn-primary">Button</a>
                     </div>
                   </div>
