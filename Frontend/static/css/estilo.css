@@ -46,6 +46,13 @@
 }
 
 /*nav end -----------------------------------*/
+/*Componentes*/
+.vuelo_card {
+    height: 5rem;
+    width: 100vh;
+}
+
+/*Background*/
 
 .bg_purple {
     background-color: #673ab7;
@@ -55,9 +62,25 @@
     background-color: #BAFF29;
 }
 
+/*Text*/
 .text_purple {
     color: #673ab7;
 }
+
+.text_white {
+    color: white;
+}
+
+.text_green_yellow {
+    color: #BAFF29;
+}
+
+/*Icons*/
+.larger_icon {
+    transform: scale(9, 1.4);
+}
+
+/*----------*/
 
 .radius_10 {
     border-radius: 10px;
