@@ -5,160 +5,162 @@
 {% endblock %}
 
 {% block body %}
+<div class="container d-flex flex-column" style="height: 100vh">
 
-<div class="row mx-auto my-auto">
-    <div class="col-md-12">
-        <h2 class="text_purple">Vuelos disponibles de Bogota a Medellin:</h2>
-        <small class="text_purple">20 de octubre del 2021</small>
-    </div>
-    <!-- option 1 -->
-    <div class="col-md-12 bg_purple text-white vuelo_card radius_20 d-flex align-items-center mb-3">
-        <div class="row d-flex flex-grow-1 text-center">
-            <div class="col-md-3">
-                <div class=" p-1 text_purple bg-white d-flex align-items-center justify-content-center radius_20"
-                    style="height: 3rem; width: 7rem;">
-                    <span>Golfo de
+    {% include 'navbar.html' %}
+    <div class="row mx-auto my-auto">
+        <div class="col-md-12">
+            <h2 class="text_purple">Vuelos disponibles de Bogota a Medellin:</h2>
+            <small class="text_purple">20 de octubre del 2021</small>
+        </div>
+        <!-- option 1 -->
+        <div class="col-md-12 bg_purple text-white vuelo_card radius_20 d-flex align-items-center mb-3">
+            <div class="row d-flex flex-grow-1 text-center">
+                <div class="col-md-3">
+                    <div class=" p-1 text_purple bg-white d-flex align-items-center justify-content-center radius_20"
+                        style="height: 3rem; width: 7rem;">
+                        <span>Golfo de
+                            <br>
+                            Marrosquillo</span>
+                    </div>
+                </div>
+
+                <div class="col-md-6 d-flex flex-grow-1 text-center align-items-center">
+                    <div>
+                        <span class="hora">
+                            7:55am
+                        </span>
                         <br>
-                        Marrosquillo</span>
+                        <span>
+                            Bogota
+                        </span>
+                    </div>
+
+                    <i class="bi bi-arrow-right text_white w-100 pb-1 larger_icon text_green_yellow"
+                        style="font-size: 1rem;"></i>
+                    <div>
+                        <span class="hora">
+                            8:30am
+                        </span>
+                        <br>
+                        <span>
+                            Medellin
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-md-3 d-flex justify-content-end ">
+                    <div class="d-flex flex-column flex-shrink-1">
+                        <span>
+                            $200000
+                        </span>
+                        <button class="btn bg_green_yellow btn-sm radius_20"><a href="../login"
+                                class="select_vuelo">Seleccionar</a></button>
+                    </div>
+
                 </div>
             </div>
+        </div>
 
-            <div class="col-md-6 d-flex flex-grow-1 text-center align-items-center">
-                <div>
-                    <span class="hora">
-                        7:55am
-                    </span>
-                    <br>
-                    <span>
-                        Bogota
-                    </span>
+        <!-- option 2 -->
+        <div class="col-md-12 bg_purple text-white vuelo_card radius_20 d-flex align-items-center mb-3">
+            <div class="row d-flex flex-grow-1 text-center">
+                <div class="col-md-3">
+                    <div class=" p-1 text_purple bg-white d-flex align-items-center justify-content-center radius_20"
+                        style="height: 3rem; width: 7rem;">
+                        <span>Golfo de
+                            <br>
+                            Marrosquillo</span>
+                    </div>
                 </div>
 
-                <i class="bi bi-arrow-right text_white w-100 pb-1 larger_icon text_green_yellow"
-                    style="font-size: 1rem;"></i>
-                <div>
-                    <span class="hora">
-                        8:30am
-                    </span>
-                    <br>
-                    <span>
-                        Medellin
-                    </span>
+                <div class="col-md-6 d-flex flex-grow-1 text-center align-items-center">
+                    <div>
+                        <span class="hora">
+                            9:55am
+                        </span>
+                        <br>
+                        <span>
+                            Bogota
+                        </span>
+                    </div>
+
+                    <i class="bi bi-arrow-right text_white w-100 pb-1 larger_icon text_green_yellow"
+                        style="font-size: 1rem;"></i>
+                    <div>
+                        <span class="hora">
+                            11:20am
+                        </span>
+                        <br>
+                        <span>
+                            Medellin
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-md-3 d-flex justify-content-end ">
+                    <div class="d-flex flex-column flex-shrink-1">
+                        <span>
+                            $200000
+                        </span>
+                        <button class="btn bg_green_yellow btn-sm radius_20"><a href="../login"
+                                class="select_vuelo">Seleccionar</a></button>
+                    </div>
+
                 </div>
             </div>
-
-            <div class="col-md-3 d-flex justify-content-end ">
-                <div class="d-flex flex-column flex-shrink-1">
-                    <span>
-                        $200000
-                    </span>
-                    <button class="btn bg_green_yellow btn-sm radius_20"><a href="../login"
-                            class="select_vuelo">Seleccionar</a></button>
+        </div>
+        <!-- option 3 -->
+        <div class="col-md-12 bg_purple text-white vuelo_card radius_20 d-flex align-items-center mb-3">
+            <div class="row d-flex flex-grow-1 text-center">
+                <div class="col-md-3">
+                    <div class=" p-1 text_purple bg-white d-flex align-items-center justify-content-center radius_20"
+                        style="height: 3rem; width: 7rem;">
+                        <span>Golfo de
+                            <br>
+                            Marrosquillo</span>
+                    </div>
                 </div>
 
+                <div class="col-md-6 d-flex flex-grow-1 text-center align-items-center">
+                    <div>
+                        <span class="hora">
+                            11:55am
+                        </span>
+                        <br>
+                        <span>
+                            Bogota
+                        </span>
+                    </div>
+
+                    <i class="bi bi-arrow-right text_white w-100 pb-1 larger_icon text_green_yellow"
+                        style="font-size: 1rem;"></i>
+                    <div>
+                        <span class="hora">
+                            1:00pm
+                        </span>
+                        <br>
+                        <span>
+                            Medellin
+                        </span>
+                    </div>
+                </div>
+
+                <div class="col-md-3 d-flex justify-content-end ">
+                    <div class="d-flex flex-column flex-shrink-1">
+                        <span>
+                            $200000
+                        </span>
+                        <button class="btn bg_green_yellow btn-sm radius_20"><a class="select_vuelo"
+                                href="../login">Seleccionar</a></button>
+                    </div>
+
+                </div>
             </div>
         </div>
     </div>
-
-    <!-- option 2 -->
-    <div class="col-md-12 bg_purple text-white vuelo_card radius_20 d-flex align-items-center mb-3">
-        <div class="row d-flex flex-grow-1 text-center">
-            <div class="col-md-3">
-                <div class=" p-1 text_purple bg-white d-flex align-items-center justify-content-center radius_20"
-                    style="height: 3rem; width: 7rem;">
-                    <span>Golfo de
-                        <br>
-                        Marrosquillo</span>
-                </div>
-            </div>
-
-            <div class="col-md-6 d-flex flex-grow-1 text-center align-items-center">
-                <div>
-                    <span class="hora">
-                        9:55am
-                    </span>
-                    <br>
-                    <span>
-                        Bogota
-                    </span>
-                </div>
-
-                <i class="bi bi-arrow-right text_white w-100 pb-1 larger_icon text_green_yellow"
-                    style="font-size: 1rem;"></i>
-                <div>
-                    <span class="hora">
-                        11:20am
-                    </span>
-                    <br>
-                    <span>
-                        Medellin
-                    </span>
-                </div>
-            </div>
-
-            <div class="col-md-3 d-flex justify-content-end ">
-                <div class="d-flex flex-column flex-shrink-1">
-                    <span>
-                        $200000
-                    </span>
-                    <button class="btn bg_green_yellow btn-sm radius_20"><a href="../login"
-                            class="select_vuelo">Seleccionar</a></button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!-- option 3 -->
-    <div class="col-md-12 bg_purple text-white vuelo_card radius_20 d-flex align-items-center mb-3">
-        <div class="row d-flex flex-grow-1 text-center">
-            <div class="col-md-3">
-                <div class=" p-1 text_purple bg-white d-flex align-items-center justify-content-center radius_20"
-                    style="height: 3rem; width: 7rem;">
-                    <span>Golfo de
-                        <br>
-                        Marrosquillo</span>
-                </div>
-            </div>
-
-            <div class="col-md-6 d-flex flex-grow-1 text-center align-items-center">
-                <div>
-                    <span class="hora">
-                        11:55am
-                    </span>
-                    <br>
-                    <span>
-                        Bogota
-                    </span>
-                </div>
-
-                <i class="bi bi-arrow-right text_white w-100 pb-1 larger_icon text_green_yellow"
-                    style="font-size: 1rem;"></i>
-                <div>
-                    <span class="hora">
-                        1:00pm
-                    </span>
-                    <br>
-                    <span>
-                        Medellin
-                    </span>
-                </div>
-            </div>
-
-            <div class="col-md-3 d-flex justify-content-end ">
-                <div class="d-flex flex-column flex-shrink-1">
-                    <span>
-                        $200000
-                    </span>
-                    <button class="btn bg_green_yellow btn-sm radius_20"><a class="select_vuelo"
-                            href="../login">Seleccionar</a></button>
-                </div>
-
-            </div>
-        </div>
-    </div>
-</div>
-{% include 'footer.html' %}
-<!-- cierre .container de index.html -->
+    {% include 'footer.html' %}
+    <!-- cierre .container-->
 </div>
 <script type="module">
     import { textDark } from '../static/js/script.js'
