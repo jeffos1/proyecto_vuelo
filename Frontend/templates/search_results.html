@@ -52,7 +52,8 @@
                     <span>
                         $200000
                     </span>
-                    <button class="btn bg_green_yellow btn-sm radius_20">Seleccionar</button>
+                    <button class="btn bg_green_yellow btn-sm radius_20"><a href="../login"
+                            class="select_vuelo">Seleccionar</a></button>
                 </div>
 
             </div>
@@ -100,7 +101,8 @@
                     <span>
                         $200000
                     </span>
-                    <button class="btn bg_green_yellow btn-sm radius_20">Seleccionar</button>
+                    <button class="btn bg_green_yellow btn-sm radius_20"><a href="../login"
+                            class="select_vuelo">Seleccionar</a></button>
                 </div>
 
             </div>
@@ -147,7 +149,8 @@
                     <span>
                         $200000
                     </span>
-                    <button class="btn bg_green_yellow btn-sm radius_20">Seleccionar</button>
+                    <button class="btn bg_green_yellow btn-sm radius_20"><a class="select_vuelo"
+                            href="../login">Seleccionar</a></button>
                 </div>
 
             </div>
@@ -157,5 +160,11 @@
 {% include 'footer.html' %}
 <!-- cierre .container de index.html -->
 </div>
+<script type="module">
+    import { textDark } from '../static/js/script.js'
+    let elements = document.querySelectorAll('.select_vuelo');
 
+    textDark(elements);
+
+</script>
 {% endblock %}
