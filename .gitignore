@@ -1,4 +1,8 @@
 #Virtual env folders
 envw/
-_pycache_/
+wenv/
+
+
+#others
 __pycache__/
+_pycache_/
