@@ -1,0 +1,23 @@
+<!-- Para aceder desde url
+http://127.0.0.1:5000/plantilla 
+
+
+Esta plantilla ya contiene bootstrap ya que lo hereda de index.html-->
+
+{% extends 'index.html' %}
+
+{% block head %}
+<!-- Titulo de la nueva pagina -->
+<title>Plantilla</title>
+{% endblock %}
+{% block body %}{% endblock %}
+
+<div class="container d-flex flex-column" style="height: 100vh">
+
+    {% include 'navbar.html' %}
+
+    <!-- filas-row de bootstrap aqui-->
+
+    {% include 'footer.html' %}
+    <!-- cierre .container  -->
+</div>
