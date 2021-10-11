@@ -54,6 +54,24 @@
 
 /*Background*/
 
+/*Dashboard sidebar*/
+.sidebar .active {
+    color: black !important;
+
+    background-color: #BAFF29 !important;
+
+    border-radius: 15px;
+
+}
+
+/*Componentes*/
+.vuelo_card {
+    height: 5rem;
+    width: 100vh;
+}
+
+/*Background*/
+
 .bg_purple {
     background-color: #673ab7;
 }
@@ -78,6 +96,7 @@
 /*Icons*/
 .larger_icon {
     transform: scale(9, 1.4);
+    font-smooth: always;
 }
 
 /*----------*/
