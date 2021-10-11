@@ -1,0 +1,144 @@
+{% extends 'dashboard.html' %}
+
+{% block content %}
+<div class="col p-2 m-2">
+  <div class="container">
+
+    <div class="row">
+      <div class="col text-center pt-4">
+        <h1>Listado de Aviones</h1>
+      </div>        
+    </div>
+
+    <div class="row">      
+      <div class="col m-2 p-2"></div>
+      <div class="col d-inline-flex">          
+        <input type="text" id="buscar" class="form-control mr-2">
+        <button class="btn btn-primary ">Buscar</button>  
+      </div>
+    </div>
+
+    <div class="row mt-2 mb-2">
+      <div class="col">
+        <table class="table">
+          <thead>
+            <tr class="table-secondary">
+              <th scope="col">ID</th>
+              <th scope="col">Modelo</th>
+              <th scope="col">Matricula</th>
+              <th scope="col">Capacidad</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Boeing 747</td>
+              <td>HK - 704</td>
+              <td>50</td>              
+              <td><a href="" data-toggle="modal" data-target="#agregarAvion">Editar</a> - <a href="" data-toggle="modal" data-target="#eliminarAvion">Ocultar</a></td>
+            </tr>
+            <tr>
+                <th scope="row">1</th>
+                <td>Boeing 747</td>
+                <td>HK - 704</td>
+                <td>50</td>              
+                <td><a href="" data-toggle="modal" data-target="#agregarAvion">Editar</a> - <a href="" data-toggle="modal" data-target="#eliminarAvion">Ocultar</a></td>
+            </tr>
+            <tr>
+                <th scope="row">1</th>
+                <td>Boeing 747</td>
+                <td>HK - 704</td>
+                <td>50</td>              
+                <td><a href="" data-toggle="modal" data-target="#agregarAvion">Editar</a> - <a href="" data-toggle="modal" data-target="#eliminarAvion">Ocultar</a></td>
+              </tr>
+          </tbody>
+      </table>    
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-md-center">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agregarAvion">
+      Agregar
+    </button>
+  </div>
+
+  <!-- Modal agregar vuelo -->
+  <div class="modal fade " id="agregarAvion" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Agregar Avión</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <!-- Form de agregar vuelo -->
+          <form>
+
+            <div class="form-row">
+              <div class="col">
+                <label for="idVuelo">ID</label>
+                <input type="number" class="form-control" id="idVuelo" placeholder="ID Vuelo">                  
+              </div>
+              <div class="col">
+                <label for="origen">Modelo</label>
+                <input type="text" class="form-control" id="origen" placeholder="Modelo">
+              </div>
+              
+            </div>
+
+            <div class="form-row">
+                <div class="col">
+                    <label for="destino">Matricula</label>
+                    <input type="text" class="form-control" id="destino" placeholder="Matricula">
+                  </div>
+              <div class="col">
+                <label for="capacidad">Capacidad</label>
+                <input type="number" class="form-control" id="capacidad" placeholder="Capacidad del avión">                  
+              </div>              
+            </div>  
+
+          </form>
+        <!-- Fin del form agregar vuelo -->
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary">Agregar Avión</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- Fin del modal de agregar vuelos -->
+
+  <!-- Modal eliminar vuelo  -->
+        <div class="modal" tabindex="-1" role="dialog" id="eliminarAvion">
+          <div class="modal-dialog" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title">Eliminar Avión</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <p>¿Esta seguro que desea ocultar el siguiente Avión?</p>
+              </div>
+              <div class="modal-footer">
+                <button type="button" class="btn btn-danger">Eliminar</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- Fin modal eliminar vuelo -->
+
+</div>
+
+{% endblock %}

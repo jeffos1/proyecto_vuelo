@@ -67,6 +67,14 @@
 
 }
 
+/*Dashboard */
+
+li a:hover  {
+    color: black !important;
+    background-color: #BAFF29 !important;
+    border-radius: 15px;
+}
+
 /*Componentes*/
 .vuelo_card {
     height: 5rem;
