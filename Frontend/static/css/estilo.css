@@ -142,3 +142,9 @@
     -moz-box-shadow: 0 6px 4px -4px black;
     box-shadow: 0 6px 4px -4px black;
 }
+
+/*login*/
+.login {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}

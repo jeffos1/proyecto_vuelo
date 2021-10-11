@@ -15,7 +15,7 @@ def search():
     return render_template("search_results.html")
 
 
-@app.route('/login')
+@app.route('/login/')
 def login():
     return render_template("login.html")
 
