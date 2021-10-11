@@ -1,19 +1,20 @@
 <div class="row">
     <header class="masthead mb-auto col-lg-12">
 
-        <div class="d-flex justify-content-center flex-md-row text-md-left flex-column text-center ">
+        <div id="nav_container" class="d-flex justify-content-center flex-md-row text-md-left flex-column text-center ">
             <h3 class="masthead-brand">Vuelos</h3>
             <nav class="nav nav-masthead mx-auto">
-                <a class="nav-link" href="home">Inicio</a>
+                <a class="nav-link" href="../home">Inicio</a>
                 <a class="nav-link" href="#">Vuelo</a>
-                <a class="nav-link" href="precio">Precio</a>
-                <a class="nav-link" href="opiniones">Opiniones</a>
+                <a class="nav-link" href="../precio">Precio</a>
+                <a class="nav-link" href="../opiniones">Opiniones</a>
 
             </nav>
-            <a class=" nav-link mr-2" href="#">Registrarse</a>
-            <div class=" box_border radius_20 input_text d-flex flex-row">
+            <a class=" nav-link mr-2 re1" href="#" id="registrarse">Registrarse</a>
+            <div class=" box_border radius_20 input_text d-flex flex-row" id="login_container">
                 <i class="bi bi-person-fill text_purple mr-1"></i>
-                <a class=" nav-link px-0 py-0 font-weight-bold text_purple pr-1" href="../login">Login</a>
+                <a class=" nav-link px-0 py-0 font-weight-bold text_purple pr-1 lo1" href="../login"
+                    id="login">Login</a>
             </div>
         </div>
     </header>
@@ -28,10 +29,25 @@
 
 <script>
     var path = window.location.pathname;
-    var page = path.split("/").pop();
+    var page = path.split("/")[1];
 
-    if (page == "login") {
-        document.querySelector('.nav-masthead registrase').style.visibility = 'hidden';
-        document.querySelector('.nav-masthead login').style.visibility = 'hidden';
+    if (page == "login" || page == "dashboard_home" || page == "dashboard") {
+
+        document.querySelector('#registrarse').style.visibility = 'hidden';
+        document.querySelector('#login').style.visibility = 'hidden';
+        document.querySelector('#login_container').style.visibility = 'hidden';
+    }
+
+    if (page == "dashboard_home" || page == "dashboard") {
+
+        let nav_container = document.querySelector('#nav_container');
+        let cerrar = document.createElement('a');
+        let cerrar_text = document.createTextNode("Cerrar");
+        cerrar.appendChild(cerrar_text);
+        cerrar.classList.add('nav-link');
+        cerrar.classList.add('mr-2');
+        cerrar.setAttribute('href', '../home')
+
+        nav_container.appendChild(cerrar);
     }
 </script>

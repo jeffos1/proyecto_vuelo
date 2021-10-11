@@ -8,7 +8,7 @@ export function textDark(elements) {
 export function class_to_active_link(links, myClass) {
     // body
     var path = window.location.pathname;
-    var page = path.split("/").pop();
+    var page = path.split("/")[1];
 
     let nofound = false;
     for (const link of links) {
