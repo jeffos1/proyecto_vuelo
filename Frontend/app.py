@@ -35,5 +35,9 @@ def dashboard_child():
     return render_template("dashboard_child.html")
 
 
+@app.route('/mis_reservas')
+def mis_reservas():
+    return render_template("mis_reservas.html")
+
 if __name__ == '__main__':
     app.run(debug=True)
