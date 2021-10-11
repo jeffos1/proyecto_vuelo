@@ -36,19 +36,19 @@ def dashboard_child():
 
 @app.route('/dashboard/vuelos')
 def dashboard_vuelo():
-    return render_template("vuelos.html")
+    return render_template("dashboard_vuelos.html")
 
 @app.route('/dashboard/aviones')
 def dashboard_aviones():
-    return render_template("aviones.html")
+    return render_template("dashboard_aviones.html")
 
 @app.route('/dashboard/usuarios')
 def dashboard_usuarios():
-    return render_template("usuarios.html")
+    return render_template("dashboard_usuarios.html")
 
 @app.route('/dashboard/pilotos')
 def dashboard_pilotos():
-    return render_template("pilotos.html")
+    return render_template("dashboard_pilotos.html")
 
 
 @app.route('/mis_reservas')
