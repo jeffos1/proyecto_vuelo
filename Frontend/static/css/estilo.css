@@ -1,0 +1,222 @@
+/*nav*/
+.cover-container {
+    max-width: 42em;
+}
+.container {
+    width: 100%;
+    max-width: 1500px;
+}
+
+/*
+   * Header
+   */
+.masthead {
+    margin-bottom: 1rem;
+}
+
+.masthead-brand {
+    margin-bottom: 0;
+    color: #673ab7;
+}
+
+.nav-masthead .nav-link,
+.nav-link {
+    padding: .25rem 0;
+    font-weight: 700;
+    color: #673ab7;
+    background-color: transparent;
+    border-bottom: .25rem solid transparent;
+}
+
+
+.nav-masthead .nav-link+.nav-link {
+    margin-left: 1rem;
+}
+
+.nav-masthead .active {
+    color: #673ab7;
+    border-bottom-color: #673ab7;
+}
+
+@media (min-width: 48em) {
+    .masthead-brand {
+        float: left;
+    }
+
+    .nav-masthead {
+        float: right;
+    }
+}
+
+/*nav end -----------------------------------*/
+/*Componentes*/
+.vuelo_card {
+    height: 5rem;
+    width: 100vh;
+}
+
+/*Background*/
+
+/*Dashboard sidebar*/
+.sidebar .active {
+    color: black !important;
+
+    background-color: #BAFF29 !important;
+
+    border-radius: 15px;
+
+}
+
+/*Componentes*/
+.vuelo_card {
+    height: 5rem;
+    width: 100vh;
+}
+
+/*Background*/
+
+.bg_purple {
+    background-color: #673ab7;
+}
+
+.bg_green_yellow {
+    background-color: #BAFF29;
+}
+
+/*Text*/
+.text_purple {
+    color: #673ab7;
+}
+
+.text_white {
+    color: white;
+}
+
+.text_green_yellow {
+    color: #BAFF29;
+}
+
+.text_gray {
+    color: #696969;
+}
+
+.text_black {
+    color: black;
+}
+
+/*Icons*/
+.larger_icon {
+    transform: scale(9, 1.4);
+    font-smooth: always;
+}
+
+/*----------*/
+
+.radius_10 {
+    border-radius: 10px;
+}
+
+.radius_15 {
+    border-radius: 15px;
+}
+
+.radius_20 {
+    border-radius: 20px;
+}
+
+.radius_25 {
+    border-radius: 25px;
+}
+
+.box {
+    width: 120px;
+    height: 60px;
+
+}
+
+.box_border {
+    border: .15rem solid #673ab7;
+    padding: .3rem;
+}
+
+.bootstrap_icon {
+    font-size: 32px;
+    color: white
+}
+
+.input_text {
+    font-size: 0.8rem;
+}
+
+.shadow {
+    -webkit-box-shadow: 0 6px 4px -4px black;
+    -moz-box-shadow: 0 6px 4px -4px black;
+    box-shadow: 0 6px 4px -4px black;
+}
+
+/* Login */
+.login {
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+/* Mis reservas */
+.mis_reservas {
+    margin-top: 40px;
+    margin-bottom: 40px;
+}
+
+.search_mis_reservas {
+    margin-top: 40px;
+}
+
+th {
+    background-color: #673ab7;
+    color: white;
+}
+
+@import url(https://fonts.googleapis.com/css?family=Open+Sans);
+
+body{
+  background: #f2f2f2;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.search {
+  width: 100%;
+  display: flex;
+}
+
+.searchTerm {
+  width: 100%;
+  border: 3px solid #673ab7;
+  border-right: none;
+  padding: 5px;
+  height: 40px;
+  border-radius: 5px 0 0 5px;
+  outline: none;
+  color: #9DBFAF;
+}
+
+.searchTerm:focus{
+  color: #673ab7;
+}
+
+.searchButton {
+  width: 40px;
+  height: 40px;
+  border: 1px solid #673ab7;
+  background: #673ab7;
+  text-align: center;
+  color: #fff;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  font-size: 20px;
+}
+
+/*Resize the wrap to see the search bar change!*/
+.wrap{
+  width: 30%;
+  margin-top: 40px;
+  margin-left: auto;
+}

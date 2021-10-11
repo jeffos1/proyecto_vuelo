@@ -1,0 +1,57 @@
+{% extends 'index.html'%}
+
+{% block body%}
+
+<div class="container mr-4 ml-4"> <!--d-flex flex-column style="height: 100vh" -->
+    {% include 'navbar_con_login.html' %}
+    <div class="row pt-4 pb-4"> <!-- h-100 -->
+
+        <div class="sidebar col-md-3 d-flex flex-column flex-shrink-0 p-3 text-white bg_purple radius_20 my-auto"
+            style="width: 280px; height: 70vh;">
+            <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
+                <i class="bi bi-speedometer2 text-white mb-1 mr-1" style="font-size: 1.5rem;"></i>
+                <span class="nav-item" style="font-size: 1.5rem;">Dashboard</span>
+            </a>
+            <hr>
+            <ul class=" nav nav-pills flex-column mb-auto">
+                <li class="nav-item">
+                    <a href="#" class="nav-link active d-flex align-items-center" aria-current="page">
+                        <ion-icon name="airplane" style="font-size: 1.2rem;"></ion-icon>
+                        Vuelos
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link text-white d-flex align-items-center">
+                        <i class="bi bi-person-fill text-white mb-1 mr-1"></i>
+                        Usuarios
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link text-white d-flex align-items-center">
+                        <i class="bi bi-person-bounding-box text-white mb-1 mr-1"></i>
+                        Pilotos
+                    </a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link text-white d-flex align-items-center">
+                        <div class="mr-1">
+                            <ion-icon name="jet"></ion-icon>
+                        </div>
+
+                        Aviones
+                    </a>
+                </li>
+
+            </ul>
+
+        </div>
+        <!-- Final de esta columna -->
+        {% block content%}{% endblock %}
+    </div>
+
+
+    {% include 'footer.html' %}
+</div>
+
+
+{% endblock %}
