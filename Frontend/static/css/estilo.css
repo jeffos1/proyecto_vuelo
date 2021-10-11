@@ -52,6 +52,11 @@
     width: 100vh;
 }
 
+.dashboard_data {
+    width: 10rem;
+    height: 12rem;
+}
+
 /*Background*/
 
 /*Dashboard sidebar*/
@@ -68,6 +73,14 @@
 .vuelo_card {
     height: 5rem;
     width: 100vh;
+}
+
+.icon_25deg {
+    transform: rotate(25deg);
+}
+
+.icon_35deg {
+    transform: rotate(35deg);
 }
 
 /*Background*/
@@ -174,46 +187,46 @@ th {
 
 @import url(https://fonts.googleapis.com/css?family=Open+Sans);
 
-body{
-  background: #f2f2f2;
-  font-family: 'Open Sans', sans-serif;
+body {
+    background: #f2f2f2;
+    font-family: 'Open Sans', sans-serif;
 }
 
 .search {
-  width: 100%;
-  display: flex;
+    width: 100%;
+    display: flex;
 }
 
 .searchTerm {
-  width: 100%;
-  border: 3px solid #673ab7;
-  border-right: none;
-  padding: 5px;
-  height: 40px;
-  border-radius: 5px 0 0 5px;
-  outline: none;
-  color: #9DBFAF;
+    width: 100%;
+    border: 3px solid #673ab7;
+    border-right: none;
+    padding: 5px;
+    height: 40px;
+    border-radius: 5px 0 0 5px;
+    outline: none;
+    color: #9DBFAF;
 }
 
-.searchTerm:focus{
-  color: #673ab7;
+.searchTerm:focus {
+    color: #673ab7;
 }
 
 .searchButton {
-  width: 40px;
-  height: 40px;
-  border: 1px solid #673ab7;
-  background: #673ab7;
-  text-align: center;
-  color: #fff;
-  border-radius: 0 5px 5px 0;
-  cursor: pointer;
-  font-size: 20px;
+    width: 40px;
+    height: 40px;
+    border: 1px solid #673ab7;
+    background: #673ab7;
+    text-align: center;
+    color: #fff;
+    border-radius: 0 5px 5px 0;
+    cursor: pointer;
+    font-size: 20px;
 }
 
 /*Resize the wrap to see the search bar change!*/
-.wrap{
-  width: 30%;
-  margin-top: 40px;
-  margin-left: auto;
+.wrap {
+    width: 30%;
+    margin-top: 40px;
+    margin-left: auto;
 }

@@ -3,7 +3,7 @@
 {% block body%}
 <div class="container d-flex flex-column">
     <!-- Navbar personalizado para login-->
-    <div class="row">
+    <!-- <div class="row">
         <header class="masthead mb-auto col-lg-12">
 
             <div class="d-flex justify-content-center flex-md-row text-md-left flex-column text-center ">
@@ -17,8 +17,8 @@
                 </nav>
             </div>
         </header>
-    </div>
-
+    </div> -->
+    {% include 'navbar_sin_login.html' %}
     <!-- Card login -->
     <div class="login">
         <div class="col-md-5 mx-auto">
@@ -48,7 +48,7 @@
                         <a class="text-md-left border-link text_purple" href="#"> Olvidé mi contraseña </a>
                         <br>
                         <form class="d-flex flex-row flex-grow-1 align-items-center justify-content-center" action="">
-                            <button class="btn btn-sm bg_purple text-white mx-2 radius_20" type="submit"> 
+                            <button class="btn btn-sm bg_purple text-white mx-2 radius_20" type="submit">
                                 Iniciar sesion
                             </button>
                         </form>

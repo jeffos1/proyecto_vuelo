@@ -3,10 +3,10 @@
 {% block body%}
 
 <div class="container d-flex flex-column" style="height: 100vh">
-    {% include 'navbar_con_login.html' %}
+    {% include 'navbar_sin_login.html' %}
     <div class="row h-100">
 
-        <div class="sidebar col-md-3 d-flex flex-column flex-shrink-0 p-3 text-white bg_purple radius_20 my-auto"
+        <div class="sidebar col-md-3 d-flex flex-column p-3 text-white bg_purple radius_20 h-100"
             style="width: 280px; height: 50vh;">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                 <i class="bi bi-speedometer2 text-white mb-1 mr-1" style="font-size: 1.5rem;"></i>
@@ -15,7 +15,14 @@
             <hr>
             <ul class=" nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                    <a href="#" class="nav-link active d-flex align-items-center" aria-current="page">
+                    <a href="dashboard_home" class="nav-link text-white d-flex align-items-center" aria-current="page">
+                        <ion-icon name="home" style="font-size: 1.2rem;"></ion-icon>
+                        Inicio
+                    </a>
+                </li>
+                <!--  -->
+                <li class="nav-item">
+                    <a href="#" class="nav-link text-white d-flex align-items-center" aria-current="page">
                         <ion-icon name="airplane" style="font-size: 1.2rem;"></ion-icon>
                         Vuelos
                     </a>
@@ -46,6 +53,8 @@
 
         </div>
         <!-- Final de esta columna -->
+
+
         {% block content%}{% endblock %}
     </div>
 
@@ -53,5 +62,21 @@
     {% include 'footer.html' %}
 </div>
 
+<script type="module">
+    import { class_to_active_link } from '../static/js/script.js'
 
+    let dashboard_pages = document.querySelectorAll('.sidebar .nav-item a');
+
+    class_to_active_link(dashboard_pages, 'active');
+</script>
+
+<script>
+
+
+
+
+
+
+
+</script>
 {% endblock %}

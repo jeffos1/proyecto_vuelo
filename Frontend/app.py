@@ -39,5 +39,17 @@ def dashboard_child():
 def mis_reservas():
     return render_template("mis_reservas.html")
 
+@app.route('/dashboard_home')
+def dashboard_home():
+    return render_template('dashboard_home.html')
+
+@app.route('/opiniones')
+def opiniones():
+    return render_template('opiniones.html')
+
+@app.route('/precio')
+def precio():
+    return render_template('precio.html')
+
 if __name__ == '__main__':
     app.run(debug=True)
