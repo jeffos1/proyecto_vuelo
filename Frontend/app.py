@@ -80,5 +80,10 @@ def vuelo():
     return render_template('vuelo.html')
 
 
+@app.route('/login_admin')
+def login_admin():
+    return render_template('login_admin.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
