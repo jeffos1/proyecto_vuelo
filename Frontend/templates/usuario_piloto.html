@@ -1,0 +1,72 @@
+{% extends 'index.html'%}
+
+{% block body%}
+<div class="container mr-4 ml-4" > <!--d-flex flex-column style="height: 100vh" -->
+    {% include 'navbar_pilotos.html' %}
+    <div class="row p-4">
+        <div class="col"></div>
+        <div class="col text-center">
+            <h1>Vuelos asignados</h1>
+        </div>
+        <div class="col"></div>
+    </div>
+        <div class="row mt-2 mb-2" style="height: 500px;">
+            <div class="col">
+              <table class="table">
+                <thead>
+                  <tr class="table-secondary">
+                    <th scope="col">ID</th>
+                    <th scope="col">Origen</th>
+                    <th scope="col">Destino</th>
+                    <th scope="col">Avión</th>
+                    <th scope="col">Matrícula</th>
+                    <th scope="col">Piloto</th>
+                    <th scope="col">Fecha - Hora</th>
+                    <th scope="col">Estado</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Santa Marta</td>
+                    <td>Bogotá</td>
+                    <td>Boeing 747</td>
+                    <td>HK - 705</td>
+                    <td>Andres Sanchez</td>
+                    <td>01/01/2021 - 10:00 PM</td>
+                    <td>Finalizado</td>                    
+                  </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Santa Marta</td>
+                    <td>Bogotá</td>
+                    <td>Boeing 747</td>
+                    <td>HK - 705</td>
+                    <td>Andres Sanchez</td>
+                    <td>01/01/2021 - 10:00 PM</td>
+                    <td>Finalizado</td>                    
+                  </tr>
+                  <tr>
+                    <th scope="row">1</th>
+                    <td>Santa Marta</td>
+                    <td>Bogotá</td>
+                    <td>Boeing 747</td>
+                    <td>HK - 705</td>
+                    <td>Andres Sanchez</td>
+                    <td>01/01/2021 - 10:00 PM</td>
+                    <td>Finalizado</td>                    
+                  </tr>
+                </tbody>
+            </table>    
+            </div>
+          </div>
+        </div>
+    </div>
+
+    {% block content%}{% endblock %}
+    </div>
+    {% include 'footer.html' %}
+</div>
+
+
+{% endblock %}
