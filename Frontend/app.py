@@ -86,5 +86,10 @@ def login_admin():
     return render_template('login_admin.html')
 
 
+@app.route('/registrarse', methods=['POST', 'GET'])
+def registrarse():
+    return render_template('registrarse.html')
+
+
 if __name__ == '__main__':
     app.run(debug=True)
