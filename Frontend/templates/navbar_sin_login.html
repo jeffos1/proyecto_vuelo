@@ -24,7 +24,7 @@
     var path = window.location.pathname;
     var page = path.split("/")[1];
 
-    if (page == "login" || page == "dashboard_home" || page == "dashboard") {
+    if (page == "login" || page == "login_admin" || page == "dashboard_home" || page == "dashboard_aviones" || page == "dashboard_pilotos" || page == "dashboard_usuarios" || page == "dashboard_vuelos" || page == "dashboard" || page == "mis_reservas") {
 
         document.querySelector('#registrarse').style.visibility = 'hidden';
         document.querySelector('#login').style.visibility = 'hidden';
@@ -34,10 +34,10 @@
 </script>
 
 <script type="module">
-    import { class_to_active_link, addCloseToNav } from '../static/js/script.js'
+    // import { class_to_active_link, addCloseToNav } from '../static/js/script.js'
 
-    let nav_pages = document.querySelectorAll('#nav_container > nav > a.nav-link');
+    // let nav_pages = document.querySelectorAll('#nav_container > nav > a.nav-link');
 
-    class_to_active_link(nav_pages, 'active');
-    addCloseToNav();
+    // class_to_active_link(nav_pages, 'active');
+    // addCloseToNav();
 </script>

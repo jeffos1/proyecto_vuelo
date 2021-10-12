@@ -15,7 +15,8 @@ def search():
     return render_template("search_results.html")
 
 
-@app.route('/login/')
+@app.route('/login', methods=['POST', 'GET'])
+@app.route('/login/', methods=['POST', 'GET'])
 def login():
     return render_template("login.html")
 
@@ -80,7 +81,7 @@ def vuelo():
     return render_template('vuelo.html')
 
 
-@app.route('/login_admin')
+@app.route('/login_admin', methods=['POST', 'GET'])
 def login_admin():
     return render_template('login_admin.html')
 

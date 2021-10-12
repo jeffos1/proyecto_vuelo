@@ -144,5 +144,12 @@
   <!-- Fin modal eliminar vuelo -->
 
 </div>
+<script type="module">
+  import { class_to_active_link, addCloseToNav } from '../static/js/script.js'
 
+  let dashboard_pages = document.querySelectorAll('div.sidebar > ul > li > a');
+
+  class_to_active_link(dashboard_pages, 'active');
+  addCloseToNav();
+</script>
 {% endblock %}

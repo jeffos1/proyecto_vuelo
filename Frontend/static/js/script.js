@@ -42,11 +42,11 @@ export function class_to_active_link(links, myClass) {
 export function addCloseToNav() {
     // body
 
-    if (page == "dashboard_home" || page == "dashboard") {
+    if (page == "dashboard_home" || page == "dashboard_aviones" || page == "dashboard_pilotos" || page == "dashboard_usuarios" || page == "dashboard_vuelos" || page == "dashboard" || page == "mis_reservas") {
 
         let nav_container = document.querySelector('#nav_container');
         let cerrar = document.createElement('a');
-        let cerrar_text = document.createTextNode("Cerrar");
+        let cerrar_text = document.createTextNode("Salir");
         cerrar.appendChild(cerrar_text);
         cerrar.classList.add('nav-link');
         cerrar.classList.add('mr-2');
