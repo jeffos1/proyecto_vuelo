@@ -19,13 +19,6 @@
         </div>
     </header>
 </div>
-<script type="module">
-    import { class_to_active_link } from '../static/js/script.js'
-
-    let nav_pages = document.querySelectorAll('.nav-masthead a');
-
-    class_to_active_link(nav_pages, 'active');
-</script>
 
 <script>
     var path = window.location.pathname;
@@ -38,16 +31,13 @@
         document.querySelector('#login_container').style.visibility = 'hidden';
     }
 
-    if (page == "dashboard_home" || page == "dashboard") {
+</script>
 
-        let nav_container = document.querySelector('#nav_container');
-        let cerrar = document.createElement('a');
-        let cerrar_text = document.createTextNode("Cerrar");
-        cerrar.appendChild(cerrar_text);
-        cerrar.classList.add('nav-link');
-        cerrar.classList.add('mr-2');
-        cerrar.setAttribute('href', '../home')
+<script type="module">
+    import { class_to_active_link, addCloseToNav } from '../static/js/script.js'
 
-        nav_container.appendChild(cerrar);
-    }
+    let nav_pages = document.querySelectorAll('.nav-masthead a');
+
+    class_to_active_link(nav_pages, 'active');
+    addCloseToNav();
 </script>

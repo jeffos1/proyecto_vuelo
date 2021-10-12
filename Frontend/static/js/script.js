@@ -5,6 +5,8 @@ export function textDark(elements) {
 
 }
 
+
+
 export function class_to_active_link(links, myClass) {
     // body
     var path = window.location.pathname;
@@ -30,4 +32,21 @@ export function class_to_active_link(links, myClass) {
     }
 
 
+}
+
+export function addCloseToNav() {
+    // body
+
+    if (page == "dashboard_home" || page == "dashboard") {
+
+        let nav_container = document.querySelector('#nav_container');
+        let cerrar = document.createElement('a');
+        let cerrar_text = document.createTextNode("Cerrar");
+        cerrar.appendChild(cerrar_text);
+        cerrar.classList.add('nav-link');
+        cerrar.classList.add('mr-2');
+        cerrar.setAttribute('href', '../home')
+
+        nav_container.appendChild(cerrar);
+    }
 }
