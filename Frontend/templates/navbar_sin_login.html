@@ -5,7 +5,7 @@
             <h3 class="masthead-brand">Vuelos</h3>
             <nav class="nav nav-masthead mx-auto">
                 <a class="nav-link" href="../home">Inicio</a>
-                <a class="nav-link" href="#">Vuelo</a>
+                <a class="nav-link" href="../vuelo">Vuelo</a>
                 <a class="nav-link" href="../precio">Precio</a>
                 <a class="nav-link" href="../opiniones">Opiniones</a>
 
@@ -36,7 +36,7 @@
 <script type="module">
     import { class_to_active_link, addCloseToNav } from '../static/js/script.js'
 
-    let nav_pages = document.querySelectorAll('.nav-masthead a');
+    let nav_pages = document.querySelectorAll('#nav_container > nav > a.nav-link');
 
     class_to_active_link(nav_pages, 'active');
     addCloseToNav();

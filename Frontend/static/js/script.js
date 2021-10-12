@@ -18,18 +18,23 @@ export function class_to_active_link(links, myClass) {
 
 
         //alert(current_link)
-        if (current_link == page) {
+        if (current_link == page || current_link.slice(0, -1) == page) {
+            // alert(page)
+            // alert(link)
+            // alert(current_link.slice(0, -1))
+            // alert(current_link);
+            // alert(current_link.slice(0, -1))
+            link.classList.add('active');
 
-            link.classList.add(myClass);
             nofound = true;
         }
 
     }
 
-    if (!nofound) {
+    // if (!nofound) {
 
-        links[0].classList.add('active');
-    }
+    //     links[0].classList.add('active');
+    // }
 
 
 }

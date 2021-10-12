@@ -35,6 +35,26 @@ def dashboard_child():
     return render_template("dashboard_child.html")
 
 
+@app.route('/dashboard_vuelos')
+def dashboard_vuelo():
+    return render_template("dashboard_vuelos.html")
+
+
+@app.route('/dashboard_aviones')
+def dashboard_aviones():
+    return render_template("dashboard_aviones.html")
+
+
+@app.route('/dashboard_usuarios')
+def dashboard_usuarios():
+    return render_template("dashboard_usuarios.html")
+
+
+@app.route('/dashboard_pilotos')
+def dashboard_pilotos():
+    return render_template("dashboard_pilotos.html")
+
+
 @app.route('/mis_reservas')
 def mis_reservas():
     return render_template("mis_reservas.html")
@@ -53,6 +73,11 @@ def opiniones():
 @app.route('/precio')
 def precio():
     return render_template('precio.html')
+
+
+@app.route('/vuelo')
+def vuelo():
+    return render_template('vuelo.html')
 
 
 if __name__ == '__main__':

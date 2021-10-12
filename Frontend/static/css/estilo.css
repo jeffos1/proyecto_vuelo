@@ -4,6 +4,11 @@
 }
 
 
+.container {
+    width: 100%;
+    max-width: 1500px;
+}
+
 /*
    * Header
    */
@@ -67,6 +72,14 @@
 
     border-radius: 15px;
 
+}
+
+/*Dashboard */
+/* check */
+li a:hover {
+    color: black !important;
+    background-color: #BAFF29 !important;
+    border-radius: 20px !important;
 }
 
 /*Componentes*/
@@ -229,4 +242,9 @@ body {
     width: 30%;
     margin-top: 40px;
     margin-left: auto;
+}
+
+/* buttons */
+.btn-primary {
+    background-color: #673ab7 !important;
 }
