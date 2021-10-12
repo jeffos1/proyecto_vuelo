@@ -247,4 +247,6 @@ body {
 /* buttons */
 .btn-primary {
     background-color: #673ab7 !important;
+    border-color: #673ab7 !important;
+    border-radius: 15px;
 }
