@@ -50,6 +50,10 @@ def dashboard_usuarios():
 def dashboard_pilotos():
     return render_template("dashboard_pilotos.html")
 
+@app.route('/usuario_piloto')
+def usuario_piloto():
+    return render_template("usuario_piloto.html")
+
 
 @app.route('/mis_reservas')
 def mis_reservas():

@@ -38,6 +38,13 @@
     border-bottom-color: #673ab7;
 }
 
+.imgUser {
+    width:50px;
+    height:50px;
+    border: 4px solid#673ab7;
+    border-radius:150px;
+}
+
 @media (min-width: 48em) {
     .masthead-brand {
         float: left;
