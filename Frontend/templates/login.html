@@ -1,7 +1,7 @@
 {% extends 'index.html'%}
 
 {% block body%}
-<div class="container d-flex flex-column">
+<div class="container d-flex flex-column justify-content-center" style="height: 100vh">
     <!-- Navbar personalizado para login-->
     <!-- <div class="row">
         <header class="masthead mb-auto col-lg-12">
@@ -20,7 +20,7 @@
     </div> -->
     {% include 'navbar_sin_login.html' %}
     <!-- Card login -->
-    <div class="login">
+    <div class="login my-auto">
         <div class="col-md-5 mx-auto">
             <div class="card card-body">
                 <form id="submitForm" action="#" method="post" data-parsley-validate=""
@@ -61,6 +61,7 @@
             </div>
         </div>
     </div>
+    {% include 'footer.html' %}
 </div>
-{% include 'footer.html' %}
+
 {% endblock %}
