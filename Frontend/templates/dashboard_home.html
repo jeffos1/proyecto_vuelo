@@ -1,0 +1,147 @@
+{% extends 'dashboard.html'%}
+
+{% block content%}
+<div class="col-md-9 d-flex flex-column align-items-center justify-content-center ">
+
+    <div class="row justify-content-center">
+
+        <div class="bg_purple p-2 shadow radius_20">
+            <h2 class=" text_white m-0">Estado Actual
+                <!-- <hr class="bg_purple mt-0"> -->
+            </h2>
+        </div>
+
+
+    </div>
+    <div class="row ml-1 mt-1">
+
+        <div class="dashboard_data d-flex flex-column text-white mr-1 mb-1 ">
+            <div class="d-flex flex-column bg_purple radius_20 align-items-center" style="width: 100%; height: 70%;">
+                <i class=" bi bi-people-fill" style="font-size: 3rem;"></i>
+                <span class="my-auto" style="font-size: 2rem;">150</span>
+            </div>
+            <div class="" style="width: fit-content; height: 5%;">
+            </div>
+            <span
+                class="bg_purple radius_20 text-center d-flex flex-column align-items-center justify-content-center shadow"
+                style="height: 20%; width: 100%;">
+                <span>
+                    Usuarios
+                </span>
+
+            </span>
+        </div>
+
+        <!--  -->
+
+        <div class="dashboard_data d-flex flex-column text-white mr-1 mb-1 ">
+            <div class="d-flex flex-column bg_purple radius_20 align-items-center" style="width: 100%; height: 70%;">
+                <ion-icon class="mt-2 icon_35deg" name="airplane" style="font-size: 3rem;"></ion-icon>
+                <span class="my-auto" style="font-size: 3rem;">3</span>
+            </div>
+            <div class="" style="width: fit-content; height: 5%;">
+            </div>
+            <span
+                class="bg_purple radius_20 text-center d-flex flex-column align-items-center justify-content-center shadow"
+                style="height: 20%; width: 100%;">
+                <span>
+                    Vuelos
+                </span>
+
+            </span>
+        </div>
+
+        <!--  -->
+        <div class="dashboard_data d-flex flex-column text-white mr-1 mb-1 ">
+            <div class="d-flex flex-column bg_purple radius_20 align-items-center" style="width: 100%; height: 70%;">
+                <i class=" bi bi-person-square" style="font-size: 3rem;"></i>
+                <span class="my-auto" style="font-size: 2rem;">6</span>
+            </div>
+            <div class="" style="width: fit-content; height: 5%;">
+            </div>
+            <span
+                class="bg_purple radius_20 text-center d-flex flex-column align-items-center justify-content-center shadow"
+                style="height: 20%; width: 100%;">
+                <span>
+                    Pilotos
+                </span>
+
+            </span>
+        </div>
+
+        <!--  -->
+        <!-- final de fila -->
+    </div>
+    <div class="row ml-1 mt-1">
+        <div class="dashboard_data d-flex flex-column text-white mr-1 mb-1 ">
+            <div class="d-flex flex-column bg_purple radius_20 align-items-center" style="width: 100%; height: 70%;">
+                <i class=" bi bi-geo-alt-fill" style="font-size: 3rem;"></i>
+                <span class="my-auto" style="font-size: 2rem;">32</span>
+            </div>
+            <div class="" style="width: fit-content; height: 5%;">
+            </div>
+            <span
+                class="bg_purple radius_20 text-center d-flex flex-column align-items-center justify-content-center shadow"
+                style="height: 20%; width: 100%;">
+                <span>
+                    Destinos
+                </span>
+
+            </span>
+        </div>
+
+        <!--  -->
+
+        <div class="dashboard_data d-flex flex-column text-white mr-1 mb-1 ">
+            <div class="d-flex flex-column bg_purple radius_20 align-items-center" style="width: 100%; height: 70%;">
+                <ion-icon class="mt-2 " name="airplane" style="font-size: 3rem;"></ion-icon>
+                <span class="my-auto" style="font-size: 3rem;">3</span>
+            </div>
+            <div class="" style="width: fit-content; height: 5%;">
+            </div>
+            <span
+                class="bg_purple radius_20 text-center d-flex flex-column align-items-center justify-content-center shadow"
+                style="height: 20%; width: 100%;">
+                <span>
+                    Aviones
+                </span>
+
+            </span>
+        </div>
+
+        <!--  -->
+
+        <div class="dashboard_data d-flex flex-column text-white mr-1 mb-1 ">
+            <div class="d-flex flex-column bg_purple radius_20 align-items-center" style="width: 100%; height: 70%;">
+                <i class=" bi bi-check-all" style="font-size: 3rem;"></i>
+                <span class="my-auto" style="font-size: 2rem;">6</span>
+            </div>
+            <div class="" style="width: fit-content; height: 5%;">
+            </div>
+            <span
+                class="bg_purple radius_20 text-center d-flex flex-column align-items-center justify-content-center shadow"
+                style="height: 20%; width: 100%;">
+                <span>
+                    Finalizados
+                </span>
+
+            </span>
+        </div>
+
+        <!--  -->
+        <!-- final de fila -->
+    </div>
+</div>
+
+
+<script type="module">
+    import { class_to_active_link, addCloseToNav } from '../static/js/script.js'
+
+    let dashboard_pages = document.querySelectorAll('div.sidebar > ul > li > a');
+
+    class_to_active_link(dashboard_pages, 'active');
+    addCloseToNav();
+</script>
+
+
+{% endblock%}

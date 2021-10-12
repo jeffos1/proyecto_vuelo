@@ -1,0 +1,239 @@
+{% extends 'dashboard.html' %}
+
+{% block content %}
+<div class="col-md-10 ">
+  <div class="container">
+
+    <div class="row">
+      <div class="col text-center pt-4">
+        <h1>Listado de Vuelos</h1>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col m-2 p-2"></div>
+      <div class="col d-inline-flex">
+        <input type="text" id="buscar" class="form-control mr-2">
+        <button class="btn btn-primary ">Buscar</button>
+      </div>
+    </div>
+
+    <div class="row mt-2 mb-2">
+      <div class="col">
+        <table class="table">
+          <thead>
+            <tr class="">
+              <th scope="col">ID</th>
+              <th scope="col">Origen</th>
+              <th scope="col">Destino</th>
+              <th scope="col">Capacidad</th>
+              <th scope="col">Cupos</th>
+              <th scope="col">Avión</th>
+              <th scope="col">Piloto</th>
+              <th scope="col">Fecha - Hora</th>
+              <th scope="col">Estado</th>
+              <th scope="col">Clase</th>
+              <th scope="col">Precio</th>
+              <th scope="col"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <th scope="row">1</th>
+              <td>Santa Marta</td>
+              <td>Bogotá</td>
+              <td>24</td>
+              <td>15</td>
+              <td>Boeing 747</td>
+              <td>Andres Sanchez</td>
+              <td>01/01/2021 - 10:00 PM</td>
+              <td>Finalizado</td>
+              <td>Economico</td>
+              <td>$100.000,00</td>
+              <td><a href="" data-toggle="modal" data-target="#agregarVuelo">Editar</a> - <a href="" data-toggle="modal"
+                  data-target="#eliminarVuelo">Ocultar</a></td>
+            </tr>
+            <tr>
+              <th scope="row">1</th>
+              <td>Santa Marta</td>
+              <td>Bogotá</td>
+              <td>24</td>
+              <td>15</td>
+              <td>Boeing 747</td>
+              <td>Andres Sanchez</td>
+              <td>01/01/2021 - 10:00 PM</td>
+              <td>Finalizado</td>
+              <td>Economico</td>
+              <td>$100.000,00</td>
+              <td><a href="" data-toggle="modal" data-target="#agregarVuelo">Editar</a> - <a href="" data-toggle="modal"
+                  data-target="#eliminarVuelo">Ocultar</a></td>
+            </tr>
+            <tr>
+              <th scope="row">1</th>
+              <td>Santa Marta</td>
+              <td>Bogotá</td>
+              <td>24</td>
+              <td>15</td>
+              <td>Boeing 747</td>
+              <td>Andres Sanchez</td>
+              <td>01/01/2021 - 10:00 PM</td>
+              <td>Finalizado</td>
+              <td>Economico</td>
+              <td>$100.000,00</td>
+              <td><a href="" data-toggle="modal" data-target="#agregarVuelo">Editar</a> - <a href="" data-toggle="modal"
+                  data-target="#eliminarVuelo">Ocultar</a></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-md-center">
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#agregarVuelo">
+      Agregar
+    </button>
+  </div>
+
+  <!-- Modal agregar vuelo -->
+  <div class="modal fade " id="agregarVuelo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLongTitle">Agregar Vuelo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+
+        <div class="modal-body">
+          <!-- Form de agregar vuelo -->
+          <form>
+
+            <div class="form-row">
+              <div class="col">
+                <label for="idVuelo">ID</label>
+                <input type="number" class="form-control" id="idVuelo" placeholder="ID Vuelo">
+              </div>
+              <div class="col">
+                <label for="origen">Origen</label>
+                <input type="text" class="form-control" id="origen" placeholder="Ciudad de Salida">
+              </div>
+              <div class="col">
+                <label for="destino">Destino</label>
+                <input type="text" class="form-control" id="destino" placeholder="Ciudad de Llegada">
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="col">
+                <label for="capacidad">Capacidad</label>
+                <input type="number" class="form-control" id="capacidad" placeholder="Capacidad maxima del avión">
+              </div>
+              <div class="col">
+                <label for="cupos">Cupos disponibles</label>
+                <input type="number" class="form-control" id="cupos" placeholder="Cupos restantes">
+              </div>
+              <div class="col">
+                <label for="aviones">Avión</label>
+                <select class="form-control" id="aviones">
+                  <option> avión 1</option>
+                  <option> avión 2</option>
+                  <option> avión 3</option>
+                  <option> avión 4</option>
+                  <option> avión 5</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="col">
+                <label for="aviones">Piloto</label>
+                <select class="form-control" id="aviones">
+                  <option> Piloto 1</option>
+                  <option> Piloto 2</option>
+                  <option> Piloto 3</option>
+                  <option> Piloto 4</option>
+                  <option> Piloto 5</option>
+                </select>
+              </div>
+              <div class="col">
+                <label for="fecha">Fecha</label>
+                <input type="datetime-local" class="form-control" id="cupos">
+              </div>
+              <div class="col">
+                <label for="estado">Estado</label>
+                <select class="form-control" id="estado">
+                  <option> Finalizado</option>
+                  <option> Abordando</option>
+                  <option> En espera</option>
+                  <option> Viajando</option>
+                </select>
+              </div>
+            </div>
+
+
+            <div class="form-row">
+              <div class="col">
+                <label for="clase">Clase</label>
+                <select class="form-control" id="clase">
+                  <option> Economica </option>
+                  <option> Ejecitiva </option>
+                  <option> Primera clase</option>
+                </select>
+              </div>
+              <div class="col">
+                <label for="precio">Precio</label>
+                <input type="number" class="form-control" id="precio" placeholder="Cupos restantes">
+              </div>
+              <div class="col"></div>
+            </div>
+
+          </form>
+          <!-- Fin del form agregar vuelo -->
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+          <button type="button" class="btn btn-primary">Agregar Vuelo</button>
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- Fin del modal de agregar vuelos -->
+
+  <!-- Modal eliminar vuelo  -->
+  <div class="modal" tabindex="-1" role="dialog" id="eliminarVuelo">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Eliminar Vuelo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>¿Esta seguro que desea ocultar el siguiente vuelo? Al ocultarlo los demas usuarios no podrán verlo</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-danger">Eliminar</button>
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!-- Fin modal eliminar vuelo -->
+
+</div>
+<script type="module">
+  import { class_to_active_link, addCloseToNav } from '../static/js/script.js'
+
+  let dashboard_pages = document.querySelectorAll('div.sidebar > ul > li > a');
+
+  class_to_active_link(dashboard_pages, 'active');
+  addCloseToNav();
+</script>
+{% endblock %}

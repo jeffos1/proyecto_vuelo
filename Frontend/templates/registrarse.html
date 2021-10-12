@@ -1,0 +1,159 @@
+{% extends 'index.html'%}
+
+{% block body%}
+<div class="container d-flex flex-column justify-content-center">
+    {% include 'navbar_sin_login.html' %}
+    <row class="d-flex">
+        <!--  -->
+        <div class="col-md-8 mx-auto">
+            <h4 class="mb-3">Registro de usuario</h4>
+            <form class="needs-validation" novalidate action="../mis_reservas" method="get">
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="firstName">Primer nombre</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="" value="" required>
+                        <div class="invalid-feedback">
+                            El primer nombre es requerido
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="lastName">Apellido</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="" value="" required>
+                        <div class="invalid-feedback">
+                            El apellido es requerido
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="username">Nombre de usuario</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text">@</span>
+                        </div>
+                        <input type="text" class="form-control" id="username" placeholder="Username" required>
+                        <div class="invalid-feedback" style="width: 100%;">
+                            El nombre de usuario es requerido.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="email">Email</label>
+                    <input type="email" class="form-control" id="email" placeholder="you@example.com">
+                    <div class="invalid-feedback">
+                        Ingresa un nombre de usuario valido
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="address">Direccion</label>
+                    <input type="text" class="form-control" id="address" placeholder="1234 Main St" required>
+                    <div class="invalid-feedback">
+                        Por favor ingresa tu direccion
+                    </div>
+                </div>
+
+
+                <div class="row">
+                    <div class="col-md-5 mb-3">
+                        <label for="country">Pais</label>
+                        <select class="custom-select d-block w-100" id="country" required>
+                            <option value="">Elige...</option>
+                            <option>Colombia</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Selecciona un pais valido
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <label for="state">Departamento</label>
+                        <select class="custom-select d-block w-100" id="state" required>
+                            <option value="">Elige...</option>
+                            <option>Bogota</option>
+                            <option>Medellin</option>
+                            <option>Santa Marta</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Selecciona un departamento valido
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="zip">Zip</label>
+                        <input type="text" class="form-control" id="zip" placeholder="" required>
+                        <div class="invalid-feedback">
+                            Codigo ZIP
+                        </div>
+                    </div>
+                </div>
+                <hr class="mb-4">
+
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="save-info">
+                    <label class="custom-control-label" for="save-info">Guardar esta informacion para la proxima
+                        vez</label>
+                </div>
+                <hr class="mb-4">
+
+                <h4 class="mb-3">Pago</h4>
+
+                <div class="d-block my-3">
+                    <div class="custom-control custom-radio">
+                        <input id="credit" name="paymentMethod" type="radio" class="custom-control-input" checked
+                            required>
+                        <label class="custom-control-label" for="credit">Tarjeta de credito</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="debit" name="paymentMethod" type="radio" class="custom-control-input" required>
+                        <label class="custom-control-label" for="debit">Tarjeta debito</label>
+                    </div>
+                    <div class="custom-control custom-radio">
+                        <input id="paypal" name="paymentMethod" type="radio" class="custom-control-input" required>
+                        <label class="custom-control-label" for="paypal">PayPal</label>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="cc-name">Nombre en la tarjeta</label>
+                        <input type="text" class="form-control" id="cc-name" placeholder="" required>
+                        <small class="text-muted">Nombre completo mostrado en la tarjeta</small>
+                        <div class="invalid-feedback">
+                            El nombre de la tarjeta es requerido
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="cc-number">Numero de la tarjeta de credito</label>
+                        <input type="text" class="form-control" id="cc-number" placeholder="" required>
+                        <div class="invalid-feedback">
+                            El numero de la tarjeta de credito es requerido
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-3 mb-3">
+                        <label for="cc-expiration">Expiracion</label>
+                        <input type="text" class="form-control" id="cc-expiration" placeholder="" required>
+                        <div class="invalid-feedback">
+                            Fecha de expiracion requerida
+                        </div>
+                    </div>
+                    <div class="col-md-3 mb-3">
+                        <label for="cc-cvv">Codigo de seguridad</label>
+                        <input type="text" class="form-control" id="cc-cvv" placeholder="" required>
+                        <div class="invalid-feedback">
+                            Codigo de seguridad requerido
+                        </div>
+                    </div>
+                </div>
+                <hr class="mb-4">
+                <button class="btn btn-primary btn-md btn-block" type="submit">Continuar con el registro</button>
+            </form>
+        </div>
+        <!--  -->
+    </row>
+
+
+    {% include 'footer.html' %}
+</div>
+
+{% endblock %}
