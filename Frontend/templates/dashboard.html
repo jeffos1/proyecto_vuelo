@@ -3,11 +3,10 @@
 {% block body%}
 
 <div class="container d-flex flex-column" style="height: 100vh">
-    {% include 'navbar_con_login.html' %}
+    {% include 'navbar_sin_login.html' %}
     <div class="row h-100">
 
-        <div class="sidebar col-md-3 d-flex flex-column flex-shrink-0 p-3 text-white bg_purple radius_20 my-auto"
-            style="width: 280px; height: 50vh;">
+        <div class="sidebar col-md-2 d-flex flex-column p-3 text-white bg_purple radius_20 h-100" style="height: 50vh;">
             <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-white text-decoration-none">
                 <i class="bi bi-speedometer2 text-white mb-1 mr-1" style="font-size: 1.5rem;"></i>
                 <span class="nav-item" style="font-size: 1.5rem;">Dashboard</span>
@@ -15,25 +14,36 @@
             <hr>
             <ul class=" nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                    <a href="#" class="nav-link active d-flex align-items-center" aria-current="page">
+                    <a href="../dashboard_home" class="nav-link text-white d-flex align-items-center"
+                        aria-current="page">
+                        <ion-icon name="home" style="font-size: 1.2rem;"></ion-icon>
+                        Inicio
+                    </a>
+                </li>
+                <!--  -->
+                <li class="nav-item">
+                    <a href="../dashboard_vuelos" class="nav-link text-white d-flex align-items-center"
+                        aria-current="page">
                         <ion-icon name="airplane" style="font-size: 1.2rem;"></ion-icon>
                         Vuelos
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link text-white d-flex align-items-center">
+                    <a href="../dashboard_usuarios" class="nav-link text-white d-flex align-items-center">
                         <i class="bi bi-person-fill text-white mb-1 mr-1"></i>
                         Usuarios
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link text-white d-flex align-items-center">
+                    <a href="../dashboard_pilotos" id="pilotosbtn"
+                        class="nav-link text-white d-flex align-items-center">
                         <i class="bi bi-person-bounding-box text-white mb-1 mr-1"></i>
                         Pilotos
                     </a>
                 </li>
                 <li>
-                    <a href="#" class="nav-link text-white d-flex align-items-center">
+                    <a href="../dashboard_aviones" id="avionesbtn"
+                        class="nav-link text-white d-flex align-items-center">
                         <div class="mr-1">
                             <ion-icon name="jet"></ion-icon>
                         </div>
@@ -46,6 +56,8 @@
 
         </div>
         <!-- Final de esta columna -->
+
+
         {% block content%}{% endblock %}
     </div>
 
@@ -53,5 +65,22 @@
     {% include 'footer.html' %}
 </div>
 
+<script type="module">
+    // import { class_to_active_link, addCloseToNav } from '../static/js/script.js'
 
+    // let dashboard_pages = document.querySelectorAll('div.sidebar > ul > li > a');
+
+    // class_to_active_link(dashboard_pages, 'active');
+    // addCloseToNav();
+</script>
+
+<script>
+
+
+
+
+
+
+
+</script>
 {% endblock %}
