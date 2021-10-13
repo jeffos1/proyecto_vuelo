@@ -16,14 +16,8 @@ export function class_to_active_link(links, myClass) {
     for (const link of links) {
         let current_link = link.href.split("/").pop();
 
-
-        //alert(current_link)
         if (current_link == page || current_link.slice(0, -1) == page) {
-            // alert(page)
-            // alert(link)
-            // alert(current_link.slice(0, -1))
-            // alert(current_link);
-            // alert(current_link.slice(0, -1))
+
             link.classList.add('active');
 
             nofound = true;
@@ -31,10 +25,6 @@ export function class_to_active_link(links, myClass) {
 
     }
 
-    // if (!nofound) {
-
-    //     links[0].classList.add('active');
-    // }
 
 
 }

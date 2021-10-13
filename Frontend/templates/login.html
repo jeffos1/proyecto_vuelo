@@ -22,7 +22,7 @@
     <!-- Card login -->
     <div class="login my-auto">
         <div class="col-md-5 mx-auto">
-            {% include 'login_nav.html'%}
+
             <div class="card card-body">
                 <form id="submitForm" action="../mis_reservas" method="get" data-parsley-validate=""
                     data-parsley-errors-messages-disabled="true" novalidate="" _lpchecked="1">
@@ -48,11 +48,17 @@
                     <div class="form-group pt-1 d-flex flex-column">
                         <a class="text-md-left border-link text_purple" href="#"> Olvidé mi contraseña </a>
                         <br>
-                        <form class="d-flex flex-row flex-grow-1 align-items-center justify-content-center" action="">
-                            <button class="btn btn-sm bg_purple text-white mx-2 radius_20" type="submit">
-                                Iniciar sesion
-                            </button>
-                        </form>
+
+                        <div class="input-group-prepend align-self-center">
+                            <button class=" btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false" target="_blank">Tipo de usuario</button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="../mis_reservas">Usuario</a>
+                                <a class="dropdown-item" href="../usuario_piloto">Piloto</a>
+                                <a class="dropdown-item" href="../dashboard_home">Administrador</a>
+
+                            </div>
+                        </div>
 
                     </div>
                 </form>

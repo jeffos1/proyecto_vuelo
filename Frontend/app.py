@@ -55,12 +55,14 @@ def dashboard_usuarios():
 def dashboard_pilotos():
     return render_template("dashboard_pilotos.html")
 
+
 @app.route('/usuario_piloto')
 def usuario_piloto():
     return render_template("usuario_piloto.html")
 
-@app.route('/perfil')
-def perfil():
+
+@app.route('/perfil_piloto')
+def perfil_piloto():
     return render_template("perfil_piloto.html")
 
 
@@ -89,14 +91,14 @@ def vuelo():
     return render_template('vuelo.html')
 
 
-@app.route('/login_admin', methods=['POST', 'GET'])
-def login_admin():
-    return render_template('login_admin.html')
-
-
 @app.route('/registrarse', methods=['POST', 'GET'])
 def registrarse():
     return render_template('registrarse.html')
+
+
+@app.route('/reservar_tiquete', methods=['POST', 'GET'])
+def reservar_tiquete():
+    return render_template('reservar_tiquete.html')
 
 
 if __name__ == '__main__':
