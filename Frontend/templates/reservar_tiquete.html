@@ -1,0 +1,113 @@
+{% extends 'index.html'%}
+
+{% block body%}
+<div class="container d-flex flex-column" style="height: 100vh">
+    {% include 'navbar_sin_login.html' %}
+    <row class="d-flex my-auto">
+        <!--  -->
+        <div class="col-md-8 d-flex flex-column mx-auto">
+            <h4 class="mb-3  text_purple">Reservar Tiquete</h4>
+            <form class="needs-validation d-flex flex-column" novalidate action="../mis_reservas" method="get">
+
+
+                <div class="row">
+
+                    <div class="md-form col-md-6 md-outline datepicker mb-2">
+                        <label for="example">Fecha de ida</label>
+                        <input placeholder="Select date" type="date" id="example"
+                            class="form-control input_text radius_25">
+                    </div>
+
+                    <div class="md-form col-md-6 datepicker mb-2">
+                        <label for="example">Fecha de vuelta</label>
+                        <input placeholder="Select date" type="date" id="example"
+                            class="form-control input_text radius_25">
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="country">Origen</label>
+                        <select class="custom-select d-block w-100" id="country" required>
+                            <option>Ciudad...</option>
+                            <option selected>Bogota</option>
+                            <option>Medellin</option>
+                            <option>Pasto</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Selecciona una ciudad valida
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="state">Destino</label>
+                        <select class="custom-select d-block w-100" id="state" required>
+                            <option value="">Ciudad...</option>
+                            <option>Bogota</option>
+                            <option>Medellin</option>
+                            <option>Pasto</option>
+                            <option selected>Santa Marta</option>
+                        </select>
+                        <div class="invalid-feedback">
+                            Selecciona una ciudad valida
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="Hora">Hora</label>
+                        <input type="" class="form-control" id="" placeholder="" value="7:40AM" readonly>
+                        <div class="invalid-feedback">
+                            Ingresa una hora valida
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="firstName">Nombre</label>
+                        <input type="text" class="form-control" id="firstName" placeholder="" value="Pepito" readonly>
+                        <div class="invalid-feedback">
+                            El primer nombre es requerido
+                        </div>
+                    </div>
+                    <div class="col-md-6 mb-3">
+                        <label for="lastName">Apellido</label>
+                        <input type="text" class="form-control" id="lastName" placeholder="" value="Perez" readonly>
+                        <div class="invalid-feedback">
+                            El apellido es requerido
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6 mb-3">
+                        <label for="lastName">Correo</label>
+                        <input type="email" class="form-control" id="correo" placeholder="" value="correo@example.com"
+                            readonly>
+                        <div class="invalid-feedback">
+                            El correo es requerido
+                        </div>
+                    </div>
+
+                    <div class="col-md-6 mb-3">
+                        <label for="telefono">Telefono</label>
+                        <input type="text" class="form-control" id="telefono" placeholder="" value="6015641232"
+                            readonly>
+                        <div class="invalid-feedback">
+                            El telefono es requerido
+                        </div>
+                    </div>
+                </div>
+
+
+                <button class="btn btn-primary btn-md mx-auto" type="submit">Reservar</button>
+            </form>
+        </div>
+        <!--  -->
+    </row>
+
+
+    {% include 'footer.html' %}
+</div>
+
+{% endblock %}
