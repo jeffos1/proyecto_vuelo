@@ -264,3 +264,23 @@ body {
     border-color: #673ab7 !important;
     border-radius: 15px;
 }
+
+.center {
+  margin: auto;
+  margin-top: 30px;
+  width: 50%;
+  padding: 10px;
+  text-align: center;
+}
+.tableAlign{
+    margin: auto;
+    width: 50%;
+    text-align: center;
+  }
+
+.hidden{
+    display: none;
+}
+.checked {
+    color: orange;
+}
