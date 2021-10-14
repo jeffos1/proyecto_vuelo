@@ -2,5 +2,75 @@
 
 {% block body %}
 {% include 'navbar_sin_login.html'%}
-<span class="display-1">opiniones</span>
+<div class="center">
+<input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" >
+<label for="option1">Administre su viaje</label mr 3>
+
+<input type="radio" class="btn-check" name="options" id="option2" autocomplete="off" checked>
+<label for="option2">Califique su vuelo</label>
+</div>
+<div class="center">  
+<div class="tableAlign">
+  <table>
+    <tr>
+      <th>
+        Código del vuelo &emsp;
+      </th>
+      <th>
+        Apellido
+      </th>
+    </tr><br>
+    <tr>
+      <th>
+        <textarea  rows="1" cols="25"></textarea>
+      </th>
+      <th>
+        <textarea  rows="1" cols="25"></textarea>
+      </th>
+    </tr>
+  </table>
+  
+</div>
+<div class="center" id="buscar"  margin-top:'10px';>
+  <button type="button"  onclick="asinc()" class="btn btn-primary">Buscar</button>
+</div>
+<div class="calificacion hidden" >
+  <p><br>Para nosotros es muy importante su opinión. Para seguir mejorando solicitamos que califique el vuelo 4006, lo cual ayudará a mejorar nuestro servicio. <br> Según su experiencia que calificación le da al vuelo 4006:</p>  
+ 
+
+  <span class="fa fa-star fa-3x" id="star1" onclick="add(this,1)"></span>
+  <span class="fa fa-star fa-3x" id="star2" onclick="add(this,2)"></span>
+  <span class="fa fa-star fa-3x" id="star3" onclick="add(this,3)"></span>
+  <span class="fa fa-star fa-3x" id="star4" onclick="add(this,4)"></span>
+  <span class="fa fa-star fa-3x" id="star5" onclick="add(this,5)"></span>
+
+<script>
+  function add(ths,sno){
+
+
+  for (var i=1;i<=5;i++){
+  var cur=document.getElementById("star"+i)
+  cur.className="fa fa-3x fa-star"
+  }
+
+  for (var i=1;i<=sno;i++){
+  var cur=document.getElementById("star"+i)
+  if(cur.className=="fa fa-3x fa-star")
+  {
+  cur.className="fa fa-star fa-3x checked"
+  }
+  }
+
+  }
+
+</script>
+
+
+
+</div>
+<script>
+  function asinc() {
+    document.querySelector('.calificacion').style.display='block';
+  }
+  </script>
 {% endblock %}
