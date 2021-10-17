@@ -11,26 +11,34 @@
                 <a class="nav-link" href="{{ url_for('opiniones') }}">Opiniones</a>
 
             </nav>
+            {% if pagina %}
+            {% if pagina == 'mis_reservas' or pagina == 'dashboard' or pagina == 'usuario'%}
+            <a href="{{ url_for('index') }}" class="nav-link mr-2">Salir</a>
+            {% endif%}
+
+            {%else%}
             <a class=" nav-link mr-2 re1" href="{{ url_for('registrarse') }}" id="registrarse">Registrarse</a>
             <div class=" box_border radius_20 input_text d-flex flex-row" id="login_container">
                 <i class="bi bi-person-fill text_purple mr-1"></i>
                 <a class=" nav-link px-0 py-0 font-weight-bold text_purple pr-1 lo1" href="{{ url_for('login') }}"
                     id="login">Login</a>
+
             </div>
+            {% endif %}
         </div>
     </header>
 </div>
 
 <script>
-    var path = window.location.pathname;
-    var page = path.split("/")[1];
+    // var path = window.location.pathname;
+    // var page = path.split("/")[1];
 
-    if (page == "login" || page == "login_admin" || page == "dashboard_home" || page == "dashboard_aviones" || page == "dashboard_pilotos" || page == "dashboard_usuarios" || page == "dashboard_vuelos" || page == "dashboard" || page == "mis_reservas") {
+    // if (page == "login" || page == "login_admin" || page == "dashboard_home" || page == "dashboard_aviones" || page == "dashboard_pilotos" || page == "dashboard_usuarios" || page == "dashboard_vuelos" || page == "dashboard" || page == "mis_reservas") {
 
-        document.querySelector('#registrarse').style.visibility = 'hidden';
-        document.querySelector('#login').style.visibility = 'hidden';
-        document.querySelector('#login_container').style.visibility = 'hidden';
-    }
+    //     document.querySelector('#registrarse').style.visibility = 'hidden';
+    //     document.querySelector('#login').style.visibility = 'hidden';
+    //     document.querySelector('#login_container').style.visibility = 'hidden';
+    // }
 
 </script>
 

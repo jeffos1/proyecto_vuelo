@@ -2,50 +2,55 @@
 
 {% block body%}
 
-<div class="container d-flex flex-column" style="height: 100vh">
-    {% include 'navbar_con_login.html' %}
+<div class="container d-flex flex-column" style="height: 100vh;">
+    {% include 'navbar_main.html' %}
+    <div class="row">
 
-    <div class="wrap" >
-        <div class="search">
-           <input type="text" class="searchTerm" placeholder="Introduce el código de tu reserva">
-           <button type="submit" class="searchButton">
-             <i class="fa fa-search"></i>
-          </button>
+        <div class="wrap">
+            <div class="search">
+                <input type="text" class="searchTerm" placeholder="Introduce el código de tu reserva">
+                <button type="submit" class="searchButton">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
         </div>
-     </div>
 
-    <div class="mis_reservas">
-        <h3 class="text_black "> Información de tu reserva </h3>
+        <div class="mis_reservas">
+            <h3 class="text_black "> Información de tu reserva </h3>
 
-        <table class="table table-bordered mis_reservas">
-            <thead>
-                <tr>
-                    <th> Código de reserva </th>
-                    <th> Origen </th>
-                    <th> Destino </th>
-                    <th> Fecha-Hora </th>
-                    <th> Avión </th>
-                    <th> Piloto </th>
-                    <th> Capacidad </th>
-                    <th> Estado </th>
-                    <th> Acción </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td> 3576 </td>
-                    <td> Santa Marta </td>
-                    <td> Bogotá </td>
-                    <td> 01/01/2021 - 2:15 PM </td>
-                    <td> Boeing 747 </td>
-                    <td> Daniel Lopez </td>
-                    <td> 124 </td>
-                    <td> Finalizado </td>
-                    <td> Cancelar </td>
-                </tr>
-            </tbody>
-        </table>
+            <table class="table table-bordered mis_reservas">
+                <thead>
+                    <tr>
+                        <th> Código de reserva </th>
+                        <th> Origen </th>
+                        <th> Destino </th>
+                        <th> Fecha-Hora </th>
+                        <th> Avión </th>
+                        <th> Piloto </th>
+                        <th> Capacidad </th>
+                        <th> Estado </th>
+                        <th> Acción </th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td> 3576 </td>
+                        <td> Santa Marta </td>
+                        <td> Bogotá </td>
+                        <td> 01/01/2021 - 2:15 PM </td>
+                        <td> Boeing 747 </td>
+                        <td> Daniel Lopez </td>
+                        <td> 124 </td>
+                        <td> Finalizado </td>
+                        <td> Cancelar </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
+
+
+
 
     {% include 'footer.html' %}
 </div>

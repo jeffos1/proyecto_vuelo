@@ -53,10 +53,10 @@
                             <button class=" btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
                                 aria-haspopup="true" aria-expanded="false" target="_blank">Tipo de usuario</button>
                             <div class="dropdown-menu">
-                                <a class="dropdown-item" href="../mis_reservas">Cliente reservas</a>
-                                <a class="dropdown-item" href="../reservar_tiquete">Cliente reservar</a>
-                                <a class="dropdown-item" href="../usuario_piloto">Piloto</a>
-                                <a class="dropdown-item" href="../dashboard_home">Administrador</a>
+                                <a class="dropdown-item" href="{{ url_for('mis_reservas') }}">Cliente reservas</a>
+                                <a class="dropdown-item" href="{{ url_for('reservar_tiquete') }}">Cliente reservar</a>
+                                <a class="dropdown-item" href="{{ url_for('usuario_piloto') }}">Piloto</a>
+                                <a class="dropdown-item" href="{{ url_for('dashboard_home') }}">Administrador</a>
 
                             </div>
                         </div>
