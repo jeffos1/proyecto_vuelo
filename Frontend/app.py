@@ -1,4 +1,4 @@
-from flask import Flask, render_template, redirect, url_for, request, flash
+from flask import Flask, render_template, redirect, url_for, request, flash, session
 import os
 from forms import Login, Registro
 from markupsafe import escape
@@ -31,9 +31,34 @@ def search():
 @app.route('/login', methods=['POST', 'GET'])
 def login():
     form = Login()
-    if form.validate_on_submit():
-        return redirect(url_for('mis_reservas'))
-    return render_template("login.html", title='Iniciar sesion', login=form)
+    if request.method == 'GET':
+        return render_template("login.html", title='Iniciar sesion', form=form)
+    else:
+        usuario = escape(form.usuario.data.strip())
+        clave = escape(form.clave.data.strip())
+        # Preparar la consulta
+        sql = f'SELECT id, nombres, correo, password FROM usuarios WHERE usuario="{usuario}"'
+        # Ejecutar la consulta
+        res = seleccion(sql)
+        if len(res) == 0:
+            flash('ERROR: Usuario o clave invalidas')
+            return render_template('login.html', form=form, titulo='Iniciar Sesión')
+        else:
+            # Recupero el valor de la clave
+            cbd = res[0][3]
+            if check_password_hash(cbd, clave):
+                session.clear()
+                session['id'] = res[0][0]
+                session['nombre'] = res[0][1]
+                session['usuario'] = usuario
+                session['clave'] = clave
+                session['email'] = res[0][2]
+                return redirect(url_for('mis_reservas'))
+            else:
+                flash('ERROR: Usuario o clave invalidas')
+                return render_template('login.html', form=form, titulo='Iniciar Sesión')
+
+    return render_template("login.html", title='Iniciar sesion', form=form)
 
 
 @app.route('/plantilla')
