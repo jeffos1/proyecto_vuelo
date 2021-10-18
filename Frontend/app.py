@@ -103,3 +103,7 @@ def reservar_tiquete():
 
 if __name__ == '__main__':
     app.run(debug=True)
+<<<<<<< Updated upstream
+=======
+    # port=443 , ssl_context=('c_vuelo.pem','k_vuelo.pem'))
+>>>>>>> Stashed changes
