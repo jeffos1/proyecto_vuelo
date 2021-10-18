@@ -19,6 +19,7 @@ input:focus,
 input,
 .custom-select {
     border-radius: 25px !important;
+    border: none;
 }
 
 /*
@@ -151,6 +152,10 @@ li a:hover {
 
 .text_black {
     color: black;
+}
+
+fz-2-5 {
+    font-size: 2.5rem;
 }
 
 /*Icons*/
