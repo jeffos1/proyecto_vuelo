@@ -127,7 +127,7 @@ def mis_reservas():
     tiquetes = seleccion(query_origen_destino)
 
     if len(tiquetes) == 0:
-        flash('ERROR: Obteniendo el origen y el destino')
+        flash('ERROR: obteniendo informacion del tiquete')
 
     return render_template("mis_reservas.html", pagina='mis_reservas', tiquetes=tiquetes)
 
