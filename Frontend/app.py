@@ -94,27 +94,27 @@ def dashboard_child():
 def dashboard_vuelos():
     sql = f'SELECT id_vuelo, c_destino, c_salida, cant_pasajeros , cupos_disp, modelo ||" "|| matricula AS avion,nombres || " " || apellidos AS piloto, salida FROM vuelos AS v INNER JOIN aviones AS a ON v.avion = id_avion INNER JOIN empleados AS e ON v.piloto = e.id_emp INNER JOIN usuarios AS u ON u.id = e.id_usuario'
     res = seleccion(sql)
-    if len(res)==0:
+    if len(res) == 0:
         flash('ERROR: No hay usuarios en la tabla')
     else:
-        return render_template("dashboard_vuelos.html", pagina='dashboard', vuelos = res)
+        return render_template("dashboard_vuelos.html", pagina='dashboard', vuelos=res)
 
 
 @app.route('/dashboard_aviones')
 def dashboard_aviones():
     sql = f'SELECT id_avion, modelo, matricula, cant_pasajeros FROM aviones'
     res = seleccion(sql)
-    if len(res)==0:
+    if len(res) == 0:
         flash('ERROR: No hay usuarios en la tabla')
     else:
-        return render_template("dashboard_aviones.html", pagina='dashboard', aviones = res)
+        return render_template("dashboard_aviones.html", pagina='dashboard', aviones=res)
 
 
 @app.route('/dashboard_usuarios')
 def dashboard_usuarios():
     sql = f'SELECT id, nombres, apellidos, usuario, correo, password, numero, tipo_usuario FROM usuarios'
     res = seleccion(sql)
-    if len(res)==0:
+    if len(res) == 0:
         flash('ERROR: No hay usuarios en la tabla')
     else:
         return render_template('dashboard_usuarios.html', pagina='dashboard', usuarios=res)
@@ -124,7 +124,7 @@ def dashboard_usuarios():
 def dashboard_pilotos():
     sql = f"SELECT id, nombres, apellidos, usuario, correo, numero, password, direccion, estado, fecha_ingreso, t_contrato FROM usuarios AS us INNER JOIN empleados AS em ON us.id = em.id_usuario AND us.tipo_usuario = 'p'"
     res = seleccion(sql)
-    if len(res)==0:
+    if len(res) == 0:
         flash('ERROR: No hay pilotos en la tabla')
     else:
         return render_template('dashboard_pilotos.html', pagina='dashboard', pilotos=res)
