@@ -51,7 +51,7 @@ def login():
                 session['id'] = res[0][0]
                 session['nombre'] = res[0][1]
                 session['usuario'] = usuario
-                session['clave'] = clave
+                #session['clave'] = clave
                 session['email'] = res[0][2]
                 session['tipo_usuario'] = res[0][4]
 
@@ -122,7 +122,7 @@ def perfil_piloto():
 @app.route('/mis_reservas')
 def mis_reservas():
     user_id = session['id']
-    query_origen_destino = f'SELECT  tiquetes.id, vuelos.c_salida, vuelos.c_destino, vuelos.salida, aviones.modelo, usuarios.nombres, usuarios.apellidos FROM tiquetes INNER JOIN vuelos ON tiquetes.vuelo=vuelos.id_vuelo INNER JOIN aviones on vuelos.avion = aviones.id_avion INNER JOIN usuarios on vuelos.piloto = usuarios.id WHERE tiquetes.usuario = {user_id}'
+    query_origen_destino = f'SELECT  tiquetes.id, vuelos.c_salida, vuelos.c_destino, vuelos.salida, aviones.modelo, usuarios.nombres, usuarios.apellidos, tiquetes.precio FROM tiquetes INNER JOIN vuelos ON tiquetes.vuelo=vuelos.id_vuelo INNER JOIN aviones on vuelos.avion = aviones.id_avion INNER JOIN usuarios on vuelos.piloto = usuarios.id WHERE tiquetes.usuario = {user_id}'
     tiquetes = seleccion(query_origen_destino)
 
     if len(tiquetes) == 0:
