@@ -31,30 +31,16 @@
             </tr>
           </thead>
           <tbody>
+            {% for dat in aviones %}
             <tr>
-              <th scope="row">1</th>
-              <td>Boeing 747</td>
-              <td>HK - 704</td>
-              <td>50</td>
+              <th scope="row">{{ dat[0] }}</th>
+              <td>{{ dat[1] }}</td>
+              <td>{{ dat[2] }}</td>
+              <td>{{ dat[3] }}</td>
               <td><a href="" data-toggle="modal" data-target="#agregarAvion">Editar</a> - <a href="" data-toggle="modal"
-                  data-target="#eliminarAvion">Ocultar</a></td>
+                data-target="#eliminarAvion">Ocultar</a></td>
             </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Boeing 747</td>
-              <td>HK - 704</td>
-              <td>50</td>
-              <td><a href="" data-toggle="modal" data-target="#agregarAvion">Editar</a> - <a href="" data-toggle="modal"
-                  data-target="#eliminarAvion">Ocultar</a></td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Boeing 747</td>
-              <td>HK - 704</td>
-              <td>50</td>
-              <td><a href="" data-toggle="modal" data-target="#agregarAvion">Editar</a> - <a href="" data-toggle="modal"
-                  data-target="#eliminarAvion">Ocultar</a></td>
-            </tr>
+            {% endfor %}            
           </tbody>
         </table>
       </div>

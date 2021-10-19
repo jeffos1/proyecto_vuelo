@@ -30,59 +30,32 @@
               <th scope="col">Cupos</th>
               <th scope="col">Avión</th>
               <th scope="col">Piloto</th>
-              <th scope="col">Fecha - Hora</th>
+              <th scope="col">Fecha - Hora</th><!-- 
               <th scope="col">Estado</th>
               <th scope="col">Clase</th>
-              <th scope="col">Precio</th>
+              <th scope="col">Precio</th> -->
               <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
+            {% for dat in vuelos %}
             <tr>
-              <th scope="row">1</th>
-              <td>Santa Marta</td>
-              <td>Bogotá</td>
-              <td>24</td>
-              <td>15</td>
-              <td>Boeing 747</td>
-              <td>Andres Sanchez</td>
-              <td>01/01/2021 - 10:00 PM</td>
-              <td>Finalizado</td>
-              <td>Economico</td>
-              <td>$100.000,00</td>
+              <th scope="row">{{ dat[0] }}</th>
+              <td>{{ dat[1] }}</td>
+              <td>{{ dat[2] }}</td>
+              <td>{{ dat[3] }}</td>
+              <td>{{ dat[4] }}</td>
+              <td>{{ dat[5] }}</td>
+              <td>{{ dat[6] }}</td> 
+              <td>{{ dat[7] }}</td><!--
+              <td>{{ dat[8] }}</td>
+              <td>{{ dat[9] }}</td>
+              <td>{{ dat[10] }}</td> -->
               <td><a href="" data-toggle="modal" data-target="#agregarVuelo">Editar</a> - <a href="" data-toggle="modal"
                   data-target="#eliminarVuelo">Ocultar</a></td>
             </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Santa Marta</td>
-              <td>Bogotá</td>
-              <td>24</td>
-              <td>15</td>
-              <td>Boeing 747</td>
-              <td>Andres Sanchez</td>
-              <td>01/01/2021 - 10:00 PM</td>
-              <td>Finalizado</td>
-              <td>Economico</td>
-              <td>$100.000,00</td>
-              <td><a href="" data-toggle="modal" data-target="#agregarVuelo">Editar</a> - <a href="" data-toggle="modal"
-                  data-target="#eliminarVuelo">Ocultar</a></td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Santa Marta</td>
-              <td>Bogotá</td>
-              <td>24</td>
-              <td>15</td>
-              <td>Boeing 747</td>
-              <td>Andres Sanchez</td>
-              <td>01/01/2021 - 10:00 PM</td>
-              <td>Finalizado</td>
-              <td>Economico</td>
-              <td>$100.000,00</td>
-              <td><a href="" data-toggle="modal" data-target="#agregarVuelo">Editar</a> - <a href="" data-toggle="modal"
-                  data-target="#eliminarVuelo">Ocultar</a></td>
-            </tr>
+            {% endfor %}
+            
           </tbody>
         </table>
       </div>

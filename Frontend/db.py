@@ -9,7 +9,7 @@ def seleccion(sql) -> list:
             cur = con.cursor()
             res = cur.execute(sql).fetchall()
     except Exception:
-        res = None
+        res = ['0']
     return res
 
 
