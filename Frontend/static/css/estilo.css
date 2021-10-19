@@ -303,3 +303,11 @@ body {
 .checked {
     color: orange;
 }
+
+/* tabla */
+
+th, td {
+    border: 1px solid blue;
+    width: 100px;
+    word-wrap: break-word;
+}

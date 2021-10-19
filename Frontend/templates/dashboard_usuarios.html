@@ -35,42 +35,20 @@
             </tr>
           </thead>
           <tbody>
+            {% for dat in usuarios %}
             <tr>
-              <th scope="row">1</th>
-              <td>Oscar</td>
-              <td>Pérez</td>
-              <td>oscarperez</td>
-              <td>oscar@email.com</td>
-              <td>******</td>
-              <td>30000000</td>
-              <td>Piloto</td>
-              <td><a href="" data-toggle="modal" data-target="#agregarUsuario">Editar</a> - <a href=""
-                  data-toggle="modal" data-target="#eliminarUsuario">Ocultar</a></td>
+              <th scope="row">{{ dat[0] }}</th>
+              <td>{{ dat[1] }}</td>
+              <td>{{ dat[2] }}</td>
+              <td>{{ dat[3] }}</td>
+              <td>{{ dat[4] }}</td>
+              <td> ********* </td>
+              <!-- <td>{{ dat[5] }}</td> -->
+              <td>{{ dat[6] }}</td>
+              <td>{{ dat[7] }}</td>
+              <td><a href="" data-toggle="modal" data-target="#agregarUsuario">Editar</a> - <a href="" data-toggle="modal" data-target="#eliminarUsuario">Ocultar</a></td>
             </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Oscar</td>
-              <td>Pérez</td>
-              <td>oscarperez</td>
-              <td>oscar@email.com</td>
-              <td>******</td>
-              <td>30000000</td>
-              <td>Piloto</td>
-              <td><a href="" data-toggle="modal" data-target="#agregarUsuario">Editar</a> - <a href=""
-                  data-toggle="modal" data-target="#eliminarUsuario">Ocultar</a></td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Oscar</td>
-              <td>Pérez</td>
-              <td>oscarperez</td>
-              <td>oscar@email.com</td>
-              <td>******</td>
-              <td>30000000</td>
-              <td>Piloto</td>
-              <td><a href="" data-toggle="modal" data-target="#agregarUsuario">Editar</a> - <a href=""
-                  data-toggle="modal" data-target="#eliminarUsuario">Ocultar</a></td>
-            </tr>
+            {% endfor %}            
           </tbody>
         </table>
       </div>
