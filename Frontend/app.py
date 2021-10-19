@@ -60,7 +60,6 @@ def login():
                 # p == piloto
 
                 if res[0][4] == 'c':
-
                     return redirect(url_for('mis_reservas'))
                 elif res[0][4] == 'a':
                     return redirect(url_for('dashboard_home'))
