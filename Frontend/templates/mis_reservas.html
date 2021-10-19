@@ -29,6 +29,7 @@
                         <th> Avion </th>
                         <th> Piloto </th>
                         <th> Precio </th>
+                        <th> Estado </th>
                     </tr>
 
                 </thead>
@@ -42,6 +43,14 @@
                         <td>{{ tiquete[4] }}</td>
                         <td>{{ tiquete[5] + ' ' + tiquete[6] }}</td>
                         <td>{{ tiquete[7] }}</td>
+
+                        <td>{% if tiquete[8] == 'A' %}
+                            {{ 'Activo' }}
+                            {% else %}
+                            {{ 'Inactivo' }}
+                            {% endif %}
+
+                        </td>
                     </tr>
                     {% endfor %}
 
