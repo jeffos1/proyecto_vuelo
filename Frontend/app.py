@@ -37,7 +37,7 @@ def login():
         usuario = escape(form.usuario.data.strip())
         clave = escape(form.clave.data.strip())
         # Preparar la consulta
-        sql = f'SELECT id, nombres, correo, password FROM usuarios WHERE usuario="{usuario}"'
+        sql = f'SELECT id, nombres, correo, password, tipo_usuario FROM usuarios WHERE usuario="{usuario}"'
         # Ejecutar la consulta
         res = seleccion(sql)
         if len(res) == 0:
@@ -53,7 +53,21 @@ def login():
                 session['usuario'] = usuario
                 session['clave'] = clave
                 session['email'] = res[0][2]
-                return redirect(url_for('mis_reservas'))
+                session['tipo_usuario'] = res[0][4]
+
+                # c == clientes
+                # a == admin
+                # p == piloto
+
+                if res[0][4] == 'c':
+
+                    return redirect(url_for('mis_reservas'))
+                elif res[0][4] == 'a':
+                    return redirect(url_for('dashboard_home'))
+                elif res[0][4] == 'p':
+                    return redirect(url_for('usuario_piloto'))
+                else:
+                    return redirect(url_for('home'))
             else:
                 flash('ERROR: Usuario o clave invalidas')
                 return render_template('login.html', form=form, titulo='Iniciar Sesión')
