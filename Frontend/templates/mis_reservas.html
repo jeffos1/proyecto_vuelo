@@ -36,7 +36,6 @@
                 </thead>
                 <tbody>
                     {% for tiquete in tiquetes%}
-                    {% id = 0 %}
                     <tr>
                         <td>{{ tiquete[0] }}</td>
                         <td>{{ tiquete[1] }}</td>
@@ -52,11 +51,6 @@
                             {{ 'Inactivo' }}
                             {% endif %}
 
-                        </td>
-                        <td>
-                            <form action="{{ url_for('mis_reservas') }}" method="post">
-                                <button class="btn btn-link">Cancelar</button>
-                            </form>
                         </td>
                     </tr>
                     {% endfor %}
