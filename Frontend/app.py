@@ -121,7 +121,7 @@ def dashboard_usuarios():
 
 @app.route('/dashboard_pilotos')
 def dashboard_pilotos():
-    sql = f"SELECT id, nombres, apellidos, usuario, correo, numero, password, direccion, estado, fecha_ingreso, t_contrato FROM usuarios AS us INNER JOIN empleados AS em ON us.id = em.id_usuario AND us.tipo_usuario = 'p'"
+    sql = f"SELECT id, nombres, apellidos, usuario, correo, numero, password, direccion, estado, fecha_ingreso, t_contrato FROM usuarios AS us INNER JOIN empleados AS em ON us.id = em.id_emp AND us.tipo_usuario = 'p'"
     res = seleccion(sql)
     if len(res) == 0:
         flash('ERROR: No hay pilotos en la tabla')
