@@ -119,7 +119,7 @@ def perfil_piloto():
     return render_template("perfil_piloto.html", pagina='piloto')
 
 
-@app.route('/mis_reservas', methods)
+@app.route('/mis_reservas')
 def mis_reservas():
     if request.method == 'post':
         print()
