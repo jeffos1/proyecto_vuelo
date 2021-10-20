@@ -3,7 +3,7 @@ import os
 from forms import Login, Registro
 from markupsafe import escape
 from werkzeug.security import check_password_hash, generate_password_hash
-from db import seleccion, accion
+from db import seleccion, accion, accionb
 from utils import login_valido, pass_valido, email_valido
 
 app = Flask(__name__)
@@ -141,8 +141,14 @@ def perfil_piloto():
     return render_template("perfil_piloto.html", pagina='piloto')
 
 
-@app.route('/mis_reservas')
+@app.route('/mis_reservas', methods=['POST', 'GET'])
 def mis_reservas():
+    if request.method == 'POST':
+        id = escape(request.form['cancelar'])
+        estado = escape(request.form['estado'])
+        if estado == 'A':
+            query_update = f'UPDATE tiquetes SET estado = "I" WHERE id = {id}'
+            accionb(query_update)
 
     user_id = session['id']
     query_origen_destino = f'SELECT  tiquetes.id, vuelos.c_salida, vuelos.c_destino, vuelos.salida, aviones.modelo, usuarios.nombres, usuarios.apellidos, tiquetes.precio, tiquetes.estado FROM tiquetes INNER JOIN vuelos ON tiquetes.vuelo=vuelos.id_vuelo INNER JOIN aviones on vuelos.avion = aviones.id_avion INNER JOIN usuarios on vuelos.piloto = usuarios.id WHERE tiquetes.usuario = {user_id}'

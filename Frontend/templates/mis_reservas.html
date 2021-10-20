@@ -22,7 +22,7 @@
                 <thead>
 
                     <tr>
-                        <th> Código de reserva </th>
+                        <th> Código </th>
                         <th> Origen </th>
                         <th> Destino </th>
                         <th> Partida </th>
@@ -35,7 +35,9 @@
 
                 </thead>
                 <tbody>
+
                     {% for tiquete in tiquetes%}
+
                     <tr>
                         <td>{{ tiquete[0] }}</td>
                         <td>{{ tiquete[1] }}</td>
@@ -51,6 +53,18 @@
                             {{ 'Inactivo' }}
                             {% endif %}
 
+                        </td>
+
+                        <td>
+                            <form action="{{ url_for('mis_reservas') }}" method="post">
+                                <input type="hidden" name="estado" value="{{ tiquete[8] }}" />
+                                {% if tiquete[8] == 'A' %}
+                                <button class="btn btn-url" value="{{ tiquete[0] }}" name="cancelar">Cancelar</button>
+                                {% else %}
+                                <button class="btn btn-url text-decoration-none text-muted">Cancelado</button>
+                                {% endif %}
+
+                            </form>
                         </td>
                     </tr>
                     {% endfor %}

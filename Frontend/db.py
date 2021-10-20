@@ -24,3 +24,16 @@ def accion(sql, datos) -> int:
     except Exception:
         res = 0
     return res
+
+
+def accionb(sql) -> int:
+    """ Ejecuta una consulta de acción sobre la base de datos """
+    try:
+        with sqlite3.connect(URL_DB) as con:
+            cur = con.cursor()
+            res = cur.execute(sql).rowcount
+            if res != 0:
+                con.commit()
+    except Exception:
+        res = 0
+    return res
