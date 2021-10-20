@@ -24,16 +24,13 @@
           <thead>
             <tr class="">
               <th scope="col">ID</th>
-              <th scope="col">Origen</th>
               <th scope="col">Destino</th>
+              <th scope="col">Origen</th>
               <th scope="col">Capacidad</th>
               <th scope="col">Cupos</th>
               <th scope="col">Avión</th>
               <th scope="col">Piloto</th>
-              <th scope="col">Fecha - Hora</th><!-- 
-              <th scope="col">Estado</th>
-              <th scope="col">Clase</th>
-              <th scope="col">Precio</th> -->
+              <th scope="col">Fecha - Hora</th>
               <th scope="col"></th>
             </tr>
           </thead>
@@ -47,10 +44,7 @@
               <td>{{ dat[4] }}</td>
               <td>{{ dat[5] }}</td>
               <td>{{ dat[6] }}</td> 
-              <td>{{ dat[7] }}</td><!--
-              <td>{{ dat[8] }}</td>
-              <td>{{ dat[9] }}</td>
-              <td>{{ dat[10] }}</td> -->
+              <td>{{ dat[7] }}</td>
               <td><a href="" data-toggle="modal" data-target="#agregarVuelo">Editar</a> - <a href="" data-toggle="modal"
                   data-target="#eliminarVuelo">Ocultar</a></td>
             </tr>
@@ -83,95 +77,84 @@
 
         <div class="modal-body">
           <!-- Form de agregar vuelo -->
-          <form>
+          <form class="needs-validation" novalidate action="{{url_for('dashboard_vuelos')}}" method="post">
+
+            {% for msg in get_flashed_messages() %}
+            <div class='form-row'>
+                {{ msg }}
+            </div>
+            {% endfor %}
 
             <div class="form-row">
               <div class="col">
-                <label for="idVuelo">ID</label>
-                <input type="number" class="form-control" id="idVuelo" placeholder="ID Vuelo">
+                {{form.id.label}}
+                {{form.id}}
+                <div class="invalid-feedback">
+                  El ID es requerido
+                </div>
               </div>
               <div class="col">
-                <label for="origen">Origen</label>
-                <input type="text" class="form-control" id="origen" placeholder="Ciudad de Salida">
+                {{form.origen.label}}
+                {{form.origen}}
+                <div class="invalid-feedback">
+                  La ciudad de salida es requerida
+                </div>
               </div>
               <div class="col">
-                <label for="destino">Destino</label>
-                <input type="text" class="form-control" id="destino" placeholder="Ciudad de Llegada">
+                {{form.destino.label}}
+                {{form.destino}}
+                <div class="invalid-feedback">
+                  La ciudad de destino es requerida
+                </div>
               </div>
             </div>
 
             <div class="form-row">
               <div class="col">
-                <label for="capacidad">Capacidad</label>
-                <input type="number" class="form-control" id="capacidad" placeholder="Capacidad maxima del avión">
+                {{form.cupos.label}}
+                {{form.cupos}}
+                <div class="invalid-feedback">
+                  Los cupos son requeridos
+                </div>
               </div>
               <div class="col">
-                <label for="cupos">Cupos disponibles</label>
-                <input type="number" class="form-control" id="cupos" placeholder="Cupos restantes">
+                {{form.avion.label}}
+                {{form.avion}}
+                <div class="invalid-feedback">
+                  El id del avión es requerido
+                </div>
               </div>
               <div class="col">
-                <label for="aviones">Avión</label>
-                <select class="form-control" id="aviones">
-                  <option> avión 1</option>
-                  <option> avión 2</option>
-                  <option> avión 3</option>
-                  <option> avión 4</option>
-                  <option> avión 5</option>
-                </select>
+                {{form.piloto.label}}
+                {{form.piloto}}
+                <div class="invalid-feedback">
+                  El id del piloto es requerido
+                </div>
               </div>
             </div>
 
             <div class="form-row">
+              
               <div class="col">
-                <label for="aviones">Piloto</label>
-                <select class="form-control" id="aviones">
-                  <option> Piloto 1</option>
-                  <option> Piloto 2</option>
-                  <option> Piloto 3</option>
-                  <option> Piloto 4</option>
-                  <option> Piloto 5</option>
-                </select>
+                {{form.fechaSalida.label}}
+                {{form.fechaSalida}}
+                <div class="invalid-feedback">
+                  El id del avión es requerido
+                </div>
               </div>
-              <div class="col">
-                <label for="fecha">Fecha</label>
-                <input type="datetime-local" class="form-control" id="cupos">
-              </div>
-              <div class="col">
-                <label for="estado">Estado</label>
-                <select class="form-control" id="estado">
-                  <option> Finalizado</option>
-                  <option> Abordando</option>
-                  <option> En espera</option>
-                  <option> Viajando</option>
-                </select>
-              </div>
-            </div>
-
-
-            <div class="form-row">
-              <div class="col">
-                <label for="clase">Clase</label>
-                <select class="form-control" id="clase">
-                  <option> Economica </option>
-                  <option> Ejecitiva </option>
-                  <option> Primera clase</option>
-                </select>
-              </div>
-              <div class="col">
-                <label for="precio">Precio</label>
-                <input type="number" class="form-control" id="precio" placeholder="Cupos restantes">
-              </div>
+              <div class="col"></div>
               <div class="col"></div>
             </div>
 
-          </form>
+          
           <!-- Fin del form agregar vuelo -->
         </div>
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary">Agregar Vuelo</button>
+          {{form.btn(class='btn btn-primary')}}
         </div>
+      </form>
 
       </div>
     </div>
