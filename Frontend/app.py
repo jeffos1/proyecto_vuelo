@@ -91,8 +91,10 @@ def dashboard_child():
 
 @app.route('/dashboard_vuelos')
 def dashboard_vuelos():
-    sql = f'SELECT id_vuelo, c_destino, c_salida, cant_pasajeros , cupos_disp, modelo ||" "|| matricula AS avion,nombres || " " || apellidos AS piloto, salida FROM vuelos AS v INNER JOIN aviones AS a ON v.avion = id_avion INNER JOIN empleados AS e ON v.piloto = e.id_emp INNER JOIN usuarios AS u ON u.id = e.id_usuario'
-    res = seleccion(sql)
+
+    query_aviones = f'SELECT  id_vuelo, c_destino, c_salida, aviones.cant_pasajeros, cupos_disp, aviones.modelo, aviones.matricula, usuarios.nombres, usuarios.apellidos FROM vuelos INNER JOIN aviones ON vuelos.avion=aviones.id_avion INNER JOIN usuarios on vuelos.piloto = usuarios.id'
+    #sql = f'SELECT id_vuelo, c_destino, c_salida, cant_pasajeros , cupos_disp, modelo ||" "|| matricula AS avion,nombres || " " || apellidos AS piloto, salida FROM vuelos AS v INNER JOIN aviones AS a ON v.avion = id_avion INNER JOIN empleados AS e ON v.piloto = e.id_emp INNER JOIN usuarios AS u ON u.id = e.id_usuario'
+    res = seleccion(query_aviones)
     if len(res) == 0:
         flash('ERROR: No hay usuarios en la tabla')
     else:
