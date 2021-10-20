@@ -25,7 +25,7 @@
             <tr class="">
               <th scope="col">ID</th>
               <th scope="col">Modelo</th>
-              <th scope="col">Matricula</th>
+              <th scope="col">Matrícula</th>
               <th scope="col">Capacidad</th>
               <th scope="col"></th>
             </tr>
@@ -68,39 +68,58 @@
 
         <div class="modal-body">
           <!-- Form de agregar vuelo -->
-          <form>
+          <form class="needs-validation" novalidate action="{{url_for('dashboard_aviones')}}" method="post">
+
+            {% for msg in get_flashed_messages() %}
+            <div class='form-row'>
+                {{ msg }}
+            </div>
+            {% endfor %}
 
             <div class="form-row">
               <div class="col">
-                <label for="idAvion">ID</label>
-                <input type="number" class="form-control" id="idAvion" placeholder="ID Avión">
+                {{form.id.label}}
+                {{form.id}}
+                <div class="invalid-feedback">
+                    El ID es requerido
+                </div>
               </div>
               <div class="col">
-                <label for="modelo">Modelo</label>
-                <input type="text" class="form-control" id="modelo" placeholder="Modelo">
+                {{form.modelo.label}}
+                {{form.modelo}}
+                <div class="invalid-feedback">
+                    El modelo es requerido
+                </div>                
               </div>
 
             </div>
 
             <div class="form-row">
               <div class="col">
-                <label for="matricula">Matricula</label>
-                <input type="text" class="form-control" id="matricula" placeholder="Matricula">
+                {{form.matricula.label}}
+                {{form.matricula}}
+                <div class="invalid-feedback">
+                    La matrícula es requerida
+                </div>
               </div>
               <div class="col">
-                <label for="capAvion">Capacidad</label>
-                <input type="number" class="form-control" id="capAvion" placeholder="Capacidad del avión">
+                {{form.cantidad.label}}
+                {{form.cantidad}}
+                <div class="invalid-feedback">
+                    Número de pasajeros es requerido
+                </div>
               </div>
             </div>
 
-          </form>
           <!-- Fin del form agregar vuelo -->
         </div>
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary">Agregar Avión</button>
+          {{form.btn(class='btn btn-primary')}}
+          <!-- <button type="button" class="btn btn-primary">Agregar Avión</button> -->
         </div>
+      </form>
 
       </div>
     </div>

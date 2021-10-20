@@ -19,7 +19,7 @@ input:focus,
 input,
 .custom-select {
     border-radius: 25px !important;
-    border: none;
+    border-color: #673ab7 !important;
 }
 
 /*
@@ -306,7 +306,8 @@ body {
 
 /* tabla */
 
-th, td {
+th,
+td {
     border: 1px solid blue;
     width: 100px;
     word-wrap: break-word;
