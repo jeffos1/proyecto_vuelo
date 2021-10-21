@@ -3,7 +3,7 @@ import os
 from forms import Login, Registro, AgregarAvion, AgregarUsuario, AgregarPilotos, AgregarVuelo
 from markupsafe import escape
 from werkzeug.security import check_password_hash, generate_password_hash
-from db import seleccion, accion, accionb
+from db import seleccion, accion, accionb, seleccionb
 from utils import login_valido, pass_valido, email_valido
 
 app = Flask(__name__)
@@ -351,7 +351,28 @@ def mis_reservas():
 
 @app.route('/dashboard_home')
 def dashboard_home():
-    return render_template('dashboard_home.html', pagina='dashboard')
+
+    query_usuarios = f'SELECT * FROM usuarios'
+
+    usuarios = seleccionb(query_usuarios)
+
+    query_vuelos = f'SELECT * FROM vuelos'
+
+    vuelos = seleccionb(query_vuelos)
+
+    query_pilotos = f'SELECT * FROM usuarios WHERE tipo_usuario = "p" or tipo_usuario = "P"'
+
+    pilotos = seleccionb(query_pilotos)
+
+    query_aviones = f'SELECT * FROM aviones'
+
+    aviones = seleccionb(query_aviones)
+
+    query_finalizados = f'SELECT * FROM vuelos WHERE estado = "i" or estado = "I"'
+
+    finalizados = seleccionb(query_finalizados)
+
+    return render_template('dashboard_home.html', pagina='dashboard', usuarios=usuarios, vuelos=vuelos, pilotos=pilotos, aviones=aviones, finalizados=finalizados)
 
 
 @app.route('/opiniones')
