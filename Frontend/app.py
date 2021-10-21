@@ -150,10 +150,22 @@ def dashboard_vuelos():
                     return redirect(url_for('dashboard_vuelos'))
         return render_template("dashboard_vuelos.html", pagina='dashboard', vuelos=res, form=form)
 
+@app.route('/eliminar_vuelo/<id>/<estado>', methods=['POST', 'GET'])
+def eliminar_vuelo(id, estado):
+    if estado == 'A':
+        estado = 'I'
+        sql = 'UPDATE vuelos SET estado = ? WHERE id_vuelo = ?'
+        res = accion(sql, (estado, id))
+        return redirect(url_for('dashboard_vuelos'))
+    else:
+        estado = 'A'
+        sql2 = 'UPDATE vuelos SET estado = ? WHERE id_vuelo = ?'
+        res = accion(sql2, (estado, id))
+        return redirect(url_for('dashboard_vuelos'))
 
 @app.route('/dashboard_aviones', methods=['POST', 'GET'])
 def dashboard_aviones():
-    sql = f'SELECT id_avion, modelo, matricula, cant_pasajeros FROM aviones'
+    sql = f'SELECT id_avion, modelo, matricula, cant_pasajeros, estado FROM aviones'
     res = seleccion(sql)
     if len(res) == 0:
         flash('ERROR: No hay aviones en la tabla')
@@ -180,21 +192,33 @@ def dashboard_aviones():
                 swerror = True
             if not swerror:
                 # Preparar el query -- Paramétrico
-                sql = "INSERT INTO aviones(id_avion, modelo, matricula, cant_pasajeros) VALUES(?, ?, ?, ?)"
+                sql2 = "INSERT INTO aviones(id_avion, modelo, matricula, cant_pasajeros) VALUES(?, ?, ?, ?)"
                 # Ejecutar la consulta
-                res = accion(sql, (id, modelo, matricula, cantidad))
+                res2 = accion(sql2, (id, modelo, matricula, cantidad))
                 # Proceso los resultados
-                if res == 0:
+                if res2 == 0:
                     flash('ERROR: No se pudieron almacenar los datos, reintente')
                 else:
                     flash('INFO: Los datos fueron almacenados satisfactoriamente')
                     return redirect(url_for('dashboard_aviones'))
         return render_template("dashboard_aviones.html", pagina='dashboard', aviones=res, form=form)
 
-
+@app.route('/eliminar_avion/<id>/<estado>', methods=['POST', 'GET'])
+def eliminar_avion(id, estado):
+    if estado == 'A':
+        estado = 'I'
+        sql = 'UPDATE aviones SET estado = ? WHERE id_avion = ?'
+        res = accion(sql, (estado, id))
+        return redirect(url_for('dashboard_aviones'))
+    else:
+        estado = 'A'
+        sql2 = 'UPDATE aviones SET estado = ? WHERE id_avion = ?'
+        res = accion(sql2, (estado, id))
+        return redirect(url_for('dashboard_aviones'))
+  
 @app.route('/dashboard_usuarios', methods=['POST', 'GET'])
 def dashboard_usuarios():
-    sql = f'SELECT id, nombres, apellidos, usuario, correo, password, numero, tipo_usuario FROM usuarios'
+    sql = f'SELECT id, nombres, apellidos, usuario, correo, password, numero, tipo_usuario, estado FROM usuarios'
     res = seleccion(sql)
     if len(res) == 0:
         flash('ERROR: No hay usuarios en la tabla')
@@ -250,10 +274,22 @@ def dashboard_usuarios():
                     return redirect(url_for('dashboard_usuarios'))
         return render_template('dashboard_usuarios.html', pagina='dashboard', usuarios=res, form=form)
 
+@app.route('/eliminar_usuario/<id>/<estado>', methods=['POST', 'GET'])
+def eliminar_usuario(id, estado):
+    if estado == 'A':
+        estado = 'I'
+        sql = 'UPDATE usuarios SET estado = ? WHERE id = ?'
+        res = accion(sql, (estado, id))
+        return redirect(url_for('dashboard_usuarios'))
+    else:
+        estado = 'A'
+        sql2 = 'UPDATE usuarios SET estado = ? WHERE id = ?'
+        res = accion(sql2, (estado, id))
+        return redirect(url_for('dashboard_usuarios'))
 
 @app.route('/dashboard_pilotos', methods=['POST', 'GET'])
 def dashboard_pilotos():
-    sql = f"SELECT id, nombres, apellidos, usuario, correo, numero, password, direccion, estado, fecha_ingreso, t_contrato FROM usuarios AS us INNER JOIN empleados AS em ON us.id = em.id_emp AND us.tipo_usuario = 'p'"
+    sql = f"SELECT id, nombres, apellidos, usuario, correo, numero, password, direccion, em.estado, fecha_ingreso, t_contrato FROM usuarios AS us INNER JOIN empleados AS em ON us.id = em.id_emp AND us.tipo_usuario = 'p'"
     res = seleccion(sql)
     if len(res) == 0:
         flash('ERROR: No hay pilotos en la tabla')
@@ -303,22 +339,34 @@ def dashboard_pilotos():
                 swerror = True
             if not swerror:
                 # Preparar el query -- Paramétrico
-                sql = "INSERT INTO usuarios(id, Nombres, Apellidos, usuario, correo, numero, password, tipo_usuario) VALUES(?, ?, ?, ?, ?, ?, ?, ?)"
+                sql2 = "INSERT INTO usuarios(id, Nombres, Apellidos, usuario, correo, numero, password, tipo_usuario) VALUES(?, ?, ?, ?, ?, ?, ?, ?)"
                 pwd = generate_password_hash(clave)
                 # Ejecutar la consulta
-                res = accion(sql, (id, nombres, apellidos, usuario,
+                res2 = accion(sql2, (id, nombres, apellidos, usuario,
                              email,  numero, pwd, tipoUsuario))
                 # Proceso los resultados
-                sql2 = "INSERT INTO empleados(id_emp, direccion, estado, fecha_ingreso, t_contrato) VALUES(?, ?, ?, ?, ?)"
-                res2 = accion(
-                    sql2, (id, direccion, estado, fechaIngreso, tiempoC))
-                if res == 0 or res2 == 0:
+                sql3 = "INSERT INTO empleados(id_emp, direccion, estado, fecha_ingreso, t_contrato) VALUES(?, ?, ?, ?, ?)"
+                res3 = accion(
+                    sql3, (id, direccion, estado, fechaIngreso, tiempoC))
+                if res3 == 0 or res2 == 0:
                     flash('ERROR: No se pudieron almacenar los datos, reintente')
                 else:
                     flash('INFO: Los datos fueron almacenados satisfactoriamente')
                     return redirect(url_for('dashboard_pilotos'))
         return render_template('dashboard_pilotos.html', pagina='dashboard', pilotos=res, form=form)
 
+@app.route('/eliminar_piloto/<id>/<estado>', methods=['POST', 'GET'])
+def eliminar_piloto(id, estado):
+    if estado == 'A':
+        estado = 'I'
+        sql = 'UPDATE empleados SET estado = ? WHERE id_emp = ?'
+        res = accion(sql, (estado, id))
+        return redirect(url_for('dashboard_pilotos'))
+    else:
+        estado = 'A'
+        sql2 = 'UPDATE empleados SET estado = ? WHERE id_emp = ?'
+        res = accion(sql2, (estado, id))
+        return redirect(url_for('dashboard_pilotos'))
 
 @app.route('/usuario_piloto')
 def usuario_piloto():
