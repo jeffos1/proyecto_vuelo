@@ -52,6 +52,17 @@ class AgregarAvion(FlaskForm):
         'Cantidad de Pasajeros *', validators=[InputRequired(message='Indique la cantidad de pasajeros')])
     btn = SubmitField('AgregarAvion')
 
+class EditarAvion(FlaskForm):
+    id = TextField(
+        'ID *', validators=[InputRequired(message='Indique el ID')])
+    modelo = TextField(
+        'Modelo *', validators=[InputRequired(message='Indique el modelo')])
+    matricula = TextField(
+        'Matricula *', validators=[InputRequired(message='Indique el matrícula')])
+    cantidad = TextField(
+        'Cantidad de Pasajeros *', validators=[InputRequired(message='Indique la cantidad de pasajeros')])
+    btn = SubmitField('AgregarAvion')
+
 class AgregarUsuario(FlaskForm):
     id = TextField('ID ')
     nombres = TextField(

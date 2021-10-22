@@ -12,7 +12,6 @@ def seleccion(sql) -> list:
         res = ['0']
     return res
 
-
 def seleccionb(sql) -> int:
     """ Ejecuta una consulta de selección sobre la base de datos """
     try:

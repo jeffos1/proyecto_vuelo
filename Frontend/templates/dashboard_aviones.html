@@ -39,7 +39,7 @@
               <td>{{ dat[2] }}</td>
               <td>{{ dat[3] }}</td>
               <td>{% if dat[4] == 'I'%}Inactivo{% endif%}{% if dat[4] == 'A'%}Activo{% endif%}</td>
-              <td><a href="" data-toggle="modal" data-target="#agregarAvion">Editar</a> - <a href="{{ url_for('eliminar_avion', id=dat[0], estado=dat[4]) }}">{% if dat[4] == 'I'%}Mostrar{% endif%}{% if dat[4] == 'A'%}Ocultar{% endif%}</a></td>
+              <td><a href="{{url_for('editar_avion', id=dat[0])}}">Editar</a> - <a href="{{ url_for('eliminar_avion', id=dat[0], estado=dat[4]) }}">{% if dat[4] == 'I'%}Mostrar{% endif%}{% if dat[4] == 'A'%}Ocultar{% endif%}</a></td>
             </tr>
             {% endfor %}            
           </tbody>
@@ -126,29 +126,7 @@
     </div>
   </div>
   <!-- Fin del modal de agregar vuelos -->
-
-  <!-- Modal eliminar vuelo  -->
-<!--   <div class="modal" tabindex="-1" role="dialog" id="eliminarAvion">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Eliminar Avión</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>¿Esta seguro que desea ocultar el siguiente Avión?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger" type="submit">Eliminar</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        </div>
-      </div>
-    </div>
-  </div> -->
-  <!-- Fin modal eliminar vuelo -->
-
+  
 </div>
 <script type="module">
   import { class_to_active_link, addCloseToNav } from '../static/js/script.js'

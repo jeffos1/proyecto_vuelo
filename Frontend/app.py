@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request, flash, session
 import os
-from forms import Login, Registro, AgregarAvion, AgregarUsuario, AgregarPilotos, AgregarVuelo
+from forms import Login, Registro, AgregarAvion, AgregarUsuario, AgregarPilotos, AgregarVuelo, EditarAvion
 from markupsafe import escape
 from werkzeug.security import check_password_hash, generate_password_hash
 from db import seleccion, accion, accionb, seleccionb
@@ -171,7 +171,7 @@ def dashboard_aviones():
         flash('ERROR: No hay aviones en la tabla')
     else:
         # return render_template("dashboard_aviones.html", pagina='dashboard', aviones=res)
-        form = AgregarAvion()
+        form = AgregarAvion()        
         if request.method == 'POST':
             id = escape(request.form['id'])
             modelo = escape(request.form['modelo'])
@@ -215,6 +215,40 @@ def eliminar_avion(id, estado):
         sql2 = 'UPDATE aviones SET estado = ? WHERE id_avion = ?'
         res = accion(sql2, (estado, id))
         return redirect(url_for('dashboard_aviones'))
+
+@app.route('/editar_avion/<id>', methods=['POST', 'GET'])
+def editar_avion(id):        
+        sql = 'SELECT * FROM aviones WHERE id_avion = %s' % (id)
+        res2 = seleccion(sql)
+
+        form2 = EditarAvion()
+        if request.method == 'POST':
+            modelo = escape(request.form['modelo'])
+            matricula = escape(request.form['matricula'])
+            cantidad = escape(request.form['cantidad'])
+            swerror = False
+            if modelo == None or len(modelo) == 0:
+                flash('ERROR: Debe suministrar un modelo')
+                swerror = True
+            if matricula == None or len(matricula) == 0:
+                flash('ERROR: Debe suministrar una matrícula')
+                swerror = True
+            if cantidad == None or len(cantidad) == 0:
+                flash('ERROR: Debe suministrar una cantidad de pasajeros')
+                swerror = True
+            if not swerror:
+                # Preparar el query -- Paramétrico
+                sql2 = "UPDATE aviones SET modelo = ?, matricula = ?, cant_pasajeros = ? WHERE id_avion = ?"
+                # Ejecutar la consulta
+                res2 = accion(sql2, (modelo, matricula, cantidad, id))
+                # Proceso los resultados
+                if res2 == 0:
+                    flash('ERROR: No se pudieron editar los datos, reintente')
+                else:
+                    flash('INFO: Los datos fueron editados satisfactoriamente')
+                    return redirect(url_for('dashboard_aviones'))
+        return render_template("editar_avion.html", pagina='dashboard', avion = res2, form=form2)
+    
   
 @app.route('/dashboard_usuarios', methods=['POST', 'GET'])
 def dashboard_usuarios():
