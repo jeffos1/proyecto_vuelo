@@ -12,13 +12,13 @@
     <div class="row mx-auto my-auto">
         <div class="col-md-12">
             {% if not resultados %}
-            <h2 class="text_purple">No hay vuelos </h2>
+            <h2 class="text_purple"></h2>
             {% else %}
             <h2 class="text_purple">Vuelos disponibles de {{ resultados[0][2]}} a {{ resultados[0][1] }}:</h2>
             {% endif %}
 
             {% for msg in get_flashed_messages() %}
-            <div class='fila'>{{ msg }}</div>
+            <div class='display-3 text_purple'>{{ msg }}</div>
             {% endfor %}
             <!-- <small class="text_purple">20 de octubre del 2021</small> -->
             {% if resultados %}
@@ -81,7 +81,7 @@
 
                                 <!-- Modal content-->
                                 <div class="modal-content bg_purple">
-                                    <div class="modal-header text-center>
+                                    <div class="modal-header text-center">
                                         <button type=" button" class="close" data-dismiss="modal">&times;</button>
                                         <h4 class="modal-title text-white">Reservar Tiquete</h4>
                                     </div>

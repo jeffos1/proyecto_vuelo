@@ -34,16 +34,16 @@ def index():
         origen = escape(request.form['ciudad_origen'])
         destino = escape(request.form['ciudad_destino'])
         fecha_ida = escape(request.form['fecha_ida'])
-        clase = escape(request.form['clase'])
-        adultos = escape(request.form['adultos'])
-        ninos = escape(request.form['ninos'])
+        # clase = escape(request.form['clase'])
+        # adultos = escape(request.form['adultos'])
+        # ninos = escape(request.form['ninos'])
 
         query_buscar = f'SELECT * FROM vuelos WHERE salida = "{str(fecha_ida)}" AND c_salida like "{str(origen)}" AND c_destino like "{str(destino)}"'
 
         res = seleccion(query_buscar)
 
         if len(res) == 0:
-            flash('ERROR: No hay vuelos')
+            flash('* No hay vuelos disponibles!')
             return render_template("home.html", origenes=origenes, destinos=destinos, tipo_vuelo=tipo_vuelo)
         else:
             return render_template('search_results.html', resultados=res, id=id)
@@ -85,7 +85,7 @@ def search():
             query_tiquete = 'INSERT INTO tiquetes (vuelo, usuario, clase) VALUES (?, ?, ?)'
             res = accion(query_tiquete, (vuelo, usuario, clase))
             if res != 0:
-                flash('INFO: Datos almacenados con exito')
+                flash('Vuelo reservado con exito!')
             else:
                 flash('ERROR: Por favor reintente')
 
@@ -138,8 +138,6 @@ def login():
             else:
                 flash('ERROR: Usuario o clave invalidas')
                 return render_template('login.html', form=form, titulo='Iniciar Sesión')
-
-    return render_template("login.html", title='Iniciar sesion', form=form)
 
 
 @app.route('/plantilla')
