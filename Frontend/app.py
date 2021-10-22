@@ -16,16 +16,83 @@ def e404(e):
     return render_template('404.html'), 404
 
 
-@app.route('/')
-@app.route('/index/')
-@app.route('/home/')
+@app.route('/', methods=['GET', 'POST'])
+@app.route('/index/', methods=['GET', 'POST'])
+@app.route('/home/', methods=['GET', 'POST'])
 def index():
-    return render_template("home.html")
+
+    query_origenes = f'SELECT c_salida FROM vuelos'
+    origenes = seleccion(query_origenes)
+
+    query_destinos = f'SELECT c_destino FROM vuelos'
+    destinos = seleccion(query_destinos)
+
+    query_tipo_vuelo = f'SELECT tipo_vuelo FROM tipo_vuelo'
+    tipo_vuelo = seleccion(query_tipo_vuelo)
+
+    if request.method == 'POST':
+        origen = escape(request.form['ciudad_origen'])
+        destino = escape(request.form['ciudad_destino'])
+        fecha_ida = escape(request.form['fecha_ida'])
+        clase = escape(request.form['clase'])
+        adultos = escape(request.form['adultos'])
+        ninos = escape(request.form['ninos'])
+
+        query_buscar = f'SELECT * FROM vuelos WHERE salida = "{str(fecha_ida)}" AND c_salida like "{str(origen)}" AND c_destino like "{str(destino)}"'
+
+        res = seleccion(query_buscar)
+
+        if len(res) == 0:
+            flash('ERROR: No hay vuelos')
+            return render_template("home.html", origenes=origenes, destinos=destinos, tipo_vuelo=tipo_vuelo)
+        else:
+            return render_template('search_results.html', resultados=res, id=id)
+
+    if origenes == 0 and destinos == 0:
+        origenes = ['No disponible']
+        destinos = ['No disponible']
+        return render_template("home.html", origenes=origenes, destinos=destinos, tipo_vuelo=tipo_vuelo)
+    elif origenes == 0 and destinos != 0:
+        origenes = ['No disponible']
+        return render_template("home.html", origenes=origenes, destinos=destinos, tipo_vuelo=tipo_vuelo)
+    elif origenes != 0 and destinos == 0:
+        destinos = ['No disponible']
+        return render_template("home.html", origenes=origenes, destinos=destinos, tipo_vuelo=tipo_vuelo)
+    else:
+        return render_template("home.html", origenes=origenes, destinos=destinos, tipo_vuelo=tipo_vuelo)
 
 
-@app.route('/search_results')
+@app.route('/search_results', methods=['POST', 'GET'])
 def search():
-    return render_template("search_results.html")
+
+    if request.method == 'POST':
+        usuario = escape(request.form['usuario'])
+        vuelo = escape(request.form['vuelo'])
+        clase = escape(request.form['clase'])
+        #password = request.form['password']
+
+        query_usuario = f'SELECT id FROM usuarios WHERE usuario = "{str(usuario)}"'
+        res = seleccion(query_usuario)
+        if len(res) == 0:
+            flash("Usuario invalido")
+            return render_template("search_results.html")
+        else:
+
+            usuario = res[0][0]
+            vuelo = str(vuelo)
+            clase = str(clase)
+
+            query_tiquete = 'INSERT INTO tiquetes (vuelo, usuario, clase) VALUES (?, ?, ?)'
+            res = accion(query_tiquete, (vuelo, usuario, clase))
+            if res != 0:
+                flash('INFO: Datos almacenados con exito')
+            else:
+                flash('ERROR: Por favor reintente')
+
+            return render_template("search_results.html")
+    else:
+
+        return render_template("search_results.html")
 
 
 @app.route('/login', methods=['POST', 'GET'])
@@ -48,6 +115,7 @@ def login():
             cbd = res[0][3]
             if check_password_hash(cbd, clave):
                 session.clear()
+                session.permanent = True
                 session['id'] = res[0][0]
                 session['nombre'] = res[0][1]
                 session['usuario'] = usuario
@@ -99,7 +167,7 @@ def dashboard_vuelos():
         form = AgregarVuelo()
         sql2 = f'SELECT id_avion, modelo || " " || matricula AS avion FROM aviones'
         aviones = seleccion(sql2)
-        print(aviones)
+
         if len(aviones) == 0:
             flash('ERROR: No hay aviones en la tabla')
         else:

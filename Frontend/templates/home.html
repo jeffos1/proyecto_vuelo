@@ -28,17 +28,21 @@
 
         </div>
         <div class="col-lg-5 col-sm-12 card text-white bg_purple radius_25 mx-auto" style="max-width: 25rem;">
-            <div class="row justify-content-center pb-2">
+            <form method="post" class="row justify-content-center pb-2">
+                {% for msg in get_flashed_messages() %}
+                <div class='fila'>{{ msg }}</div>
+                {% endfor %}
                 <h4 class="col-lg-12 text-center">Buscar vuelo</h4>
 
 
                 <div class="col-lg-6 mb-2 ">
                     <label for="ciudad_origen">Origen</label>
-                    <select class="custom-select w-100 radius_25 input_text shadow" id="ciudad_origen" required>
-                        <option value="">Ciudad...</option>
-                        <option>Bogota</option>
-                        <option>Medellin</option>
-                        <option>Pasto</option>
+                    <select class="custom-select w-100 radius_25 input_text shadow" id="ciudad_origen"
+                        name="ciudad_origen" required>
+                        {% for origen in origenes %}
+                        <option value="{{ origen[0] }}">{{ origen[0] }}</option>
+                        {% endfor %}
+
                     </select>
                     <div class="invalid-feedback">
                         Please select a valid country.
@@ -46,11 +50,11 @@
                 </div>
                 <div class="col-lg-6  mb-2">
                     <label for="ciudad_destino">Destino</label>
-                    <select class="custom-select w-100 radius_25 input_text shadow" id="ciudad_destino" required>
-                        <option value="">Ciudad...</option>
-                        <option>Bogota</option>
-                        <option>Medellin</option>
-                        <option>Pasto</option>
+                    <select class="custom-select w-100 radius_25 input_text shadow" id="ciudad_destino"
+                        name="ciudad_destino" required>
+                        {% for destino in destinos %}
+                        <option value="{{ destino[0] }}">{{ destino[0] }}</option>
+                        {% endfor %}
                     </select>
                     <div class="invalid-feedback">
                         Por favor selecione una opcion
@@ -59,65 +63,52 @@
 
 
                 <div class="md-form col-lg-6 md-outline datepicker shadow mb-2">
-                    <label for="example">Fecha de ida</label>
-                    <input placeholder="Select date" type="date" id="example" class="form-control input_text radius_25">
+                    <label for="fecha_ida">Fecha de ida</label>
+                    <input placeholder="Select date" type="date" id="fecha_ida" name="fecha_ida"
+                        class="form-control input_text radius_25">
                 </div>
-
-                <div class="md-form col-lg-6 datepicker shadow mb-2">
-                    <label for="example">Fecha de vuelta</label>
-                    <input placeholder="Select date" type="date" id="example" class="form-control input_text radius_25">
-                </div>
-
-
-
 
                 <div class="col-lg-6  mb-2">
                     <label for="clase">Clase</label>
-                    <select class="custom-select w-100 radius_25 input_text shadow" id="clase" required>
-                        <option value="">Elegir...</option>
-                        <option>Economica</option>
-                        <option>Ejecutiva</option>
+                    <select class="custom-select w-100 radius_25 input_text shadow" id="clase" name="clase" required>
+                        {% for clase in tipo_vuelo %}
+                        <option value="{{ clase[0] }}">{{ clase[0] }}</option>
+                        {% endfor %}
                     </select>
                     <div class="invalid-feedback">
                         Por favor selecione una opcion
                     </div>
                 </div>
 
-                <div class="col-lg-3 mb-2 ">
-                    <label for="adultos">Adultos</label>
-                    <select class="custom-select w-100 radius_25 input_text shadow" id="adultos" required>
-                        <option value="">?...</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Por favor selecione una opcion
+                <div class="col-md-6 row mr-auto">
+
+                    <div class="col-md-6 mb-2 ">
+                        <label for="adultos">Adultos</label>
+                        <input class="radius_25 input_text" id="adultos" name="adultos" min="0" type="number"
+                            style="width: 4rem;">
+                        <div class="invalid-feedback">
+                            Por favor selecione una opcion
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-3  mb-2">
-                    <label for="ninos">niños</label>
-                    <select class="custom-select w-100 radius_25 input_text shadow" id="ninos" required>
-                        <option value="">?...</option>
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                    </select>
-                    <div class="invalid-feedback">
-                        Por favor selecione una opcion
+                    <div class="col-md-6  mb-2">
+                        <label for="ninos">niños</label>
+                        <input class="radius_25 input_text" id="ninos" name="ninos" min="0" type="number"
+                            style="width: 4rem;">
+                        <div class="invalid-feedback">
+                            Por favor selecione una opcion
+                        </div>
                     </div>
                 </div>
 
-                <form action="../search_results" method="get">
-                    <button class="btn bg_green_yellow radius_15 shadow mb-2 d-flex align-items-center mt-1"
-                        type="submit">
+                <div class="col-lg-6 align-self-center mx-auto">
+                    <button class="btn bg_green_yellow radius_15 shadow d-flex align-items-center mt-1" type="submit">
                         <i class="bi bi-search mr-1 pb-1"></i>
                         Buscar</button>
-                </form>
+                </div>
 
 
 
-            </div>
+            </form>
         </div>
 
     </div>
