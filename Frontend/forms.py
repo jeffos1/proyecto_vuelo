@@ -107,6 +107,32 @@ class AgregarPilotos(FlaskForm):
          
     btn = SubmitField('Agregar Piloto')
 
+class EditarPiloto(FlaskForm):
+    id = TextField(
+        'ID *', validators=[InputRequired(message='Indique el ID')])
+    nombres = TextField(
+        'Nombre *', validators=[InputRequired(message='Indique el nombre')])
+    apellidos = TextField(
+        'Apellido *', validators=[InputRequired(message='Indique el apellido')])
+    usuario = TextField(
+        'Usuario *', validators=[InputRequired(message='Indique el usuario')])
+    email = EmailField(
+        'Email *', validators=[InputRequired(message='Indique el email')])
+    clave = PasswordField(
+        'Clave *', validators=[InputRequired(message='Indique la clave')])    
+    numero = TextField(
+        'Número de Teléfono*', validators=[InputRequired(message='Indique el número de teléfono')])
+    direccion = TextField(
+        'Dirección *', validators=[InputRequired(message='Indique una dirección')])
+    fechaIngreso = DateField(
+        'Fecha de Ingreso *', validators=[InputRequired(message='Indique la fecha de ingreso')])
+    tiempoC = TextField(
+        'Tiempo del contrato (meses)*', validators=[InputRequired(message='Indique el tiempo del contrato')])
+    estado = SelectField('Estado', choices=[('A', 'Activo'), ('I', 'Inactivo')])
+         
+    btn = SubmitField('Agregar Piloto')
+
+
 class AgregarVuelo(FlaskForm):
     id = TextField(
         'ID *', validators=[InputRequired(message='Indique la id')])

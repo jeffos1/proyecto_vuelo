@@ -1,6 +1,6 @@
 from flask import Flask, render_template, redirect, url_for, request, flash, session
 import os
-from forms import Login, Registro, AgregarAvion, AgregarUsuario, AgregarPilotos, AgregarVuelo, EditarAvion
+from forms import Login, Registro, AgregarAvion, AgregarUsuario, AgregarPilotos, AgregarVuelo, EditarAvion, EditarPiloto
 from markupsafe import escape
 from werkzeug.security import check_password_hash, generate_password_hash
 from db import seleccion, accion, accionb, seleccionb
@@ -388,6 +388,72 @@ def dashboard_pilotos():
                     flash('INFO: Los datos fueron almacenados satisfactoriamente')
                     return redirect(url_for('dashboard_pilotos'))
         return render_template('dashboard_pilotos.html', pagina='dashboard', pilotos=res, form=form)
+
+@app.route('/editar_piloto/<id>', methods=['POST', 'GET'])
+def editar_piloto(id):        
+        sql = "SELECT id, nombres, apellidos, usuario, correo, numero, password, direccion, em.estado, fecha_ingreso, t_contrato FROM usuarios AS us INNER JOIN empleados AS em ON us.id = em.id_emp AND us.tipo_usuario = 'p' WHERE id_emp = %s" % (id)
+        res = seleccion(sql)
+
+        form2 = EditarPiloto()
+        if request.method == 'POST':
+            #id = escape(request.form['id'])
+            nombres = escape(request.form['nombres'])
+            apellidos = escape(request.form['apellidos'])
+            usuario = escape(request.form['usuario'])
+            email = escape(request.form['email'])
+            clave = escape(request.form['clave'])
+            numero = escape(request.form['numero'])
+            direccion = escape(request.form['direccion'])
+            fechaIngreso = escape(request.form['fechaIngreso'])
+            tiempoC = request.form['tiempoC']
+            estado = request.form.get('estado')
+            tipoUsuario = 'p'
+            swerror = False
+            if nombres == None or len(nombres) == 0:
+                flash('ERROR: Debe suministrar un nombre')
+                swerror = True
+            if apellidos == None or len(apellidos) == 0:
+                flash('ERROR: Debe suministrar un apellido')
+                swerror = True
+            if usuario == None or len(usuario) == 0 or not login_valido(usuario):
+                flash('ERROR: Debe suministrar un usuario válido ')
+                swerror = True
+            if email == None or len(email) == 0 or not email_valido(email):
+                flash('ERROR: Debe suministrar un email válido')
+                swerror = True
+            if clave == None or len(clave) == 0 or not pass_valido(clave):
+                flash('ERROR: Debe suministrar una clave válida')
+                swerror = True
+            if numero == None or len(numero) == 0:
+                flash('ERROR: Debe suministrar un número de teléfono')
+                swerror = True
+            if direccion == None or len(direccion) == 0:
+                flash('ERROR: Debe suministrar una dirección')
+                swerror = True
+            if fechaIngreso == None or len(fechaIngreso) == 0:
+                flash('ERROR: Debe suministrar la fecha de Ingreso del piloto')
+                swerror = True
+            if tiempoC == None or len(tiempoC) == 0:
+                flash('ERROR: Debe suministrar el tiempo de contratación (meses)')
+                swerror = True
+            if not swerror:
+                # Preparar el query -- Paramétrico
+                sql2 = "UPDATE usuarios SET Nombres = ?, Apellidos = ?, usuario = ?, correo = ?, numero = ?, password = ?, tipo_usuario = ? WHERE id = ?"
+                pwd = generate_password_hash(clave)
+                # Ejecutar la consulta
+                res2 = accion(sql2, (nombres, apellidos, usuario,
+                             email,  numero, pwd, tipoUsuario, id))
+                # Proceso los resultados
+                sql3 = "UPDATE empleados direccion = ?, estado = ?, fecha_ingreso = ?, t_contrato = ? WHERE id_emp = ?"
+                res3 = accion(
+                    sql3, (direccion, estado, fechaIngreso, tiempoC, id))
+                if res3 == 0 or res2 == 0:
+                    flash('ERROR: No se pudieron almacenar los datos, reintente')
+                else:
+                    flash('INFO: Los datos fueron almacenados satisfactoriamente')
+                    return redirect(url_for('dashboard_pilotos'))
+        return render_template('editar_piloto.html', pagina='dashboard', piloto=res, form=form2)
+
 
 @app.route('/eliminar_piloto/<id>/<estado>', methods=['POST', 'GET'])
 def eliminar_piloto(id, estado):
