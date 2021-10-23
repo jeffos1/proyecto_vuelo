@@ -48,10 +48,10 @@
               <td>{{ dat[5] }}</td>
               <td> ********* </td>
               <td>{{ dat[7] }}</td>
-              <td>{{ dat[8] }}</td>
+              <td>{% if dat[8] == 'I'%}Inactivo{% endif%}{% if dat[8] == 'A'%}Activo{% endif%}</td>
               <td>{{ dat[9] }}</td>
               <td>{{ dat[10] }}</td>
-              <td><a href="" data-toggle="modal" data-target="#agregarPiloto">Editar</a> - <a href="" data-toggle="modal" data-target="#eliminarPiloto">Ocultar</a></td>
+              <td><a href="{{url_for('editar_piloto', id=dat[0])}}" >Editar</a> - <a href="{{ url_for('eliminar_piloto', id=dat[0], estado=dat[8]) }}">{% if dat[8] == 'I'%}Mostrar{% endif%}{% if dat[8] == 'A'%}Ocultar{% endif%}</a></td>
             </tr>
             {% endfor %}            
           </tbody>

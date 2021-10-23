@@ -41,7 +41,6 @@ class Registro(FlaskForm):
         message='Indique la verificación'), EqualTo(clave, message='Clave y la verificación no coinciden')])
     btn = SubmitField('Registrar')
 
-
 class AgregarAvion(FlaskForm):
     id = TextField(
         'ID *', validators=[InputRequired(message='Indique el ID')])
@@ -53,6 +52,16 @@ class AgregarAvion(FlaskForm):
         'Cantidad de Pasajeros *', validators=[InputRequired(message='Indique la cantidad de pasajeros')])
     btn = SubmitField('AgregarAvion')
 
+class EditarAvion(FlaskForm):
+    id = TextField(
+        'ID *', validators=[InputRequired(message='Indique el ID')])
+    modelo = TextField(
+        'Modelo *', validators=[InputRequired(message='Indique el modelo')])
+    matricula = TextField(
+        'Matricula *', validators=[InputRequired(message='Indique el matrícula')])
+    cantidad = TextField(
+        'Cantidad de Pasajeros *', validators=[InputRequired(message='Indique la cantidad de pasajeros')])
+    btn = SubmitField('AgregarAvion')
 
 class AgregarUsuario(FlaskForm):
     id = TextField('ID ')
@@ -70,10 +79,8 @@ class AgregarUsuario(FlaskForm):
         'Email *', validators=[InputRequired(message='Indique el email')])
     clave = PasswordField(
         'Clave *', validators=[InputRequired(message='Indique la clave')])
-    tipoUsuario = SelectField('Tipo de Usuario', choices=[(
-        'p', 'piloto'), ('c', 'usuario final'), ('a', 'SuperUsuario')])
+    tipoUsuario = SelectField('Tipo de Usuario', choices=[('p', 'piloto'), ('c', 'usuario final'), ('a', 'SuperUsuario')])
     btn = SubmitField('Agregar Usuario')
-
 
 class AgregarPilotos(FlaskForm):
     id = TextField(
@@ -87,7 +94,7 @@ class AgregarPilotos(FlaskForm):
     email = EmailField(
         'Email *', validators=[InputRequired(message='Indique el email')])
     clave = PasswordField(
-        'Clave *', validators=[InputRequired(message='Indique la clave')])
+        'Clave *', validators=[InputRequired(message='Indique la clave')])    
     numero = TextField(
         'Número de Teléfono*', validators=[InputRequired(message='Indique el número de teléfono')])
     direccion = TextField(
@@ -96,9 +103,33 @@ class AgregarPilotos(FlaskForm):
         'Fecha de Ingreso *', validators=[InputRequired(message='Indique la fecha de ingreso')])
     tiempoC = TextField(
         'Tiempo del contrato (meses)*', validators=[InputRequired(message='Indique el tiempo del contrato')])
-    estado = SelectField('Estado', choices=[
-                         ('A', 'Activo'), ('I', 'Inactivo')])
+    estado = SelectField('Estado', choices=[('A', 'Activo'), ('I', 'Inactivo')])
+         
+    btn = SubmitField('Agregar Piloto')
 
+class EditarPiloto(FlaskForm):
+    id = TextField(
+        'ID *', validators=[InputRequired(message='Indique el ID')])
+    nombres = TextField(
+        'Nombre *', validators=[InputRequired(message='Indique el nombre')])
+    apellidos = TextField(
+        'Apellido *', validators=[InputRequired(message='Indique el apellido')])
+    usuario = TextField(
+        'Usuario *', validators=[InputRequired(message='Indique el usuario')])
+    email = EmailField(
+        'Email *', validators=[InputRequired(message='Indique el email')])
+    clave = PasswordField(
+        'Clave *', validators=[InputRequired(message='Indique la clave')])    
+    numero = TextField(
+        'Número de Teléfono*', validators=[InputRequired(message='Indique el número de teléfono')])
+    direccion = TextField(
+        'Dirección *', validators=[InputRequired(message='Indique una dirección')])
+    fechaIngreso = DateField(
+        'Fecha de Ingreso *', validators=[InputRequired(message='Indique la fecha de ingreso')])
+    tiempoC = TextField(
+        'Tiempo del contrato (meses)*', validators=[InputRequired(message='Indique el tiempo del contrato')])
+    estado = SelectField('Estado', choices=[('A', 'Activo'), ('I', 'Inactivo')])
+         
     btn = SubmitField('Agregar Piloto')
 
 
@@ -113,9 +144,7 @@ class AgregarVuelo(FlaskForm):
         'Cupos *', validators=[InputRequired(message='Indique el número de cupos')])
     avion = SelectField('Avion *', choices=[])
     piloto = SelectField('Piloto *', choices=[])
-    # fechaSalida = DateTimeLocalField(
-    #     'Fecha de Salida *', validators=[InputRequired(message='Indique la fecha de salida')])
-    fechaSalida = DateField(
+    fechaSalida = DateTimeLocalField(
         'Fecha de Salida *', validators=[InputRequired(message='Indique la fecha de salida')])
     cupos = TextField(
         'Cupos *', validators=[InputRequired(message='Indique el número de cupos')])

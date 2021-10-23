@@ -31,6 +31,7 @@
               <th scope="col">Avión</th>
               <th scope="col">Piloto</th>
               <th scope="col">Fecha - Hora</th>
+              <th scope="col">Estado</th>
               <th scope="col"></th>
             </tr>
           </thead>
@@ -45,8 +46,9 @@
               <td>{{ dat[5] }}</td>
               <td>{{ dat[6] }}</td> 
               <td>{{ dat[7] }}</td>
-              <td><a href="" data-toggle="modal" data-target="#agregarVuelo">Editar</a> - <a href="" data-toggle="modal"
-                  data-target="#eliminarVuelo">Ocultar</a></td>
+              <td>{% if dat[8] == 'I'%}Inactivo{% endif%}{% if dat[8] == 'A'%}Activo{% endif%}</td>
+
+              <td><a href="{{ url_for('editar_vuelo', id=dat[0]) }}">Editar</a> - <a href="{{ url_for('eliminar_vuelo', id=dat[0], estado=dat[8]) }}">{% if dat[8] == 'I'%}Mostrar{% endif%}{% if dat[8] == 'A'%}Ocultar{% endif%}</a></td>
             </tr>
             {% endfor %}
             
