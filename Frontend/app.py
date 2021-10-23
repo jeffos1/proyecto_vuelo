@@ -91,13 +91,13 @@ def dashboard_child():
 
 @app.route('/dashboard_vuelos', methods=['POST', 'GET'])
 def dashboard_vuelos():
-    sql = f'SELECT id_vuelo, c_destino, c_salida, cant_pasajeros , cupos_disp, modelo ||" "|| matricula AS avion, nombres || " " || apellidos AS piloto, salida FROM vuelos AS v INNER JOIN aviones AS a ON v.avion = id_avion INNER JOIN empleados AS e ON v.piloto = e.id_emp INNER JOIN usuarios AS u ON u.id = e.id_emp'
+    sql = f'SELECT id_vuelo, c_destino, c_salida, cant_pasajeros , cupos_disp, modelo ||" "|| matricula AS avion, nombres || " " || apellidos AS piloto, salida, v.estado FROM vuelos AS v INNER JOIN aviones AS a ON v.avion = id_avion INNER JOIN empleados AS e ON v.piloto = e.id_emp INNER JOIN usuarios AS u ON u.id = e.id_emp'
     res = seleccion(sql)
     if len(res) == 0:
         flash('ERROR: No hay vuelos en la tabla')
     else:
         form = AgregarVuelo()
-        sql2 = f'SELECT id_avion, modelo || " " || matricula AS avion FROM aviones'
+        sql2 = f'SELECT id_avion, modelo || " " || matricula AS avion FROM aviones WHERE estado = "A"'
         aviones = seleccion(sql2)
         print(aviones)
         if len(aviones) == 0:
@@ -105,9 +105,9 @@ def dashboard_vuelos():
         else:
             form.avion.choices = [(a[0], a[1]) for a in aviones]
 
-        sql2 = f'SELECT id, Nombres || " " || Apellidos AS piloto FROM empleados AS em INNER JOIN usuarios AS us ON em.id_emp = us.id'
+        sql2 = f'SELECT id, Nombres || " " || Apellidos AS piloto FROM empleados AS em INNER JOIN usuarios AS us ON em.id_emp = us.id WHERE em.estado = "A"'
         pilotos = seleccion(sql2)
-        if len(aviones) == 0:
+        if len(pilotos) == 0:
             flash('ERROR: No hay pilotos en la tabla')
         else:
             form.piloto.choices = [(p[0], p[1]) for p in pilotos]
@@ -149,6 +149,64 @@ def dashboard_vuelos():
                     flash('INFO: Los datos fueron almacenados satisfactoriamente')
                     return redirect(url_for('dashboard_vuelos'))
         return render_template("dashboard_vuelos.html", pagina='dashboard', vuelos=res, form=form)
+
+@app.route('/editar_vuelo/<id>', methods=['POST', 'GET'])
+def editar_vuelo(id):        
+        sql = 'SELECT * FROM vuelos WHERE id_vuelo = %s' % (id)
+        res = seleccion(sql)
+
+        form = AgregarVuelo()
+        sql2 = f'SELECT id_avion, modelo || " " || matricula AS avion FROM aviones WHERE estado = "A"'
+        aviones = seleccion(sql2)
+        print(aviones)
+        if len(aviones) == 0:
+            flash('ERROR: No hay aviones en la tabla')
+        else:
+            form.avion.choices = [(a[0], a[1]) for a in aviones]
+
+        sql2 = f'SELECT id, Nombres || " " || Apellidos AS piloto FROM empleados AS em INNER JOIN usuarios AS us ON em.id_emp = us.id WHERE em.estado = "A"'
+        pilotos = seleccion(sql2)
+        if len(pilotos) == 0:
+            flash('ERROR: No hay pilotos en la tabla')
+        else:
+            form.piloto.choices = [(p[0], p[1]) for p in pilotos]
+
+        if request.method == 'POST':
+            origen = escape(request.form['origen'])
+            destino = escape(request.form['destino'])
+            cupos = escape(request.form['cupos'])
+            avion = request.form.get('avion')
+            piloto = request.form.get('piloto')
+            fechaSalida = escape(request.form['fechaSalida'])
+            swerror = False
+            if id == None or len(id) == 0:
+                flash('ERROR: Debe suministrar un id')
+                swerror = True
+            if origen == None or len(origen) == 0:
+                flash('ERROR: Debe suministrar una ciudad origen')
+                swerror = True
+            if destino == None or len(destino) == 0:
+                flash('ERROR: Debe suministrar una ciudad destino')
+                swerror = True
+            if fechaSalida == None or len(fechaSalida) == 0:
+                flash('ERROR: Debe suministrar una fecha de salida')
+                swerror = True
+            if cupos == None or len(cupos) == 0:
+                flash('ERROR: Debe suministrar un número de cupos')
+                swerror = True
+            if not swerror:
+                # Preparar el query -- Paramétrico
+                sql2 = "UPDATE vuelos SET c_destino = ?, c_salida = ?, avion = ?, piloto = ?, salida = ?, cupos_disp = ? WHERE id_vuelo =  ?"
+                # Ejecutar la consulta
+                res2 = accion(sql2, (destino, origen, avion,
+                              piloto, fechaSalida, cupos, id))
+                # Proceso los resultados
+                if res2 == 0:
+                    flash('ERROR: No se pudieron almacenar los datos, reintente')
+                else:
+                    flash('INFO: Los datos fueron almacenados satisfactoriamente')
+                    return redirect(url_for('dashboard_vuelos'))
+        return render_template("editar_vuelo.html", pagina='dashboard', vuelo = res, form=form)
 
 @app.route('/eliminar_vuelo/<id>/<estado>', methods=['POST', 'GET'])
 def eliminar_vuelo(id, estado):
@@ -307,6 +365,57 @@ def dashboard_usuarios():
                     flash('INFO: Los datos fueron almacenados satisfactoriamente')
                     return redirect(url_for('dashboard_usuarios'))
         return render_template('dashboard_usuarios.html', pagina='dashboard', usuarios=res, form=form)
+
+@app.route('/editar_usuario/<id>', methods=['POST', 'GET'])
+def editar_usuario(id):
+    sql = f'SELECT id, nombres, apellidos, usuario, correo, password, numero, tipo_usuario, estado FROM usuarios WHERE id = %s' % (id)
+    res = seleccion(sql)
+    if len(res) == 0:
+        flash('ERROR: No hay usuarios en la tabla')
+    else:
+        # return render_template('dashboard_usuarios.html', pagina='dashboard', usuarios=res)
+        form = AgregarUsuario()
+        if request.method == 'POST':
+            nombres = escape(request.form['nombres'])
+            apellidos = escape(request.form['apellidos'])
+            usuario = escape(request.form['usuario'])
+            email = escape(request.form['email'])
+            clave = escape(request.form['clave'])
+            numero = escape(request.form['numero'])
+            tipoUsuario = request.form.get('tipoUsuario')
+            swerror = False
+            if nombres == None or len(nombres) == 0:
+                flash('ERROR: Debe suministrar un nombre')
+                swerror = True
+            if apellidos == None or len(apellidos) == 0:
+                flash('ERROR: Debe suministrar un apellido')
+                swerror = True
+            if usuario == None or len(usuario) == 0 or not login_valido(usuario):
+                flash('ERROR: Debe suministrar un usuario válido ')
+                swerror = True
+            if email == None or len(email) == 0 or not email_valido(email):
+                flash('ERROR: Debe suministrar un email válido')
+                swerror = True
+            if clave == None or len(clave) == 0 or not pass_valido(clave):
+                flash('ERROR: Debe suministrar una clave válida')
+                swerror = True
+            if numero == None or len(numero) == 0:
+                flash('ERROR: Debe suministrar un número de teléfono')
+                swerror = True
+            if not swerror:
+                sql2 = "UPDATE usuarios SET Nombres = ?, Apellidos = ?, usuario = ?, correo = ?, numero = ?, password = ?, tipo_usuario = ? WHERE id = ?"
+                pwd = generate_password_hash(clave)
+                # Ejecutar la consulta
+                res2 = accion(sql2, (nombres, apellidos, usuario,
+                             email,  numero, pwd, tipoUsuario, id))
+                
+                    # Proceso los resultados
+                if res2 == 0:
+                    flash('ERROR: No se pudieron almacenar los datos, reintente')
+                else:
+                    flash('INFO: Los datos fueron almacenados satisfactoriamente')
+                    return redirect(url_for('dashboard_usuarios'))
+        return render_template('editar_usuario.html', pagina='dashboard', usuario=res, form=form)
 
 @app.route('/eliminar_usuario/<id>/<estado>', methods=['POST', 'GET'])
 def eliminar_usuario(id, estado):
