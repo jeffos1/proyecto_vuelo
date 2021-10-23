@@ -25,36 +25,23 @@
             <tr class="">
               <th scope="col">ID</th>
               <th scope="col">Modelo</th>
-              <th scope="col">Matricula</th>
+              <th scope="col">Matrícula</th>
               <th scope="col">Capacidad</th>
+              <th scope="col">Estado</th>
               <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
+            {% for dat in aviones %}
             <tr>
-              <th scope="row">1</th>
-              <td>Boeing 747</td>
-              <td>HK - 704</td>
-              <td>50</td>
-              <td><a href="" data-toggle="modal" data-target="#agregarAvion">Editar</a> - <a href="" data-toggle="modal"
-                  data-target="#eliminarAvion">Ocultar</a></td>
+              <th scope="row">{{ dat[0] }}</th>
+              <td>{{ dat[1] }}</td>
+              <td>{{ dat[2] }}</td>
+              <td>{{ dat[3] }}</td>
+              <td>{% if dat[4] == 'I'%}Inactivo{% endif%}{% if dat[4] == 'A'%}Activo{% endif%}</td>
+              <td><a href="{{url_for('editar_avion', id=dat[0])}}">Editar</a> - <a href="{{ url_for('eliminar_avion', id=dat[0], estado=dat[4]) }}">{% if dat[4] == 'I'%}Mostrar{% endif%}{% if dat[4] == 'A'%}Ocultar{% endif%}</a></td>
             </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Boeing 747</td>
-              <td>HK - 704</td>
-              <td>50</td>
-              <td><a href="" data-toggle="modal" data-target="#agregarAvion">Editar</a> - <a href="" data-toggle="modal"
-                  data-target="#eliminarAvion">Ocultar</a></td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Boeing 747</td>
-              <td>HK - 704</td>
-              <td>50</td>
-              <td><a href="" data-toggle="modal" data-target="#agregarAvion">Editar</a> - <a href="" data-toggle="modal"
-                  data-target="#eliminarAvion">Ocultar</a></td>
-            </tr>
+            {% endfor %}            
           </tbody>
         </table>
       </div>
@@ -82,67 +69,64 @@
 
         <div class="modal-body">
           <!-- Form de agregar vuelo -->
-          <form>
+          <form class="needs-validation" novalidate action="{{url_for('dashboard_aviones')}}" method="post">
+
+            {% for msg in get_flashed_messages() %}
+            <div class='form-row'>
+                {{ msg }}
+            </div>
+            {% endfor %}
 
             <div class="form-row">
               <div class="col">
-                <label for="idAvion">ID</label>
-                <input type="number" class="form-control" id="idAvion" placeholder="ID Avión">
+                {{form.id.label}}
+                {{form.id}}
+                <div class="invalid-feedback">
+                    El ID es requerido
+                </div>
               </div>
               <div class="col">
-                <label for="modelo">Modelo</label>
-                <input type="text" class="form-control" id="modelo" placeholder="Modelo">
+                {{form.modelo.label}}
+                {{form.modelo}}
+                <div class="invalid-feedback">
+                    El modelo es requerido
+                </div>                
               </div>
 
             </div>
 
             <div class="form-row">
               <div class="col">
-                <label for="matricula">Matricula</label>
-                <input type="text" class="form-control" id="matricula" placeholder="Matricula">
+                {{form.matricula.label}}
+                {{form.matricula}}
+                <div class="invalid-feedback">
+                    La matrícula es requerida
+                </div>
               </div>
               <div class="col">
-                <label for="capAvion">Capacidad</label>
-                <input type="number" class="form-control" id="capAvion" placeholder="Capacidad del avión">
+                {{form.cantidad.label}}
+                {{form.cantidad}}
+                <div class="invalid-feedback">
+                    Número de pasajeros es requerido
+                </div>
               </div>
             </div>
 
-          </form>
           <!-- Fin del form agregar vuelo -->
         </div>
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary">Agregar Avión</button>
+          {{form.btn(class='btn btn-primary')}}
+          <!-- <button type="button" class="btn btn-primary">Agregar Avión</button> -->
         </div>
+      </form>
 
       </div>
     </div>
   </div>
   <!-- Fin del modal de agregar vuelos -->
-
-  <!-- Modal eliminar vuelo  -->
-  <div class="modal" tabindex="-1" role="dialog" id="eliminarAvion">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title">Eliminar Avión</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-          </button>
-        </div>
-        <div class="modal-body">
-          <p>¿Esta seguro que desea ocultar el siguiente Avión?</p>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-danger">Eliminar</button>
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-        </div>
-      </div>
-    </div>
-  </div>
-  <!-- Fin modal eliminar vuelo -->
-
+  
 </div>
 <script type="module">
   import { class_to_active_link, addCloseToNav } from '../static/js/script.js'

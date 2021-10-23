@@ -2,7 +2,7 @@
 
 {% block content %}
 <div class="col p-2 m-2">
-  <div class="container">
+  <div class="container d-flex flex-column">
 
     <div class="row">
       <div class="col text-center pt-4">
@@ -26,51 +26,31 @@
               <th scope="col">ID</th>
               <th scope="col">Nombres</th>
               <th scope="col">Apellidos</th>
-              <th scope="col">NickName</th>
+              <th scope="col">usuario</th>
               <th scope="col">Correo</th>
               <th scope="col">Contraseña</th>
               <th scope="col">Celular</th>
               <th scope="col">Tipo de Usuario</th>
+              <th scope="col">Estado</th>
               <th scope="col"></th>
             </tr>
           </thead>
           <tbody>
+            {% for dat in usuarios %}
             <tr>
-              <th scope="row">1</th>
-              <td>Oscar</td>
-              <td>Pérez</td>
-              <td>oscarperez</td>
-              <td>oscar@email.com</td>
-              <td>******</td>
-              <td>30000000</td>
-              <td>Piloto</td>
-              <td><a href="" data-toggle="modal" data-target="#agregarUsuario">Editar</a> - <a href=""
-                  data-toggle="modal" data-target="#eliminarUsuario">Ocultar</a></td>
+              <th scope="row">{{ dat[0] }}</th>
+              <td>{{ dat[1] }}</td>
+              <td>{{ dat[2] }}</td>
+              <td>{{ dat[3] }}</td>
+              <td>{{ dat[4] }}</td>
+              <td> ********* </td>
+              <!-- <td>{{ dat[5] }}</td> -->
+              <td>{{ dat[6] }}</td>
+              <td>{{ dat[7] }}</td>
+              <td>{% if dat[8] == 'I'%}Inactivo{% endif%}{% if dat[8] == 'A'%}Activo{% endif%}</td>
+              <td><a href="{{ url_for('editar_usuario', id=dat[0]) }}">Editar</a> - <a href="{{ url_for('eliminar_usuario', id=dat[0], estado=dat[8]) }}">{% if dat[8] == 'I'%}Mostrar{% endif%}{% if dat[8] == 'A'%}Ocultar{% endif%}</a></td>
             </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Oscar</td>
-              <td>Pérez</td>
-              <td>oscarperez</td>
-              <td>oscar@email.com</td>
-              <td>******</td>
-              <td>30000000</td>
-              <td>Piloto</td>
-              <td><a href="" data-toggle="modal" data-target="#agregarUsuario">Editar</a> - <a href=""
-                  data-toggle="modal" data-target="#eliminarUsuario">Ocultar</a></td>
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>Oscar</td>
-              <td>Pérez</td>
-              <td>oscarperez</td>
-              <td>oscar@email.com</td>
-              <td>******</td>
-              <td>30000000</td>
-              <td>Piloto</td>
-              <td><a href="" data-toggle="modal" data-target="#agregarUsuario">Editar</a> - <a href=""
-                  data-toggle="modal" data-target="#eliminarUsuario">Ocultar</a></td>
-            </tr>
+            {% endfor %}            
           </tbody>
         </table>
       </div>
@@ -98,49 +78,77 @@
 
         <div class="modal-body">
           <!-- Form de agregar vuelo -->
-          <form>
+          <form  class="needs-validation" novalidate action="{{url_for('dashboard_usuarios')}}" method="post">
+
+            {% for msg in get_flashed_messages() %}
+            <div class='form-row'>
+                {{ msg }}
+            </div>
+            {% endfor %}
 
             <div class="form-row">
               <div class="col">
-                <label for="idUsuario">ID</label>
-                <input type="number" class="form-control" id="idUsuario" placeholder="ID Usuario">
+                {{form.id.label}}
+                {{form.id}}
+                <div class="invalid-feedback">
+                </div>
               </div>
               <div class="col">
-                <label for="nameUser">Nombres</label>
-                <input type="text" class="form-control" id="nameUser" placeholder="Nombres">
+                {{form.nombres.label}}
+                {{form.nombres}}
+                <div class="invalid-feedback">
+                    El nombre es requerido
+                </div>
               </div>
               <div class="col">
-                <label for="apellidos">Apellidos</label>
-                <input type="text" class="form-control" id="apellidos" placeholder="Apellidos">
+                {{form.apellidos.label}}
+                {{form.apellidos}}
+                <div class="invalid-feedback">
+                    El apellido es requerido
+                </div>
               </div>
             </div>
 
             <div class="form-row">
               <div class="col">
-                <label for="email">Correo</label>
-                <input type="email" class="form-control" id="email" placeholder="Correo">
+                {{form.usuario.label}}
+                {{form.usuario}}
+                <div class="invalid-feedback">
+                    El usuario es requerido
+                </div>
               </div>
               <div class="col">
-                <label for="password">Contraseña</label>
-                <input type="password" class="form-control" id="cupos" placeholder="Password">
+                {{form.email.label}}
+                {{form.email}}
+                <div class="invalid-feedback">
+                    El correo es requerido
+                </div>
               </div>
               <div class="col">
-                <label for="tipoUser">Tipo de Usuario</label>
-                <select class="form-control" id="tipoUser">
-                  <option> Piloto</option>
-                  <option> Usuario</option>
-                  <option> Super Usuario</option>
-                </select>
-              </div>
+                {{form.clave.label}}
+                {{form.clave}}
+                <div class="invalid-feedback">
+                    La clave es requerida
+                </div>
+              </div>              
             </div>
 
             <div class="form-row">
               <div class="col">
-                <label for="celular">Celular</label>
-                <input type="number" class="form-control" id="celular">
+                {{form.numero.label}}
+                {{form.numero}}
+                <div class="invalid-feedback">
+                    El número de teléfono es requerido
+                </div>
               </div>
               <div class="col">
-
+                {{form.tipoUsuario.label}}
+                {{form.tipoUsuario}}
+                <!-- <select class="form-control" id="tipoUsuario">
+                  <option value="p"> Piloto</option>
+                  <option value="c"> Usuario</option>
+                  <option value="a"> Super Usuario</option>
+                </select> -->
               </div>
               <div class="col">
 
@@ -150,15 +158,15 @@
 
 
 
-          </form>
+          
           <!-- Fin del form agregar vuelo -->
         </div>
 
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-          <button type="button" class="btn btn-primary">Agregar Usuario</button>
+          {{form.btn(class='btn btn-primary')}}
         </div>
-
+      </form>
       </div>
     </div>
   </div>

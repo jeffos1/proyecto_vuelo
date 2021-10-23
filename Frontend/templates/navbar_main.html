@@ -1,0 +1,39 @@
+<div class="row">
+    <header class="masthead mb-auto col-lg-12">
+
+        <div id="nav_container" class="d-flex justify-content-center flex-md-row text-md-left flex-column text-center ">
+            <a class="masthead-brand h3 link-unstyled, link-unstyled:link, link-unstyled:hover"
+                href="../home">Vuelos</a>
+            <nav class="nav nav-masthead mx-auto">
+                <a class="nav-link" href="{{ url_for('index') }}">Inicio</a>
+                <a class="nav-link" href="{{ url_for('vuelo') }}">Vuelo</a>
+                <a class="nav-link" href="{{ url_for('precio') }}">Precio</a>
+                <a class="nav-link" href="{{ url_for('opiniones') }}">Opiniones</a>
+
+            </nav>
+            {% if pagina %}
+            {% if pagina == 'mis_reservas' or pagina == 'dashboard' or pagina == 'usuario'%}
+            <a href="{{ url_for('index') }}" class="nav-link mr-2">Salir</a>
+            {% endif%}
+
+            {%else%}
+            <a class=" nav-link mr-2 re1" href="{{ url_for('registrarse') }}" id="registrarse">Registrarse</a>
+            <div class=" box_border radius_20 input_text d-flex flex-row" id="login_container">
+                <i class="bi bi-person-fill text_purple mr-1"></i>
+                <a class=" nav-link px-0 py-0 font-weight-bold text_purple pr-1 lo1" href="{{ url_for('login') }}"
+                    id="login">Login</a>
+
+            </div>
+            {% endif %}
+        </div>
+    </header>
+</div>
+
+<script type="module">
+    import { class_to_active_link, addCloseToNav } from '../static/js/script.js'
+
+    let nav_pages = document.querySelectorAll('#nav_container > nav > a.nav-link');
+
+    class_to_active_link(nav_pages, 'active');
+
+</script>

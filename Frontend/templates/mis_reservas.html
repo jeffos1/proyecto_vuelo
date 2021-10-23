@@ -2,50 +2,80 @@
 
 {% block body%}
 
-<div class="container d-flex flex-column" style="height: 100vh">
-    {% include 'navbar_con_login.html' %}
+<div class="container d-flex flex-column" style="height: 100vh;">
+    {% include 'navbar_main.html' %}
+    <div class="row d-flex text-center flex-column align-items-center">
 
-    <div class="wrap" >
-        <div class="search">
-           <input type="text" class="searchTerm" placeholder="Introduce el código de tu reserva">
-           <button type="submit" class="searchButton">
-             <i class="fa fa-search"></i>
-          </button>
+        <!-- <div class="wrap">
+            <div class="search">
+                <input type="text" class="searchTerm" placeholder="Introduce el código de tu reserva">
+                <button type="submit" class="searchButton">
+                    <i class="fa fa-search"></i>
+                </button>
+            </div>
+        </div> -->
+
+        <div class="mis_reservas">
+            <h3 class="text_black "> Información de tu reserva </h3>
+
+            <table class="table table-bordered mis_reservas">
+                <thead>
+
+                    <tr>
+                        <th> Código </th>
+                        <th> Origen </th>
+                        <th> Destino </th>
+                        <th> Partida </th>
+                        <th> Avion </th>
+                        <th> Piloto </th>
+                        <th> Precio </th>
+                        <th> Estado </th>
+                        <th> Accion </th>
+                    </tr>
+
+                </thead>
+                <tbody>
+
+                    {% for tiquete in tiquetes%}
+
+                    <tr>
+                        <td>{{ tiquete[0] }}</td>
+                        <td>{{ tiquete[1] }}</td>
+                        <td>{{ tiquete[2] }}</td>
+                        <td>{{ tiquete[3] }}</td>
+                        <td>{{ tiquete[4] }}</td>
+                        <td>{{ tiquete[5] + ' ' + tiquete[6] }}</td>
+                        <td>{{ tiquete[7] }}</td>
+
+                        <td>{% if tiquete[8] == 'A' %}
+                            {{ 'Activo' }}
+                            {% else %}
+                            {{ 'Inactivo' }}
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+                            <form action="{{ url_for('mis_reservas') }}" method="post">
+                                <input type="hidden" name="estado" value="{{ tiquete[8] }}" />
+                                {% if tiquete[8] == 'A' %}
+                                <button class="btn btn-url" value="{{ tiquete[0] }}" name="cancelar">Cancelar</button>
+                                {% else %}
+                                <button class="btn btn-url text-decoration-none text-muted">Cancelado</button>
+                                {% endif %}
+
+                            </form>
+                        </td>
+                    </tr>
+                    {% endfor %}
+
+                </tbody>
+            </table>
         </div>
-     </div>
-
-    <div class="mis_reservas">
-        <h3 class="text_black "> Información de tu reserva </h3>
-
-        <table class="table table-bordered mis_reservas">
-            <thead>
-                <tr>
-                    <th> Código de reserva </th>
-                    <th> Origen </th>
-                    <th> Destino </th>
-                    <th> Fecha-Hora </th>
-                    <th> Avión </th>
-                    <th> Piloto </th>
-                    <th> Capacidad </th>
-                    <th> Estado </th>
-                    <th> Acción </th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td> 3576 </td>
-                    <td> Santa Marta </td>
-                    <td> Bogotá </td>
-                    <td> 01/01/2021 - 2:15 PM </td>
-                    <td> Boeing 747 </td>
-                    <td> Daniel Lopez </td>
-                    <td> 124 </td>
-                    <td> Finalizado </td>
-                    <td> Cancelar </td>
-                </tr>
-            </tbody>
-        </table>
     </div>
+
+
+
 
     {% include 'footer.html' %}
 </div>

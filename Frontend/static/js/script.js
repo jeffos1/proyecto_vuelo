@@ -13,6 +13,7 @@ export function class_to_active_link(links, myClass) {
     var page = path.split("/")[1];
 
     let nofound = false;
+
     for (const link of links) {
         let current_link = link.href.split("/").pop();
 
@@ -24,8 +25,6 @@ export function class_to_active_link(links, myClass) {
         }
 
     }
-
-
 
 }
 

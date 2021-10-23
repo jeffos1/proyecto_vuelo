@@ -2,47 +2,34 @@
 
 {% block body%}
 <div class="container d-flex flex-column justify-content-center" style="height: 100vh">
-    <!-- Navbar personalizado para login-->
-    <!-- <div class="row">
-        <header class="masthead mb-auto col-lg-12">
 
-            <div class="d-flex justify-content-center flex-md-row text-md-left flex-column text-center ">
-                <h3 class="masthead-brand">Vuelos</h3>
-                <nav class="nav nav-masthead mx-auto">
-                    <a class="nav-link active" href="home">Inicio</a>
-                    <a class="nav-link" href="#">Vuelo</a>
-                    <a class="nav-link" href="#">Precio</a>
-                    <a class="nav-link" href="#">Opiniones</a>
-
-                </nav>
-            </div>
-        </header>
-    </div> -->
-    {% include 'navbar_sin_login.html' %}
+    {% include 'navbar_main.html' %}
     <!-- Card login -->
     <div class="login my-auto">
         <div class="col-md-5 mx-auto">
 
             <div class="card card-body">
-                <form id="submitForm" action="../mis_reservas" method="get" data-parsley-validate=""
-                    data-parsley-errors-messages-disabled="true" novalidate="" _lpchecked="1">
+                <form id="submitForm" action="{{ url_for('login') }}" method="post" novalidate>
+                    {% for msg in get_flashed_messages() %}
+                    <small class='text_purple font-weight-bold'>
+                        {{ msg }}
+                    </small><br>
+                    {% endfor %}
                     <div class="mx-auto rounded-circle bg_purple d-flex justify-content-center align-items-center"
                         style="width: 5rem; height: 5rem; border-radius: 50;">
                         <i class="bi bi-person-fill text-white mb-3" style="font-size: 3rem;"></i>
                     </div>
                     <div class="form-group required d-flex flex-row align-items-center">
-                        <label class="align-self-center pr-1 " for="username"> <i class="bi bi-person text_purple"
-                                style="font-size: 2.5rem;"></i> </label>
 
-                        <input type="text" class="form-control text-lowercase radius_20" id="username" required=""
-                            name="username" value="" placeholder="Correo">
+                        {{ form.usuario.label(class='align-self-center pr-1 fz-2-5') }}
+                        {{ form.usuario(class='form-control text-lowercase radius_20') }}
+
                     </div>
                     <div class="form-group required d-flex flex-row align-items-center">
-                        <label class="align-self-center pr-1" for="password"> <i class="bi bi-lock text_purple"
-                                style="font-size: 2.5rem;"></i></label>
 
-                        <input type="password" class="form-control radius_20" required="" id="password" name="password"
-                            value="" placeholder="Contraseña">
+                        {{ form.clave.label(class='align-self-center pr-1 fz-2-5') }}
+                        {{ form.clave(class='form-control radius_20') }}
+
                     </div>
 
                     <div class="form-group pt-1 d-flex flex-column">
@@ -50,15 +37,7 @@
                         <br>
 
                         <div class="input-group-prepend align-self-center">
-                            <button class=" btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown"
-                                aria-haspopup="true" aria-expanded="false" target="_blank">Tipo de usuario</button>
-                            <div class="dropdown-menu">
-                                <a class="dropdown-item" href="../mis_reservas">Cliente reservas</a>
-                                <a class="dropdown-item" href="../reservar_tiquete">Cliente reservar</a>
-                                <a class="dropdown-item" href="../usuario_piloto">Piloto</a>
-                                <a class="dropdown-item" href="../dashboard_home">Administrador</a>
-
-                            </div>
+                            {{ form.btn(class='btn btn-primary') }}
                         </div>
 
                     </div>
@@ -71,5 +50,7 @@
     </div>
     {% include 'footer.html' %}
 </div>
-
+<script>
+    let cerrar_text = document.createTextNode('<i class="bi bi-person text_purple" style="font-size: 2.5rem;"></i>');
+</script>
 {% endblock %}

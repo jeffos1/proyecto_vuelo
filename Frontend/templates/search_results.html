@@ -7,13 +7,26 @@
 {% block body %}
 <div class="container d-flex flex-column" style="height: 100vh">
 
-    {% include 'navbar_sin_login.html' %}
+    {% include 'navbar_main.html' %}
+
     <div class="row mx-auto my-auto">
         <div class="col-md-12">
-            <h2 class="text_purple">Vuelos disponibles de Bogota a Medellin:</h2>
-            <small class="text_purple">20 de octubre del 2021</small>
+            {% if not resultados %}
+            <h2 class="text_purple"></h2>
+            {% else %}
+            <h2 class="text_purple">Vuelos disponibles de {{ resultados[0][2]}} a {{ resultados[0][1] }}:</h2>
+            {% endif %}
+
+            {% for msg in get_flashed_messages() %}
+            <div class='display-3 text_purple'>{{ msg }}</div>
+            {% endfor %}
+            <!-- <small class="text_purple">20 de octubre del 2021</small> -->
+            {% if resultados %}
+            <small class="text_purple">Fecha: {{ resultados[0][5]}}</small>
+            {% endif %}
         </div>
         <!-- option 1 -->
+        {% for resultado in resultados %}
         <div class="col-md-12 bg_purple text-white vuelo_card radius_20 d-flex align-items-center mb-3">
             <div class="row d-flex flex-grow-1 text-center">
                 <div class="col-md-3">
@@ -32,7 +45,8 @@
                         </span>
                         <br>
                         <span>
-                            Bogota
+                            {{resultado[2]}}
+
                         </span>
                     </div>
 
@@ -44,7 +58,8 @@
                         </span>
                         <br>
                         <span>
-                            Medellin
+                            {{resultado[1]}}
+
                         </span>
                     </div>
                 </div>
@@ -54,113 +69,84 @@
                         <span>
                             $200000
                         </span>
-                        <button class="btn bg_green_yellow btn-sm radius_20"><a href="../login"
-                                class="select_vuelo">Seleccionar</a></button>
+                        <!-- Trigger the modal with a button -->
+
+                        <button type="button" class="btn bg_green_yellow btn-sm radius_20" data-toggle="modal"
+                            data-target="#myModal">Seleccionar</button>
+
+
+                        <!-- Modal -->
+                        <div class="modal fade" id="myModal" role="dialog">
+                            <div class="modal-dialog">
+
+                                <!-- Modal content-->
+                                <div class="modal-content bg_purple">
+                                    <div class="modal-header text-center">
+                                        <button type=" button" class="close" data-dismiss="modal">&times;</button>
+                                        <h4 class="modal-title text-white">Reservar Tiquete</h4>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="d-flex flex-column mx-auto">
+
+                                            <form class="needs-validation d-flex flex-column" novalidate
+                                                action="{{url_for('search')}}" method="POST">
+                                                <div class="row">
+                                                    <div class="col-md-6 mb-3">
+                                                        <label for="usuario">Usuario</label>
+                                                        <input type="text" class="form-control" id="usuario"
+                                                            placeholder="" name="usuario">
+                                                        <div class="invalid-feedback">
+                                                            El usuario es requerido
+                                                        </div>
+                                                    </div>
+
+
+                                                    <div class="col-md-6  mb-2">
+                                                        <label for="clase">Clase</label>
+                                                        <select class="custom-select w-100 radius_25 input_text shadow"
+                                                            id="clase" name="clase" required>
+
+                                                            <option value="1">economico</option>
+                                                            <option value="2">ejecutivo</option>
+                                                            <option value="3">primera clase</option>
+                                                        </select>
+                                                        <div class="invalid-feedback">
+                                                            Por favor selecione una opcion
+                                                        </div>
+                                                    </div>
+                                                </div>
+
+
+
+
+
+                                                <input type="hidden" name="vuelo" value="{{ resultado[0] }}">
+
+
+                                                <button class="btn bg_green_yellow btn-md mx-auto my-1 radius_20"
+                                                    type="submit">Reservar</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-default text-white"
+                                            data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
                     </div>
 
                 </div>
             </div>
         </div>
+        {% endfor %}
 
-        <!-- option 2 -->
-        <div class="col-md-12 bg_purple text-white vuelo_card radius_20 d-flex align-items-center mb-3">
-            <div class="row d-flex flex-grow-1 text-center">
-                <div class="col-md-3">
-                    <div class=" p-1 text_purple bg-white d-flex align-items-center justify-content-center radius_20"
-                        style="height: 3rem; width: 7rem;">
-                        <span>Golfo de
-                            <br>
-                            Marrosquillo</span>
-                    </div>
-                </div>
-
-                <div class="col-md-6 d-flex flex-grow-1 text-center align-items-center">
-                    <div>
-                        <span class="hora">
-                            9:55am
-                        </span>
-                        <br>
-                        <span>
-                            Bogota
-                        </span>
-                    </div>
-
-                    <i class="bi bi-arrow-right text_white w-100 pb-1 larger_icon text_green_yellow"
-                        style="font-size: 1rem;"></i>
-                    <div>
-                        <span class="hora">
-                            11:20am
-                        </span>
-                        <br>
-                        <span>
-                            Medellin
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-3 d-flex justify-content-end ">
-                    <div class="d-flex flex-column flex-shrink-1">
-                        <span>
-                            $200000
-                        </span>
-                        <button class="btn bg_green_yellow btn-sm radius_20"><a href="../login"
-                                class="select_vuelo">Seleccionar</a></button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
-        <!-- option 3 -->
-        <div class="col-md-12 bg_purple text-white vuelo_card radius_20 d-flex align-items-center mb-3">
-            <div class="row d-flex flex-grow-1 text-center">
-                <div class="col-md-3">
-                    <div class=" p-1 text_purple bg-white d-flex align-items-center justify-content-center radius_20"
-                        style="height: 3rem; width: 7rem;">
-                        <span>Golfo de
-                            <br>
-                            Marrosquillo</span>
-                    </div>
-                </div>
-
-                <div class="col-md-6 d-flex flex-grow-1 text-center align-items-center">
-                    <div>
-                        <span class="hora">
-                            11:55am
-                        </span>
-                        <br>
-                        <span>
-                            Bogota
-                        </span>
-                    </div>
-
-                    <i class="bi bi-arrow-right text_white w-100 pb-1 larger_icon text_green_yellow"
-                        style="font-size: 1rem;"></i>
-                    <div>
-                        <span class="hora">
-                            1:00pm
-                        </span>
-                        <br>
-                        <span>
-                            Medellin
-                        </span>
-                    </div>
-                </div>
-
-                <div class="col-md-3 d-flex justify-content-end ">
-                    <div class="d-flex flex-column flex-shrink-1">
-                        <span>
-                            $200000
-                        </span>
-                        <button class="btn bg_green_yellow btn-sm radius_20"><a class="select_vuelo"
-                                href="../login">Seleccionar</a></button>
-                    </div>
-
-                </div>
-            </div>
-        </div>
     </div>
     {% include 'footer.html' %}
-    <!-- cierre .container-->
+
 </div>
 <script type="module">
     import { textDark } from '../static/js/script.js'

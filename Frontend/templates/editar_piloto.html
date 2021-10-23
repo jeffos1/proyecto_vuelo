@@ -1,0 +1,129 @@
+{% extends 'dashboard.html' %}
+
+{% block content %}
+
+<div class="col p-2 m-2">
+    <div class="container">
+        <div class="row">
+            <div class="col text-center pt-4">
+                <h1>Editar Piloto</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-2"></div>
+            <div class="col pt-4">
+                <form class="needs-validation" novalidate action="{{url_for('editar_piloto', id=piloto[0][0])}}" method="post">
+
+                    {% for msg in get_flashed_messages() %}
+                    <div class='form-row'>
+                        {{ msg }}
+                    </div>
+                    {% endfor %}
+        
+                    <div class="form-row">
+                        <div class="col">
+                            {{form.id.label}}
+                            {{form.id(value = piloto[0][0], disabled=true)}}
+                            <div class="invalid-feedback">
+                                El ID es requerido
+                            </div>
+                        </div>
+                        <div class="col">
+                            {{form.nombres.label}}
+                            {{form.nombres(value = piloto[0][1])}}
+                            <div class="invalid-feedback">
+                                Elnombre es requerido
+                            </div>
+                        </div>
+                        <div class="col">
+                            {{form.apellidos.label}}
+                            {{form.apellidos(value = piloto[0][2])}}
+                            <div class="invalid-feedback">
+                                El apellido es requerido
+                            </div>
+                        </div>
+                    </div>
+        
+                    <div class="form-row">
+                        <div class="col">
+                            {{form.usuario.label}}
+                            {{form.usuario(value = piloto[0][3])}}
+                            <div class="invalid-feedback">
+                                El usuario es requerido
+                            </div>
+                        </div>
+                        <div class="col">
+                            {{form.email.label}}
+                            {{form.email(value = piloto[0][4])}}
+                            <div class="invalid-feedback">
+                                El correo es requerido
+                            </div>
+                        </div>
+                        <div class="col">
+                            {{form.clave.label}}
+                            {{form.clave(value = piloto[0][6])}}
+                            <div class="invalid-feedback">
+                                La contraseña es requerida
+                            </div>
+                        </div> 
+                    </div>
+        
+                    <div class="form-row">
+                        <div class="col">
+                            {{form.direccion.label}}
+                            {{form.direccion(value = piloto[0][7])}}
+                            <div class="invalid-feedback">
+                                La dirección es requerida
+                            </div>
+                        </div>
+                        <div class="col">
+                            {{form.numero.label}}
+                            {{form.numero(value = piloto[0][5])}}
+                            <div class="invalid-feedback">
+                                El número de teléfono es requerido
+                            </div>
+                        </div>
+                        <div class="col">
+                            {{form.fechaIngreso.label}}
+                            {{form.fechaIngreso(value = piloto[0][9])}}
+                            <div class="invalid-feedback">
+                                la fecha de ingreso es requerida
+                            </div>
+                        </div>              
+                    </div>
+                    <div class="form-row">
+                        <div class="col">
+                            {{form.tiempoC.label}}
+                            {{form.tiempoC(value = piloto[0][10])}}
+                            <div class="invalid-feedback">
+                                El tiempo de contrato (meses) es requerido
+                            </div>
+                        </div>
+                        <div class="col">
+                            {{form.estado.label}}
+                            {{form.estado(value = piloto[0][8])}}
+                        </div>
+                        <div class="col"></div>
+                    </div>
+        
+                    <div class="form-row">
+                        <a class="btn btn-secondary" href="{{ url_for('dashboard_pilotos') }}">Cancelar</a>
+                        {{form.btn(class='btn btn-primary', value="Editar Piloto")}}
+                    </div>        
+                </form>
+            </div>
+            <div class="col-2"></div>               
+        </div>            
+    </div>
+</div>
+
+
+<script type="module">
+    import { class_to_active_link, addCloseToNav } from '../static/js/script.js'
+  
+    let dashboard_pages = document.querySelectorAll('div.sidebar > ul > li > a');
+  
+    class_to_active_link(dashboard_pages, 'active');
+    addCloseToNav();
+</script>
+{% endblock %}

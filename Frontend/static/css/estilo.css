@@ -19,6 +19,7 @@ input:focus,
 input,
 .custom-select {
     border-radius: 25px !important;
+    border-color: #673ab7 !important;
 }
 
 /*
@@ -92,9 +93,9 @@ input,
 
 /*Dashboard sidebar*/
 .sidebar .active {
-    color: black !important;
+    color: white !important;
 
-    background-color: #BAFF29 !important;
+    background-color: #ff6663 !important;
 
     border-radius: 15px;
 
@@ -151,6 +152,10 @@ li a:hover {
 
 .text_black {
     color: black;
+}
+
+fz-2-5 {
+    font-size: 2.5rem;
 }
 
 /*Icons*/
@@ -297,4 +302,13 @@ body {
 
 .checked {
     color: orange;
+}
+
+/* tabla */
+
+th,
+td {
+    border: 1px solid blue;
+    width: 100px;
+    word-wrap: break-word;
 }

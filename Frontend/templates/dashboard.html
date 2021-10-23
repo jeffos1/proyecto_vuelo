@@ -3,7 +3,7 @@
 {% block body%}
 
 <div class="container d-flex flex-column" style="height: 100vh">
-    {% include 'navbar_sin_login.html' %}
+    {% include 'navbar_main.html' %}
     <div class="row h-100">
 
         <div class="sidebar col-md-2 d-flex flex-column p-3 text-white bg_purple radius_20 h-100" style="height: 50vh;">
@@ -14,7 +14,7 @@
             <hr>
             <ul class=" nav nav-pills flex-column mb-auto">
                 <li class="nav-item">
-                    <a href="../dashboard_home" class="nav-link text-white d-flex align-items-center"
+                    <a href="{{ url_for('dashboard_home') }}" class="nav-link text-white d-flex align-items-center"
                         aria-current="page">
                         <ion-icon name="home" style="font-size: 1.2rem;"></ion-icon>
                         Inicio
@@ -22,27 +22,27 @@
                 </li>
                 <!--  -->
                 <li class="nav-item">
-                    <a href="../dashboard_vuelos" class="nav-link text-white d-flex align-items-center"
+                    <a href="{{ url_for('dashboard_vuelos') }}" class="nav-link text-white d-flex align-items-center"
                         aria-current="page">
                         <ion-icon name="airplane" style="font-size: 1.2rem;"></ion-icon>
                         Vuelos
                     </a>
                 </li>
                 <li>
-                    <a href="../dashboard_usuarios" class="nav-link text-white d-flex align-items-center">
-                        <i class="bi bi-person-fill text-white mb-1 mr-1"></i>
+                    <a href="{{ url_for('dashboard_usuarios') }}" class="nav-link text-white d-flex align-items-center">
+                        <ion-icon name="person" style="font-size: 1.2rem;"></ion-icon>
                         Usuarios
                     </a>
                 </li>
                 <li>
-                    <a href="../dashboard_pilotos" id="pilotosbtn"
+                    <a href="{{ url_for('dashboard_pilotos') }}" id="pilotosbtn"
                         class="nav-link text-white d-flex align-items-center">
-                        <i class="bi bi-person-bounding-box text-white mb-1 mr-1"></i>
+                        <ion-icon name="contact" style="font-size: 1.2rem;"></ion-icon>
                         Pilotos
                     </a>
                 </li>
                 <li>
-                    <a href="../dashboard_aviones" id="avionesbtn"
+                    <a href="{{ url_for('dashboard_aviones') }}" id="avionesbtn"
                         class="nav-link text-white d-flex align-items-center">
                         <div class="mr-1">
                             <ion-icon name="jet"></ion-icon>

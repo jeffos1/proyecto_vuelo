@@ -1,8 +1,13 @@
 #Virtual env folders
 envw/
 wenv/
+env/
 
 
 #others
 __pycache__/
 _pycache_/
+
+#files
+db_vuelos.zip
+db_vuelos.db.zip
