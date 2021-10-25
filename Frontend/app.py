@@ -69,26 +69,31 @@ def search():
         usuario = escape(request.form['usuario'])
         vuelo = escape(request.form['vuelo'])
         clase = escape(request.form['clase'])
-        #password = request.form['password']
+        password = request.form['password']
 
-        query_usuario = f'SELECT id FROM usuarios WHERE usuario = "{str(usuario)}"'
+        query_usuario = f'SELECT id, password FROM usuarios WHERE usuario = "{str(usuario)}"'
         res = seleccion(query_usuario)
         if len(res) == 0:
-            flash("Usuario invalido")
+            flash("Usuario o contraseña invalida")
             return render_template("search_results.html")
         else:
+            password_db = res[0][1]
+            if check_password_hash(password_db, password):
 
-            usuario = res[0][0]
-            vuelo = str(vuelo)
-            clase = str(clase)
+                usuario = res[0][0]
+                vuelo = str(vuelo)
+                clase = str(clase)
 
-            query_tiquete = 'INSERT INTO tiquetes (vuelo, usuario, clase) VALUES (?, ?, ?)'
-            res = accion(query_tiquete, (vuelo, usuario, clase))
-            if res != 0:
-                flash('Vuelo reservado con exito!')
+                query_tiquete = 'INSERT INTO tiquetes (vuelo, usuario, clase) VALUES (?, ?, ?)'
+                res = accion(query_tiquete, (vuelo, usuario, clase))
+                if res != 0:
+                    flash('Vuelo reservado con exito!')
+                else:
+                    flash('ERROR: Por favor reintente')
+
+                return render_template("search_results.html")
             else:
-                flash('ERROR: Por favor reintente')
-
+                flash("Usuario o contraseña invalida")
             return render_template("search_results.html")
     else:
 
