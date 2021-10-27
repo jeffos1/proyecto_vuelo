@@ -7,8 +7,10 @@ env/
 #others
 __pycache__/
 _pycache_/
+.vscode
 
 #files
 db_vuelos.zip
 db_vuelos.db.zip
 .fuse_hidden0000104c00000001
+

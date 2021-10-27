@@ -1,4 +1,0 @@
-flask
-flask-wtf
-validate_email
-markupsafe
