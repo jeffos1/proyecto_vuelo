@@ -144,7 +144,7 @@ class AgregarVuelo(FlaskForm):
         'Cupos *', validators=[InputRequired(message='Indique el número de cupos')])
     avion = SelectField('Avion *', choices=[])
     piloto = SelectField('Piloto *', choices=[])
-    fechaSalida = DateTimeLocalField(
+    fechaSalida = DateField(
         'Fecha de Salida *', validators=[InputRequired(message='Indique la fecha de salida')])
     cupos = TextField(
         'Cupos *', validators=[InputRequired(message='Indique el número de cupos')])
